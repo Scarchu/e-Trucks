@@ -1,0 +1,7 @@
+<FilesMatch \.php$> 
+	ErrorDocument 400 /new_truck/error.php?400
+	ErrorDocument 401 /new_truck/error.php?401
+	ErrorDocument 403 /new_truck/error.php?403
+	ErrorDocument 404 /new_truck/error.php?404
+	ErrorDocument 500 /new_truck/error.php?500
+</FilesMatch>

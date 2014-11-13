@@ -1,0 +1,59 @@
+/* CSS Document */
+/*body {
+    font:12px arial; 
+    color: #222;
+    text-align:center;
+    padding:35px; }
+  */
+form, p, span {
+    margin:0;
+    padding:0; }
+ /* 
+input { font:12px arial; }
+  
+a {
+    color:#0000FF;
+    text-decoration:none; }
+  
+    a:hover { text-decoration:underline; }
+  */
+#wrapper{
+    margin:0 0;
+    padding-bottom:25px;
+    background:#EBF4FB;
+    width:350px;
+    border:1px solid #ACD8F0;
+	-moz-border-radius:20px;
+	-webkit-border-radius:20px;
+	border-radius:20px;
+}
+  
+#chatbox {
+    text-align:left;
+	font:11px arial;
+    margin:0 auto;
+    margin-bottom:25px;
+    padding:10px;
+    background:#fff;
+    height:270px;
+    width:295px;
+    border:1px solid #ACD8F0;
+	-moz-border-radius:20px;
+	-webkit-border-radius:20px;
+	border-radius:20px;
+    overflow:auto; }
+  
+#usermsg {
+    width:295px;
+    border:1px solid #ACD8F0;
+	margin:0 auto; }
+  
+#submit { width: 60px; font:12px arial; margin: 0 auto; }
+  
+.error { color: #ff0000; }
+  
+#menu { padding:2.5px auto; }
+  
+.welcome { float:left1; }
+  
+.msgln { margin:0 0 2px 0; }

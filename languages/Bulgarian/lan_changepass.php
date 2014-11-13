@@ -1,0 +1,1 @@
+<?phpdefine("LAN_CHGPAS_1", "Смяна на паролата");define("LAN_CHGPAS_2", "Моля, напишете парола.");define("LAN_CHGPAS_3", "Моля, повторете паролата.");define("LAN_CHGPAS_4", "Паролите не съвпадат.");define("LAN_CHGPAS_5", "Нова парола");define("LAN_CHGPAS_6", "Повтори паролата");define("LAN_CHGPAS_7", "Смени");

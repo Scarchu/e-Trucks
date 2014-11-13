@@ -1,0 +1,1 @@
+<?phpdefine("LAN_CHAT_1", "<b><i>Чат</i></b>");define("LAN_CHAT_2", "Изпрати");define("LAN_CHAT_3", "Емоции");

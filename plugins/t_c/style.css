@@ -1,0 +1,60 @@
+/************************************************************/
+
+#tc_header{
+	width: 100%;
+	text-align:center;
+}
+
+#truck_sel{
+	background-color:rgba(80,80,80,0.7);
+	-moz-border-radius:20px;
+	-webkit-border-radius:20px;
+	border-radius:20px;
+	width: 10%;
+	float: left;
+	padding: 4px;
+}
+#truck_menu{
+	background-color:rgba(80,80,80,0.7);
+	-moz-border-radius:20px;
+	-webkit-border-radius:20px;
+	border-radius:20px;
+	width: 10%;
+	float: right;
+	padding: 4px;
+}
+
+#truck_number{
+	background-color:rgba(80,80,80,0.7);
+	-moz-border-radius:20px;
+	-webkit-border-radius:20px;
+	border-radius:20px;
+	width: 15%;
+	margin:0 auto;
+	color: red;
+}
+
+/************************************************************/
+
+#above_tables
+{
+	background-color:rgba(255,156,0,0.7);
+	-moz-border-radius:20px;
+	-webkit-border-radius:20px;
+	border-radius:20px;
+	width: 80%;
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#tc_container
+{
+	background-color:rgba(192,197,203,0.8);
+	-moz-border-radius:20px;
+	-webkit-border-radius:20px;
+	border-radius:20px;
+	width: 95%;
+	margin-left:auto;
+	margin-right:auto;
+}
