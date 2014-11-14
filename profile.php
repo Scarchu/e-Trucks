@@ -16,6 +16,7 @@ $pageTitle .= "::".LAN_PRO_1;
 
 <?php
 $uid = $_GET['uid'];
+require_once e_HANDLER.'userprofile_class.php';
 $userprof = new userprofile;
 $userprof -> user = $uid;
 $userprof -> user_parse();

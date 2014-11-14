@@ -155,10 +155,10 @@ class e_parse
 		} 
 		else 
 		{
-			if (MAGIC_QUOTES_GPC == TRUE && $nostrip == false) 
-			{
-				$data = stripslashes($data);
-			}
+//			if (MAGIC_QUOTES_GPC == TRUE && $nostrip == false) 
+//			{
+//				$data = stripslashes($data);
+//			}
 			if ($mod != 'pReFs')
 			{
 				$data = $this->preFilter($data);
@@ -188,10 +188,10 @@ class e_parse
 				$ret = preg_replace("/&amp;#(\d*?);/", "&#\\1;", $data);
 			}
 			//If user is not allowed to use [php] change to entities
-			if(!check_class($pref['php_bbcode']))
-			{
-				$ret = preg_replace("#\[(php)#i", "&#91;\\1", $ret);
-			}
+//			if(!check_class($pref['php_bbcode']))
+//			{
+//				$ret = preg_replace("#\[(php)#i", "&#91;\\1", $ret);
+//			}
 		}
 		return $ret;
 	}

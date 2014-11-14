@@ -6,7 +6,6 @@ $sql -> db_Select("users", "*", "company=".USERCO." ORDER by userid");
 
 if(isset($_POST['useraction']))
 {
-	//print_r( $_POST['useraction']);
 	foreach($_POST['useraction'] as $key=>$value)
 	{
 		$sql2 -> db_Update("users", "trucks='$value' WHERE userid='".$key."'");
@@ -26,9 +25,10 @@ $text = '
 		<th>Камион</th>
 	</tr>
 ';
+
 while($result = $sql -> db_Fetch())
 {
-	if($result['user_level'] != 4 and $result['user_level'] != 5 and $result['banned'] != TRUE)
+	if($result['user_level'] != 4 and $result['user_level'] != 5 and $result['banned'] == false)
 	{
 		$text .= '<tr>
 					<td>'.$result["first_name"].'&nbsp;'.$result["last_name"].'</td>

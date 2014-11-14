@@ -2,7 +2,7 @@
 include_once "../class.php";
 include_once (HEADERF);
 
-if(USERLV == ADMIN_LEVEL)
+if(ADMIN)
 {
 
 $mode = varset($_GET['mode']);

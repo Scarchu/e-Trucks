@@ -19,7 +19,7 @@ if(isset($_SESSION['user_id']))		//podsigurqwane za wqrnata smqna na header-a (d
 	$nb_new_pm = $nb_new_pm['nb_new_pm'];
 	$new_message_new = ($nb_new_pm == 1) ? "ново" : "нови";
 	$new_message_messages = ($nb_new_pm == 1) ? "съобщение" : "съобщения";
-	$company = checkAdmin() ? "_АДМИН_" : mb_strtoupper(USERCO_name, "UTF-8");
+	$company = ADMIN ? "_АДМИН_" : mb_strtoupper(USERCO_name, "UTF-8");
 	
 	$text_h ='
 	<table class="header" border="0" cellspacing="0" cellpadding="3">

@@ -2,7 +2,7 @@
 
 if (!defined('eTR_INIT')) { exit; }
 
-if(checkAdmin() or ((USERLV == BOSS_LEVEL) and (count($user_trucks_array) > 1)))
+if(ADMIN or ((USERLV == BOSS_LEVEL) and (count($user_trucks_array) > 1)))
 {
 	$text_h .='<form action="'.e_BASE.'index.php" method="GET">
 				<select onchange="this.form.submit()" name="truck" style="box-shadow: 5px 5px 5px #888888;">

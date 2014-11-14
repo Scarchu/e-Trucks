@@ -113,6 +113,7 @@ echo '
 					echo '</select></form>';
 				echo ' година:</h1></b>
 				<table border="0" width="68%" cellpadding="2" cellspacing="0" align="center">';
+					require_once e_HANDLER."truck_class.php";
 					$truck_x = new Truck;
 					for ($i=1; $i<=$pref['broi_trucks']; $i++)
 					{

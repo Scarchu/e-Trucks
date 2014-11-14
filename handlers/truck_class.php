@@ -1,6 +1,7 @@
 <?php
-
 if (!defined('eTR_INIT')) { exit; }
+
+require_once e_HANDLER.'pagination_class.php';
 
 class Truck
 {
