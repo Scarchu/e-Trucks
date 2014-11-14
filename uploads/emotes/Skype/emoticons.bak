@@ -1,0 +1,407 @@
+<?xml version="1.0"?>
+<messaging-emoticon-map >
+
+
+<emoticon file="emoticon-0114-dull">
+	<string>|-(</string>
+	<string>|(</string>
+	<string>|=(</string>
+	<string>(dull)</string>
+</emoticon>
+<emoticon file="emoticon-0119-puke">
+	<string>(puke)</string>
+	<string>:&</string>
+	<string>:-&</string>
+	<string>:=&</string>
+</emoticon>
+<emoticon file="emoticon-0105-wink">
+	<string>;)</string>
+	<string>;-)</string>
+	<string>;=)</string>
+	<string>(wink)</string>
+</emoticon>
+<emoticon file="emoticon-0157-sun">
+	<string>(sun)</string>
+</emoticon>
+<emoticon file="emoticon-0162-coffee">
+	<string>(coffee)</string>
+</emoticon>
+<emoticon file="emoticon-0167-beer">
+	<string>(beer)</string>
+</emoticon>
+<emoticon file="emoticon-0183-swear">
+	<string>(swear)</string>
+</emoticon>
+<emoticon file="emoticon-0163-pizza">
+	<string>(pi)</string>
+	<string>(pizza)</string>
+</emoticon>
+<emoticon file="emoticon-0176-smoke">
+	<string>(smoking)</string>
+	<string>(smoke)</string>
+	<string>(ci)</string>
+</emoticon>
+<emoticon file="emoticon-0135-makeup">
+	<string>(makeup)</string>
+	<string>(kate)</string>
+</emoticon>
+<emoticon file="emoticon-0128-hi">
+	<string>(hi)</string>
+</emoticon>
+<emoticon file="emoticon-0110-tongueout">
+	<string>:P</string>
+	<string>:-P</string>
+	<string>:=P</string>
+	<string>:p</string>
+	<string>:-p</string>
+	<string>:=p</string>
+	<string>(tongueout)</string>
+</emoticon>
+<emoticon file="emoticon-0123-party">
+	<string>(party)</string>
+</emoticon>
+<emoticon file="emoticon-0130-devil">
+	<string>(devil)</string>
+</emoticon>
+<emoticon file="emoticon-0137-clapping">
+	<string>(clap)</string>
+</emoticon>
+<emoticon file="emoticon-0121-angry">
+	<string>:@</string>
+	<string>:-@</string>
+	<string>:=@</string>
+	<string>x(</string>
+	<string>x-(</string>
+	<string>X(</string>
+	<string>X-(</string>
+	<string>x=(</string>
+	<string>X=(</string>
+	<string>(angry)</string>
+</emoticon>
+<emoticon file="emoticon-0184-tmi">
+	<string>(tmi)</string>
+</emoticon>
+<emoticon file="emoticon-0133-wait">
+	<string>(wait)</string>
+</emoticon>
+<emoticon file="emoticon-0120-doh">
+	<string>(doh)</string>
+</emoticon>
+<emoticon file="emoticon-0106-crying">
+	<string>;(</string>
+	<string>;-(</string>
+	<string>;=(</string>
+	<string>:(</string>
+	<string>:-(</string>
+	<string>:=(</string>
+	<string>(cry)</string>
+</emoticon>
+<emoticon file="emoticon-0141-whew">
+	<string>(whew)</string>
+</emoticon>
+<emoticon file="emoticon-0177-toivo">
+	<string>(toivo)</string>
+</emoticon>
+<emoticon file="emoticon-0112-wondering">
+	<string>:^)</string>
+	<string>(wonder)</string>
+</emoticon>
+<emoticon file="emoticon-0151-skype">
+	<string>(skype)</string>
+	<string>(ss)</string>
+</emoticon>
+<emoticon file="emoticon-0169-dance">
+	<string>(dance)</string>
+	<string>&#092;o/</string>
+	<string>&#092;:D/</string>
+	<string>&#092;:d/</string>
+</emoticon>
+<emoticon file="emoticon-0161-phone-2">
+	<string>(mp)</string>
+	<string>(ph)</string>
+	<string>(phone)</string>
+</emoticon>
+<emoticon file="emoticon-0107-sweating">
+	<string>(sweat)</string>
+	<string>(:|</string>
+</emoticon>
+<emoticon file="emoticon-0166-cake">
+	<string>(^)</string>
+	<string>(cake)</string>
+</emoticon>
+<emoticon file="emoticon-0111-blush">
+	<string>(blush)</string>
+	<string>:$</string>
+	<string>:-$</string>
+	<string>:=$</string>
+	<string>:&quot;></string>
+</emoticon>
+<emoticon file="emoticon-0134-bear">
+	<string>(hug)</string>
+	<string>(bear)</string>
+</emoticon>
+<emoticon file="emoticon-0117-talking">
+	<string>(talk)</string>
+</emoticon>
+<emoticon file="emoticon-0160-movie">
+	<string>(~)</string>
+	<string>(film)</string>
+	<string>(movie)</string>
+</emoticon>
+<emoticon file="emoticon-0168-drink">
+	<string>(d)</string>
+	<string>(D)</string>
+	<string>(drink)</string>
+</emoticon>
+<emoticon file="emoticon-0175-drunk">
+	<string>(drunk)</string>
+</emoticon>
+<emoticon file="emoticon-0165-muscle">
+	<string>(flex)</string>
+	<string>(muscle)</string>
+</emoticon>
+<emoticon file="emoticon-0131-angel">
+	<string>(angel)</string>
+</emoticon>
+<emoticon file="emoticon-0164-cash">
+	<string>(cash)</string>
+	<string>(mo)</string>
+	<string>($)</string>
+</emoticon>
+<emoticon file="emoticon-0171-star">
+	<string>(*)</string>
+	<string>(star)</string>
+</emoticon>
+<emoticon file="emoticon-0132-envy">
+	<string>(envy)</string>
+</emoticon>
+<emoticon file="emoticon-0103-cool">
+	<string>8)</string>
+	<string>8-)</string>
+	<string>8=)</string>
+	<string>B)</string>
+	<string>B-)</string>
+	<string>B=)</string>
+	<string>(cool)</string>
+</emoticon>
+<emoticon file="emoticon-0179-headbang">
+	<string>(headbang)</string>
+	<string>(banghead)</string>
+</emoticon>
+<emoticon file="emoticon-0139-bow">
+	<string>(bow)</string>
+</emoticon>
+<emoticon file="emoticon-0118-yawn">
+	<string>(yawn)</string>
+	<string>|-()</string>
+</emoticon>
+<emoticon file="emoticon-0149-no">
+	<string>(n)</string>
+	<string>(N)</string>
+	<string>(no)</string>
+</emoticon>
+<emoticon file="emoticon-0152-heart">
+	<string>(h)</string>
+	<string>(H)</string>
+	<string>(l)</string>
+	<string>(L)</string>
+	<string>(heart)</string>
+	<string>(love)</string>
+</emoticon>
+<emoticon file="emoticon-0108-speechless">
+	<string>:|</string>
+	<string>:-|</string>
+	<string>:=|</string>
+	<string>(speechless)</string>
+</emoticon>
+<emoticon file="emoticon-0150-handshake">
+	<string>(handshake)</string>
+</emoticon>
+<emoticon file="emoticon-0125-mmm">
+	<string>(mm)</string>
+	<string>(mmm)</string>
+	<string>(mmmm)</string>
+</emoticon>
+<emoticon file="emoticon-0161-phone">
+	<string>(mp)</string>
+	<string>(ph)</string>
+	<string>(phone)</string>
+</emoticon>
+<emoticon file="emoticon-0122-itwasntme">
+	<string>(wasntme)</string>
+</emoticon>
+<emoticon file="emoticon-0158-time">
+	<string>(o)</string>
+	<string>(O)</string>
+	<string>(time)</string>
+	<string>(clock)</string>
+</emoticon>
+<emoticon file="emoticon-0148-yes">
+	<string>(y)</string>
+	<string>(Y)</string>
+	<string>(ok)</string>
+	<string>(yes)</string>
+</emoticon>
+<emoticon file="emoticon-0153-brokenheart">
+	<string>(u)</string>
+	<string>(U)</string>
+	<string>(brokenheart)</string>
+</emoticon>
+<emoticon file="emoticon-0170-ninja">
+	<string>(ninja)</string>
+</emoticon>
+<emoticon file="emoticon-0147-emo">
+	<string>(emo)</string>
+</emoticon>
+<emoticon file="emoticon-0174-bandit">
+	<string>(bandit)</string>
+</emoticon>
+<emoticon file="emoticon-0102-bigsmile">
+	<string>:D</string>
+	<string>:-D</string>
+	<string>:=D</string>
+	<string>:d</string>
+	<string>:-d</string>
+	<string>:=d</string>
+	<string>(laugh)</string>
+</emoticon>
+<emoticon file="emoticon-0155-flower">
+	<string>(F)</string>
+	<string>(f)</string>
+	<string>(flower)</string>
+</emoticon>
+<emoticon file="emoticon-0159-music">
+	<string>(music)</string>
+</emoticon>
+<emoticon file="emoticon-0126-nerd">
+	<string>8-|</string>
+	<string>B-|</string>
+	<string>8|</string>
+	<string>B|</string>
+	<string>8=|</string>
+	<string>B=|</string>
+	<string>(nerd)</string>
+</emoticon>
+<emoticon file="emoticon-0138-thinking">
+	<string>(think)</string>
+	<string>:-?</string>
+	<string>:?</string>
+	<string>:=?</string>
+</emoticon>
+<emoticon file="emoticon-0180-bug">
+	<string>(bug)</string>
+</emoticon>
+<emoticon file="emoticon-0104-surprised">
+	<string>:O</string>
+	<string>:-O</string>
+	<string>:=O</string>
+	<string>:o</string>
+	<string>:-o</string>
+	<string>:=o</string>
+	<string>(surprised)</string>
+</emoticon>
+<emoticon file="emoticon-0113-sleepy">
+	<string>|-)</string>
+	<string>I-)</string>
+	<string>I=)</string>
+	<string>(snooze)</string>
+</emoticon>
+<emoticon file="emoticon-0127-lipssealed">
+	<string>:x</string>
+	<string>:-x</string>
+	<string>:X</string>
+	<string>:-X</string>
+	<string>:#</string>
+	<string>:-#</string>
+	<string>:=x</string>
+	<string>:=X</string>
+	<string>:=#</string>
+</emoticon>
+<emoticon file="emoticon-0143-smirk">
+	<string>(smirk)</string>
+</emoticon>
+<emoticon file="emoticon-0129-call">
+	<string>(call)</string>
+</emoticon>
+<emoticon file="emoticon-0124-worried">
+	<string>:S</string>
+	<string>:s</string>
+	<string>:-s</string>
+	<string>:-S</string>
+	<string>:=s</string>
+	<string>:=S</string>
+	<string>(worry)</string>
+</emoticon>
+<emoticon file="emoticon-0140-rofl">
+	<string>(rofl)</string>
+</emoticon>
+<emoticon file="emoticon-0173-middlefinger">
+	<string>(finger)</string>
+</emoticon>
+<emoticon file="emoticon-0154-mail">
+	<string>(e)</string>
+	<string>(m)</string>
+	<string>(mail)</string>
+</emoticon>
+<emoticon file="emoticon-0109-kiss">
+	<string>:*</string>
+	<string>:-*</string>
+	<string>:=*</string>
+	<string>(kiss)</string>
+</emoticon>
+<emoticon file="emoticon-0142-happy">
+	<string>(happy)</string>
+</emoticon>
+<emoticon file="emoticon-0116-evilgrin">
+	<string>]:)</string>
+	<string>>:)</string>
+	<string>(grin)</string>
+</emoticon>
+<emoticon file="emoticon-0181-fubar">
+	<string>(fubar)</string>
+</emoticon>
+<emoticon file="emoticon-0100-smile">
+	<string>(smile)</string>
+	<string>:)</string>
+	<string>:-)</string>
+	<string>:=)</string>
+</emoticon>
+<emoticon file="emoticon-0172-mooning">
+	<string>(mooning)</string>
+</emoticon>
+<emoticon file="emoticon-0178-rock">
+	<string>(rock)</string>
+</emoticon>
+<emoticon file="emoticon-0156-rain">
+	<string>(rain)</string>
+	<string>(st)</string>
+	<string>(london)</string>
+</emoticon>
+<emoticon file="emoticon-0182-poolparty">
+	<string>(poolparty)</string>
+	<string>(hrv)</string>
+</emoticon>
+<emoticon file="emoticon-0101-sadsmile">
+	<string>:(</string>
+	<string>:-(</string>
+	<string>:=(</string>
+	<string>(sad)</string>
+</emoticon>
+<emoticon file="emoticon-0145-shake">
+	<string>(shake)</string>
+</emoticon>
+<emoticon file="emoticon-0146-punch">
+	<string>(punch)</string>
+</emoticon>
+<emoticon file="emoticon-0115-inlove">
+	<string>(inlove)</string>
+</emoticon>
+<emoticon file="emoticon-0144-nod">
+	<string>(nod)</string>
+</emoticon>
+<emoticon file="emoticon-0136-giggle">
+	<string>(chuckle)</string>
+	<string>(giggle)</string>
+</emoticon>
+
+</messaging-emoticon-map>

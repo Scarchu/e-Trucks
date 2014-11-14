@@ -21,7 +21,7 @@ if(isset($_SESSION['user_id']))		//podsigurqwane za wqrnata smqna na header-a (d
 	$new_message_messages = ($nb_new_pm == 1) ? "съобщение" : "съобщения";
 	$company = checkAdmin() ? "_АДМИН_" : mb_strtoupper(USERCO_name, "UTF-8");
 	
-	$text ='
+	$text_h ='
 	<table class="header" border="0" cellspacing="0" cellpadding="3">
 	<tr>
 		<td rowspan="2"><p class="logo_hr">e - К А М И О Н И</p></td>
@@ -49,13 +49,13 @@ if(isset($_SESSION['user_id']))		//podsigurqwane za wqrnata smqna na header-a (d
 				<a href="'.e_BASE.'index.php">Начало</a> | 
 				  
 				<a href="'.e_PLUGINS.'forum/">Форум</a> | ';
-				if(USERLV >= 4) $text .='<a href="'.e_BASE.'advanced.php">Допълнителни</a> | ';
-				if(USERLV >= 4) $text .='<a href="'.e_BASE.'designations.php">Назначения</a> | ';
-				$text .='<a href="'.e_BASE.'logout.php">Изход</a>
+				if(USERLV >= 4) $text_h .='<a href="'.e_BASE.'advanced.php">Допълнителни</a> | ';
+				if(USERLV >= 4) $text_h .='<a href="'.e_BASE.'designations.php">Назначения</a> | ';
+				$text_h .='<a href="'.e_BASE.'logout.php">Изход</a>
 			</td>
 			<td align="right">';
 				include e_THEME."otchet.php";
-			$text .='</td>
+			$text_h .='</td>
 		</tr>
 	</table> 
 	<hr>';
@@ -63,7 +63,7 @@ if(isset($_SESSION['user_id']))		//podsigurqwane za wqrnata smqna na header-a (d
 }
 else
 {
-$text ='
+$text_h ='
 <table class="header" border="0" cellspacing="0" cellpadding="2">
 	<tr>
 		<td rowspan="2"><p class="logo_hr">e - К А М И О Н И</p></td>
@@ -76,5 +76,5 @@ $text ='
 <hr>	
 ';
 }
-echo $text;
+echo $text_h;
 ?>
