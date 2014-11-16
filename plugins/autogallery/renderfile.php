@@ -61,6 +61,7 @@ function AutoGal_RenderFileObj_flv($mediaObj)
 	$text = '
 	<object width="'.$pvWidth.'" height="'.$pvHeight.'">
 		<param name="movie" value="'.$mediaObj->BaseName().'">
+		<param name="allowFullScreen" value="true" />
 		<param name="quality" value="high">
 		<param name="bgcolor" value="#FFFFFF">
 		<param name="flashvars" value="file='.$url.'&autoStart=false">
@@ -69,6 +70,7 @@ function AutoGal_RenderFileObj_flv($mediaObj)
 			name="'.$mediaObj->Title().'" 
 			type="application/x-shockwave-flash"
 			pluginspace="http://www.macromedia.com/go/getflashplayer"
+			allowfullscreen="true"
 			flashvars="file='.$url.'&autoStart=false">
 		</embed>
 	</object><br />'.
@@ -152,7 +154,7 @@ function AutoGal_RenderFileObj_wmv($mediaObj)
 	
 	return $text;
 }
-
+/*
 function AutoGal_RenderFileObj_wma($mediaObj)
 {
 	$pvWidth = 300;
@@ -199,7 +201,18 @@ function AutoGal_RenderFileObj_wma($mediaObj)
 		<a href="'.$mediaObj->Url().'" target="_blank">'.AUTOGAL_LANG_L26.'</a>
 	</td></tr>
 	</table>';
-	
+*/
+function AutoGal_RenderFileObj_wma($mediaObj)
+{
+	$pvWidth = 300;
+	$pvHeight = 46;
+	$text ='
+		<video width="320" height="30" controls autoplay>
+			<source src="'.$mediaObj->Url().'" type="video/ogg" />
+			Your browser does not support the video tag.
+		</video>
+		<br />
+	';
 	return $text;
 }
 	

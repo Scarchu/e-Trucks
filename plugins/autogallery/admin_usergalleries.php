@@ -14,10 +14,10 @@
 require_once(dirname(__FILE__)."/def.php");
 require_once(dirname(__FILE__)."/language.php");
 
-require_once(e_ADMIN."auth.php");
+/*require_once(e_ADMIN."auth.php");
 if(!getperms("P")){ header("location:".e_BASE."index.php"); }
 require_once(e_HANDLER."userclass_class.php");
-
+*/
 ###################
 # SET PREFERENCES #
 ###################

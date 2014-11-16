@@ -409,14 +409,14 @@ function AutoGal_GetPrefs()
 	global $mySQLdefaultdb;
 	global $mySQLprefix;
 	
-	include_once(dirname(__FILE__).'/../../e107_config.php');
+	include_once(dirname(__FILE__).'/../../etruck_config.php');
 	
 	$dbc = mysql_connect($mySQLserver, $mySQLuser, $mySQLpassword) or die('Could not connect to db: ' . mysql_error());
 	mysql_select_db($mySQLdefaultdb) or die('Could not select database');
 	
-	$result = mysql_query("SELECT e107_value FROM ${mySQLprefix}core WHERE e107_name='SitePrefs'");
+	$result = mysql_query("SELECT value FROM ${mySQLprefix}core WHERE name='SitePrefs'");
 	$row = mysql_fetch_array($result);
-	$prefsSer = $row["e107_value"];
+	$prefsSer = $row["value"];
 	
 	# FFS, e107 doesn't seem to use serialize/unserialize for siteprefs. WHY? WHY?!?!
 	# Instead they use this nasty code to do the work.
@@ -581,7 +581,7 @@ function AutoGal_GetAbsGalPath($element, $useRealPath=0)
 function AutoGal_CleanPath($path)
 {
 	$result = array();
-	
+	$prefix = '';
 	if (preg_match("/^(https?\:\/\/)(.*)$/i", $path, $matches))
 	{
 		$prefix = $matches[1];
@@ -608,7 +608,7 @@ function AutoGal_CleanPath($path)
 	}
 	
 	if (!end($pathA)) $result[] = '';
-		
+	
 	return $prefix.implode('/', $result);
 }
 
@@ -907,11 +907,13 @@ function AutoGal_E107Path($subdir='')
 
 function AutoGal_GetFileThumb($absPath, $ext)
 {
+	
 	$pathInfo = pathinfo($absPath);
 
 	if (AutoGal_IsImage($absPath))
 	{
 		return $pathInfo['dirname'].'/'.AUTOGAL_THUMBPREFIX.$pathInfo['basename'];
+		//echo $pathInfo['dirname'].'/'.AUTOGAL_THUMBPREFIX.$pathInfo['basename'];
 	}
 	else if (is_dir($absPath))
 	{

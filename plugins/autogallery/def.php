@@ -12,7 +12,7 @@
  ********************************************************************************************/
 
 //
-define("e_LANGUAGE", "English");
+define("e_LANGUAGE", "Bulgarian");
 require_once(dirname(__FILE__)."/../../class.php");
 require_once(dirname(__FILE__)."/language.php");
 require_once(dirname(__FILE__)."/def_core.php");

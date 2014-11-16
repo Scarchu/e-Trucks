@@ -27,7 +27,7 @@ if (!AUTOGAL_AUTOTHUMB)
 }
 
 $image = AutoGal_GetAbsGalPath($ele);
-$thumbImage = AutoGal_GetFileThumb($image);
+@$thumbImage = AutoGal_GetFileThumb($image);
 
 if (strlen($image) <= 0)
 {
