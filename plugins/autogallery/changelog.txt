@@ -1,0 +1,329 @@
+==============================================================================
+AUTO GALLERY CHANGE LOG
+==============================================================================
+
+Matthew Hart (mr_visible) - www.cerebralsynergy.com
+
+KEY: + = New Feature
+     * = Bug Fix
+     - = Removed Feature
+     % = Code/Structure Re-Shuffle
+==============================================================================
+
+----------------------------------
+0.10/0.20 (BETA)
+----------------------------------
++ Initial release
+
+----------------------------------
+1.00
+----------------------------------
++ Reviewed uploads
++ Max upload size setting
++ Email to a friend
++ Number of gallery columns setting
+
+----------------------------------
+1.50
+----------------------------------
++ Preview image resizing
++ Pages/Max files per page
++ Change gallery directory setting
+
+----------------------------------
+1.60
+----------------------------------
++ Admin menu
++ Maximum upload numbers
+
+----------------------------------
+1.70
+----------------------------------
++ Chmod warnings on/off setting
+
+----------------------------------
+1.80
+----------------------------------
++ Review user class settings
++ Show subtitles in gallery setting
++ Flash display width/height setting
+
+----------------------------------
+1.83
+----------------------------------
++ ImageMagick extract 1st gif frame setting
++ Automatic resizing of default images
+
+----------------------------------
+1.84
+----------------------------------
++ Latest images page
++ Show latest images in root gallery setting
+
+----------------------------------
+1.90
+----------------------------------
++ Show images in new window setting
++ Movie (WMP, RM & Quicktime) support
++ View movie width/height setting
+
+----------------------------------
+2.00 (BETA)
+----------------------------------
++ Ability to turn automatic thumbnailing off
++ XML meta data
++ Title header style variable
++ Debug log
++ Media searching
++ XML searching
+
+----------------------------------
+2.1x
+----------------------------------
++ Large Images in new window
++ Turn of text in galleries
+
+----------------------------------
+2.20
+----------------------------------
+* Reset core issue
+* e107 thinks it's a version it's not (bbcode function not found)
++ Charset for XML files now pulled out of the e107 language file
++ Audio files (windows media player plugin) does not have the full display as for movies
+% Gallery user class settings in XML files rather than e107 prefs
+- Option to not generate thumbnails, for speed reasons, will put back in if this is a big issue
++ Sort by creation date rather than modify date option - http://www.cerebralsynergy.com/e107_plugins/forum/forum_viewtopic.php?264
+* Small word capitalisation problem - http://www.cerebralsynergy.com/e107_plugins/forum/forum_viewtopic.php?535
++ Disallow BBCode in comments option
++ Random default image option
+* Sort number for galleries not working
++ Turn off directory listing option
++ Disallow users to view backend files option
++ Leech protection option
+* Fixed thumbnail moving/renaming/deleting problem with non-images
+* Touch thumbnail before generation
+% Moved gallery XML file to 'Configuration' folder (security reasons)
+* Single quotes (') submit with leading slashes (\') in comments - http://www.cerebralsynergy.com/e107_plugins/forum/forum_viewtopic.php?465
+
+----------------------------------
+2.21
+----------------------------------
+* Fixed language in admin security area
++ Print contents of .htaccess file in admin security area
++ Try to chmod .htaccess file if not writable before reporting error
+
+----------------------------------
+2.22
+----------------------------------
+* Show image security bug fixed
+
+----------------------------------
+2.23
+----------------------------------
+* Upload security bug fixed
+* Language issue fixed in admin_functions ([THUMBNAIL] in delete)
+
+----------------------------------
+2.24
+----------------------------------
+* Language issue fixed (I think, printing all definitions)
+* Email to friend issue fixed (no http:// for site)
+* Link now points to 2.x versions of auto gallery (instead of 1.x versions)
+
+----------------------------------
+2.30
+----------------------------------
++ Admin mode replaces clumsy admin menu
+* Speed improvements through element caching
+* Multiple big fixes
+
+----------------------------------
+2.35
+----------------------------------
++ Upload thumbnails with non-image files
++ Selection of gallery in upload
++ Suggested gallery in upload review
++ Review page shows thumbnails where possible
+* Fixed Windows 'cannot write XML file' issue
+
+----------------------------------
+2.40
+----------------------------------
++ Ratings
++ XML files/parser support top score table
++ Added option to turn on/off first-letter-uppercasing of titles
++ Added 'small words' setting for first-letter-uppercasing of titles
++ Added option to select which extensions are allowed to be uploaded
+
+----------------------------------
+2.50
+----------------------------------
++ Arcade top scores integration completed
++ Latest comments page
++ Admin menu upload thumbnails
++ Automatic image watermarking
++ Manual image watermarking
+* Fixed 'Go' button in admin menu
+* Fixed image rendering issues for languages other than English (actually e107's fault, i think)
+
+----------------------------------
+2.51
+----------------------------------
++ FLV support
+* 'Image Gallery' link now doesn't use static 'e107_plugins' directory
+* Email to friend view link should now work 
+* Added some permissions error reporting for the LatestComments.xml file
+* Thumbnails now chmodding correctly as they are created
++ Hungarian language pack updated
++ Dutch language pack updated
+* Watermarking .htaccess file moved to gallery directory (works with non default gallery dir)
+* XML error reporting is more verbose
++ Language admin section
++ Admin menu now uses the e107 'show_admin_menu' function
+
+----------------------------------
+2.52
+----------------------------------
+* Better error reporting on XML latest comments
+* Improved arcade 'add score from referrer' code
+
+----------------------------------
+2.53
+----------------------------------
++ Norwegian language pack added
++ Spanish language pack updated
+* Paths no longer relative
+* Create new gallery XML creation error fixed
+
+----------------------------------
+2.54
+----------------------------------
+* German language pack updated (thanks Zippo)
+* Danish language pack updated (thanks Mobil Manden)
+* French language pack updated (thanks Vidal Arpin, props to Nathaniel Saint Martin)
++ Now integrates with e107 search (thanks Kevin Finnin)
++ HTTP and absolute file paths can now be set by the user
+
+----------------------------------
+2.55
+----------------------------------
+* Fixed the path bug I created in 2.54 which screwed up everything
+* Fixed the watermarking path problem
++ Maximum page distance setting to summarize galleries with many pages
++ Added 'Use XML Tracker for Top Scores' setting: alternative way of setting arcade top scores
+
+----------------------------------
+2.60
+----------------------------------
++ Preview image creation (pv_* images)
++ Timer-based slide shows
++ (Tarek Taha) Embed code/link text boxes
++ Override HTTPS detection setting
++ New window arguments split up into individual options
++ Override view size setting - Choose custom view (preview) sizes for individual files
++ Clear meta data admin function - Clears comments, ratings, high scores, descriptions, view hits and email hits for selected items
+* Fixed missing end div in admin menu (thanks Wahooney)
+* Fixed spelling mistakes in English language files
+* Aspect ratios fixed?
+* Hopefully some improvement on path guessing
+* Gallery name displays correctly in search
+* Search - Selecting root works
+* Search - Mixed up options for search description and search submitter username fixed 
+* Leech .htaccess settings moved to gallery .htaccess file
+
+----------------------------------
+2.61
+----------------------------------
++ Bug report admin page (with system dump feature)
++ Setting to turn on/off e107 search integration
+* Issue fixed when starting slide shows on images with a quote in the name, in new windows
+* Admin menu actions options now display correctly
+* Image limiting without creating pv_* images works
+* Updating paths happens instantly (as opposed to reloading the page to take effect)
+* Fixed issue with incorrect dates/times shown on files
+% Fixed up directory listing class, should be slightly faster (preparing for DB caching)
+* Auto Gallery title is now used in the e107 search drop down box
+% Search now uses GalleryList class (preparing for DB caching)
+
+----------------------------------
+2.65 (BETA)
+----------------------------------
+* Fixed non-ascii character problem?
++ Database caching feature
++ Checking of sub-gallery view user class now an option (if turned off, render times should speed up a bit)
++ Speed recommendations feature
+* Fixed BB code?
+* Fixed language error for 'capitalize words' setting
+* Fixed language error for when 'email hits' is on but 'view hits' is off
+
+----------------------------------
+3.00 (BETA)
+----------------------------------
+% Virtually re-wrote back end to use object-oriented code
+% Merged e107 and Auto Gallery search results page into a common page
+% Default upload size changed to 5242880 bytes (a real 5 MB)
+% Setting a gallery thumbnail from the admin context menu now does not delete original image
++ Added the ability to change the way gallery thumbnails are sorted (by name or by date)
++ Users are able to change the sort order (if enabled by administrator)
++ Admin can now add update date/times below thumbnails, based how the gallery is being sorted
++ All time formatting can be customised (apperance settings)
++ Showing review count can now be turned off (speeding up render times)
++ Auto-resizing gallery thumbnails is now optional (speeding up render times)
++ Default/unavailable thumbnails can be turned on/off based on the media type (gallery, image, movie etc.)
++ Speed recommendations table - Suggests ways to speed up Auto Gallery
++ First/previous buttons on files now wrap
++ XML meta settings admin page now uses a bit of javascript to make it more user friendly
++ Language admin page now shows the percent of languages strings defined
++ Language admin page now shows whether the lanaguage has an admin strings defined
++ Missing admin language string definitions can now be viewed
++ Database caching can now include thumbnails
++ Authortative cache for searching (vastly speeding up query times on search page)
++ Authortative cache for latest media (vastly speeding up render times on latest media page)
++ Quick gallery detect - has the possibility of speeding up render times on some servers
++ Disable file validation on gallery render - has the possibility of speeding up render times on some servers
++ Cache clearing options added to admin context menu
++ Cache Regeneration options added to admin context menu
++ Upload thumbnails option in admin context menu now also works with galleries
+- Removed random default image option (too slow)
+* Admin/debug log admin pages now show latest first
+* Latest comments page is not not so wide
+* Admin logs are now standardized
+* Review page is more intuitive
+* Image manipulations now change preview images too
+* Change 'sort by creation date' option to 'sort by INode change date' (accurate description)
+* Preview images are now processed when deleting or editing the base image
+* Various smaller bugs fixed
+
+----------------------------------
+3.01 (BETA)
+----------------------------------
+* Fixed image quality when using GDIM class (thanks ebx)
+* Fixed 'not allowed to upload to any gallery' issue (thanks everyone on the planet)
+* Updates to cache table structure are now detected
++ Added options to exclude results in latest media/search/latest comments based on user's userclass
++ User access settings now on new admin page
++ Administrator can change how the 'view' user class is handled (disabling the verification of it will speed up render times)
+
+----------------------------------
+3.02 (BETA)
+----------------------------------
+* DB upgrade now works with older versions of MySQL (null detect problem)
+* Fixed gallery thumbnail width/height resetting to blank
+* Empty table rows removed from the bottom of gallery/file thumbnail tables
+* Do not get DB table create errors when saving caching settings when table already exists
++ Regneration of cache and latest comments is now done in an IFrame
+
+----------------------------------
+3.10 (BETA)
+----------------------------------
++ User galleries added
++ Edit user class replaces individual admin gallery admin classes
++ Maximum galleries per page setting added (sub gallery pages)
++ Top/bottom 'caps' (AKA table headers) added. Can be enabled from appearence menu
++ Top/bottom 'caps' (AKA table headers) cell formatting options added
+* Gallery page layout changed: Next/previous buttons added, page selection links moved to table footer cell
+* Fixed issue it rating in iframe setting not sticking (thanks cory_booth)
+* Fixed misspelling of 'htmlspecialchars' in renderfile.php
+% Gallery XML files moved inside the gallery, filename is "__gallery.xml"
+% Gallery thumbnail filenames changed to "__thumbnail.xml"
++ File update admin page will convert old file structures to new ones (including the 2 above changes)

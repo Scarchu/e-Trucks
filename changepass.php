@@ -1,6 +1,5 @@
 <?php
 require_once "class.php";
-//require_once "handlers/java_includes.php";
 include "languages/Bulgarian/lan_changepass.php";
 $pageTitle .= "::".LAN_CHGPAS_1;
 ?>

@@ -23,7 +23,7 @@ if(ADMIN or ((USERLV == BOSS_LEVEL) and (count($user_trucks_array) > 1)))
 else
 {
 	
-	$text_h .= '<a href="'.e_BASE.'?truck='.DRIVERTR.'">Отчет</a>';
+	$text_h .= '<a href="'.e_BASE.'index.php?truck='.DRIVERTR.'">Отчет</a>';
 }
 
 function is_truck_off($count)

@@ -1,0 +1,30 @@
+<?php
+/*********************************************************************************************
+ * e107 PLUGIN: Auto Gallery
+ * VERSION:     2.xx
+ * DESCRIPTION: A very simple media gallery, where galleries are based on a directory
+ *              structure. For the e107 CMS (http://e107.org).
+ * WRITTEN BY:  Mr_Visible (www.cerebralsynergy.com)
+ * DATE:        02/11/2006
+ *
+ * Released under the terms and conditions of the
+ * GNU General Public License (http://gnu.org).
+ ********************************************************************************************/
+
+require_once(dirname(__FILE__)."/def.php");
+
+$element = 'SomeGame.swf'; # (Flash file in the root gallery)
+$score = 100000000;
+$userID = USERID;
+$username = USERNAME;
+
+if (AutoGal_AddScore($element, $userID, $username, $score))
+{
+	print "OK";
+}
+else
+{
+	print "FAIL!";
+}
+
+?>

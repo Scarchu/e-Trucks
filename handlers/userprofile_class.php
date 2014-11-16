@@ -52,7 +52,7 @@ class userprofile
 		';				
 	}
 	
-	function truck_to_driver()
+/*	function truck_to_driver()
 	{
 		global $sql;
 		$sql -> db_Select("users", "*", "company=".$this->company."");
@@ -60,6 +60,6 @@ class userprofile
 		{
 			echo $result["userid"].'<br />';
 		}
-	}
+	}*/
 }
 ?>

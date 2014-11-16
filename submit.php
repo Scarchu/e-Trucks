@@ -67,18 +67,7 @@ if($mode=="updatef") //Forma za update-ta na Goriwoto
 {
 	$id=$_GET["id"];
 	$sql -> db_Select("$prl", "*", "id='$id'");
-	while($row = $sql -> db_Fetch())
-	{
-		$id=$row['id'];
-		$trip=$row["trip"];
-		$liters=$row["liters"];
-		$literst=$row["literst"];
-		$adblue=$row["adblue"];
-		$date=$row["date"];
-		$cash=$row["cash"];
-		$full=$row["full"];
-		$ui=$row["userid"];
-	}
+	$row = $sql -> db_Fetch();
 ?>
 	
 <script>
@@ -89,35 +78,35 @@ if($mode=="updatef") //Forma za update-ta na Goriwoto
 
 	<div class="center">
 		<h1>Промяна на запис</h1>
-		<u>направен от: <b><?php echo who($ui); ?></b></u>
+		<u>направен от: <b><?php echo who($row["userid"]); ?></b></u>
 		<br />
 		<form name="form_fuel" method="POST" action="<?php echo e_SELF; ?>">
 			<table align = "center" width="70%"  border="0" cellpadding="5" cellspacing="0" class="border">
 				<tr>
-					<td class="border2"><b>Километраж</b></td>
-					<td class="border2"><b>Гориво Камион</b></td>
-					<td class="border2"><b>Гориво Фриго</b></td>
-					<td class="border2"><b>AdBlue</b></td>
-					<td class="border2"><b>Дата</b></td>
-					<td class="border2"><b>Кеш?</b></td>
-					<td class="border2"><b>Пълни резервоари?</b></td>
+					<th>Километраж</th>
+					<th>Гориво Камион</th>
+					<th>Гориво Фриго</th>
+					<th>AdBlue</th>
+					<th>Дата</th>
+					<th>Кеш?</th>
+					<th>Пълни резервоари?</th>
 				</tr>
 				<tr>
-					<td class="border2"><input type="number" value="<?php echo $trip; ?>" name="trip" /></td>
-					<td class="border2"><input type="number" value="<?php echo $liters; ?>" name="liters" /></td>
-					<td class="border2"><input type="number" value="<?php echo $literst; ?>" name="literst" /></td>
-					<td class="border2"><input type="number" value="<?php echo $adblue; ?>" name="adblue" /></td>
-					<td class="border2"><input type="text" value="<?php echo $date; ?>" name="date" id="date" /></td>
-					<td class="border2"><input type="checkbox" value="checked" <?php if($cash == "checked") echo "checked"; ?> name="cash" id="check1" />Да</td>
-					<td class="border2"><input type="checkbox" value="checked" <?php if($full == "checked") echo "checked"; ?> name="full" id="check2" />Да</td>
+					<td class="border2"><input type="number" value="<?php echo $row["trip"]; ?>" name="trip" /></td>
+					<td class="border2"><input type="number" value="<?php echo $row["liters"]; ?>" name="liters" /></td>
+					<td class="border2"><input type="number" value="<?php echo $row["literst"]; ?>" name="literst" /></td>
+					<td class="border2"><input type="number" value="<?php echo $row["adblue"]; ?>" name="adblue" /></td>
+					<td class="border2"><input type="text" value="<?php echo $row["date"]; ?>" name="date" id="date" /></td>
+					<td class="border2"><input type="checkbox" value="checked" <?php if($row["cash"] == "checked") echo "checked"; ?> name="cash" id="check1" />Да</td>
+					<td class="border2"><input type="checkbox" value="checked" <?php if($row["full"] == "checked") echo "checked"; ?> name="full" id="check2" />Да</td>
 				</tr>
 			</table>
 			<input type="button" value="Назад" onClick="history.go(-1);return true;"></td>
 			<input type="submit" name="fuel_update" value="Промени"></td>
-			<input type="hidden" value="<?php echo $id; ?>" name="id" />
+			<input type="hidden" value="<?php echo $row['id']; ?>" name="id" />
 			<input type="hidden" value="<?php echo $pr ?>" name="pr" />
 			<input type="hidden" value="<?php echo $prl ?>" name="prl" />
-			<input type="hidden" value="<?php echo $ui ?>" name="ui" />
+			<input type="hidden" value="<?php echo $row["userid"]; ?>" name="ui" />
 		</form>
 	</div>
 	<br />
@@ -128,16 +117,8 @@ elseif($mode=="updatec") //Forma za update-ta na Cargoto
 {
 	$id=$_GET["id"];
 	$sql -> db_Select("$prc", "*", "id='$id'");
-	while($row = $sql -> db_Fetch())
-	{
-		$id=$row['id'];
-		$trip=$row["trip"];
-		$road=$row["road"];
-		$date=$row["date"];
-		$empty=$row["empty"];
-		$ui=$row["userid"];
-	}
-	?>
+	$row = $sql -> db_Fetch();
+?>
 	
 	<script>
 		$(function() {
@@ -151,20 +132,20 @@ elseif($mode=="updatec") //Forma za update-ta na Cargoto
 		<form name="form" method="POST" action="<?php echo e_SELF; ?>">
 			<table align="center" width="60%"  border="0" cellpadding="4" cellspacing="0" class="border">
 				<tr class="text">
-					<td class="border2"><b>Километраж</b></td>
-					<td class="border2"><b>Маршрут</b></td>
-					<td class="border2"><b>Дата</b></td>
-					<td class="border2"><b>Празен?</b></td>
+					<th>Километраж</th>
+					<th>Маршрут</th>
+					<th>Дата</th>
+					<th>Празен?</th>
 				</tr>
 				<tr>
-				    <td class="border2"><input type="number" value="<?php echo $trip; ?>" name="trip" /></td>
-					<td class="border2"><input type="text" value="<?php echo $road; ?>" name="road" /></td>
-					<td class="border2"><input type="text" value="<?php echo $date; ?>" name="date" id="date" /></td>
-					<td class="border2"><input type="checkbox" value="checked" <?php if($empty=="checked") echo "checked"; ?> name="empty" id="check1" /></td>
-					<input type="hidden" value="<?php echo $id; ?>" name="id" />
+				    <td class="border2"><input type="number" value="<?php echo $row["trip"]; ?>" name="trip" /></td>
+					<td class="border2"><input type="text" value="<?php echo $row["road"]; ?>" name="road" /></td>
+					<td class="border2"><input type="text" value="<?php echo $row["date"]; ?>" name="date" id="date" /></td>
+					<td class="border2"><input type="checkbox" value="checked" <?php if($row["empty"]=="checked") echo "checked"; ?> name="empty" id="check1" /></td>
+					<input type="hidden" value="<?php echo $row['id']; ?>" name="id" />
 					<input type="hidden" value="<?php echo $pr ?>" name="pr" />
 					<input type="hidden" value="<?php echo $prc ?>" name="prc" />
-					<input type="hidden" value="<?php echo $ui ?>" name="ui" />
+					<input type="hidden" value="<?php echo $row["userid"] ?>" name="ui" />
 				</tr>
 			</table>
 			<input type="button" value="Назад" onClick="history.go(-1);return true;">

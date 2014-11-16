@@ -1,6 +1,6 @@
 <?php
 require_once "class.php";
-//require_once "handlers/java_includes.php";
+
 if(USERLV < 4) { die; }
 
 ?>
