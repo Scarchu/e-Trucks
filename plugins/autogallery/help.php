@@ -15,7 +15,7 @@ require_once(dirname(__FILE__)."/def.php");
 require_once(dirname(__FILE__)."/admin_functions.php");
 require_once(dirname(__FILE__)."/language.php");
 
-$galPathTitle = wordwrap(realpath(AUTOGAL_GALLERYDIR), 30, "<br />\n", true);
+$galPathTitle = wordwrap(realpath($pref['autogal_gallerydir']), 30, "<br />\n", true);
  
 $ec_dir = e_PLUGINS."lazyadmin_menu/";
 $caption = AUTOGAL_LANG_HELP_L0;

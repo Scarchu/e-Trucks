@@ -129,7 +129,7 @@ function enableArcadeSettings()
     <td style='width:50%' class='forumheader3'><b>".AUTOGAL_LANG_ADMIN_METADATA_L11."</b><br /><span class='smalltext'>".AUTOGAL_LANG_ADMIN_METADATA_L12."</span></td>
     <td style='width:50%' class='forumheader3'>
 		".
-		(AUTOGAL_AUTHCACHESEARCH 
+		($pref['autogal_authcachesearch'] 
 			? str_replace("[SETTING]", AUTOGAL_LANG_ADMIN_CACHE_24, str_replace("[LINK]", "<a href=\"".AUTOGAL_CACHEADMIN."\">".AUTOGAL_LANG_ADMIN_MENU_L16."</a>", AUTOGAL_LANG_ADMIN_METADATA_L53))
 			: "<input type='checkbox' name='autogal_xmlsearch'".($pref['autogal_xmlsearch'] ? " checked='checked'" : "").">"
 		 )

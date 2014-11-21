@@ -21,7 +21,7 @@ if (!$image) exit;
 if (preg_match("/".preg_quote(basename(__FILE__))."$/", $image)) exit;
 if (!AutoGal_IsImage($image)) exit;
 if (preg_match("/(php|txt|log|xml)$/", $image)) exit; # Should have got caught by line above, but just in case...
-if (!AUTOGAL_WMARKAUTO) exit;
+if (!$pref['autogal_wmarkauto']) exit;
 
 $pref = AutoGal_GetPrefs();
 
@@ -60,15 +60,15 @@ else
 	{
 		$opts = array
 		(
-			'intensity' => AUTOGAL_WMARKINTENSITY, 
-			'xalign' => AUTOGAL_WMARKXALIGN, 
-			'yalign' => AUTOGAL_WMARKYALIGN, 
-			'xoffset' => AUTOGAL_WMARKXOFFSET, 
-			'yoffset' => AUTOGAL_WMARKYOFFSET,
-			'nosmall' => AUTOGAL_WMARKNOSMALL,
+			'intensity' => $pref['autogal_wmarkintensity'], 
+			'xalign' => $pref['autogal_wmarkxalign'], 
+			'yalign' => $pref['autogal_wmarkyalign'], 
+			'xoffset' => $pref['autogal_wmarkxoffset'], 
+			'yoffset' => $pref['autogal_wmarkyoffset'],
+			'nosmall' => $pref['autogal_wmarknosmall'],
 		);
 			
-		$watermark = AUTOGAL_WATERMARKDIRABS."/".AUTOGAL_WMARKIMAGE;
+		$watermark = AUTOGAL_WATERMARKDIRABS."/".$pref['autogal_wmarkimage'];
 			
 		if (!$watermark)
 		{

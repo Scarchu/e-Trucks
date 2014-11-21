@@ -18,9 +18,9 @@ $text = "";
 $showInNewWindow = false;
 $newWindow = $_GET['newwindow'];
 
-define("e_PAGETITLE", AUTOGAL_TITLE." - ".AUTOGAL_LANG_EMAIL_L20);
+define("e_PAGETITLE", $pref['autogal_title']." - ".AUTOGAL_LANG_EMAIL_L20);
 
-if ((AUTOGAL_SHOWINNEWWINDOW)&&($newWindow))
+if (($pref['autogal_showinnewwindow'])&&($newWindow))
 {
 	$showInNewWindow = true;
 	$text = AutoGal_GetNewWindowHeader(e_PAGETITLE);
@@ -48,7 +48,7 @@ if (AUTOGAL_EMAILTOFRIEND)
 		$thumbImageHTML = $mediaObj->ThumbImageHtml();
 		$thumbImageUrl = $mediaObj->ThumbImageUrl();
 		
-		$comment = AUTOGAL_DEFAULTETFCOM;
+		$comment = $pref['autogal_defaultetfcom'];
 		
 		if ($_POST['ag_sendemail'])
 		{
@@ -105,7 +105,7 @@ if (AUTOGAL_EMAILTOFRIEND)
 		$text .= " 
 		<form method='post' action='".e_PLUGINS."autogallery/email.php'>
 		<div style='text-align:center'>
-		<h".AUTOGAL_TITLEHEADSTYLE.">".str_replace("[IMAGETITLE]", $imageTitle, AUTOGAL_LANG_EMAIL_L13)."</h".AUTOGAL_TITLEHEADSTYLE."><br />
+		<h".$pref['autogal_titleheadstyle'].">".str_replace("[IMAGETITLE]", $imageTitle, AUTOGAL_LANG_EMAIL_L13)."</h".$pref['autogal_titleheadstyle']."><br />
 		<a href=\"$imageURL".($showInNewWindow ? "&newwindow=1" : '')."\">$thumbImageHTML</a><br />
 		<br />
 		<table style='width:85%' class='fborder'>
@@ -144,7 +144,7 @@ else
     
 $ns -> tablerender(e_PAGETITLE, $text);
 
-if ((!$showInNewWindow)&&(AUTOGAL_SHOW_FOOTER))
+if ((!$showInNewWindow)&&($pref['autogal_showfooter']))
 {
 	require_once(FOOTERF);
 }

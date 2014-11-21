@@ -18,7 +18,7 @@ require_once(dirname(__FILE__)."/language.php");
 require_once(AUTOGAL_EDITFUNCTIONS);
 require_once(AUTOGAL_ADMINFUNCTIONS);
 
-define("e_PAGETITLE", AUTOGAL_TITLE." / ".AUTOGAL_LANG_ADMIN_EDIT_98);
+define("e_PAGETITLE", $pref['autogal_title']." / ".AUTOGAL_LANG_ADMIN_EDIT_98);
 require_once(HEADERF);
 print "\n<!-- AUTOGALLERY START -->\n\n";
 
@@ -40,7 +40,7 @@ else
 
 $ns -> tablerender(AUTOGAL_LANG_ADMIN_EDIT_0, $text);
 print "\n<!-- AUTOGALLERY END -->\n\n";
-if (AUTOGAL_SHOW_FOOTER){require_once(FOOTERF);}
+if ($pref['autogal_showfooter']){require_once(FOOTERF);}
 
 function AutoGal_DoAdminAction($mediaObj)
 {
@@ -676,7 +676,7 @@ function AutoGal_PageChangeUserClasses($selObj, $objs)
 		<br />
 		<ul>
 			<li><b>".AUTOGAL_LANG_ADMIN_EDIT_17."</b> - ".AUTOGAL_LANG_ADMIN_EDIT_104."</li>
-			<li><b>".AUTOGAL_LANG_ADMIN_EDIT_18."</b> - ".str_replace("[SETTING]", AUTOGAL_LANG_ADMIN_MAIN_L21, str_replace("[VALUE]", AutoGal_UserClassName(AUTOGAL_REVUPLOADUC), AUTOGAL_LANG_ADMIN_EDIT_105))."</li>
+			<li><b>".AUTOGAL_LANG_ADMIN_EDIT_18."</b> - ".str_replace("[SETTING]", AUTOGAL_LANG_ADMIN_MAIN_L21, str_replace("[VALUE]", AutoGal_UserClassName($pref['autogal_revuploaduc']), AUTOGAL_LANG_ADMIN_EDIT_105))."</li>
 			<li><b>".AUTOGAL_LANG_ADMIN_EDIT_19."</b> - ".AUTOGAL_LANG_ADMIN_EDIT_106."</li>
 			<li><b>".AUTOGAL_LANG_ADMIN_EDIT_20."</b> - ".AUTOGAL_LANG_ADMIN_EDIT_107."</li>
 			<li><b>".AUTOGAL_LANG_ADMIN_EDIT_21."</b> - ".AUTOGAL_LANG_ADMIN_EDIT_108."</li>
@@ -1500,13 +1500,13 @@ function AutoGal_PageUploadThumb($selObj, $objs)
 			}
 			
 			# Resize thumbnail
-			if (AUTOGAL_AUTOTHUMB)
+			if ($pref['autogal_autothumb'])
 			{
 				$imageStats = getimagesize($thumbPath);
 				
-				if (($imageStats[0] > AUTOGAL_THUMBWIDTH)||($imageStats[1] > AUTOGAL_THUMBHEIGHT))
+				if (($imageStats[0] > $pref['autogal_thumbwidth'])||($imageStats[1] > $pref['autogal_thumbheight']))
 				{
-					$error = AutoGal_ResizeImage($thumbPath, $thumbPath, AUTOGAL_THUMBWIDTH, AUTOGAL_THUMBHEIGHT);
+					$error = AutoGal_ResizeImage($thumbPath, $thumbPath, $pref['autogal_thumbwidth'], $pref['autogal_thumbheight']);
 					
 					if ($error)
 					{
@@ -1567,7 +1567,7 @@ function AutoGal_PageUploadThumb($selObj, $objs)
 
 function AutoGal_PageClearCache($selObj, $objs, $incSubGals)
 {
-	if (!AUTOGAL_ENABLEDBCACHE) return AUTOGAL_LANG_ADMIN_CACHE_4;
+	if (!$pref['autogal_enabledbcache']) return AUTOGAL_LANG_ADMIN_CACHE_4;
 	
 	foreach ($objs as $mediaObj)
 	{
@@ -1595,7 +1595,7 @@ function AutoGal_PageClearCache($selObj, $objs, $incSubGals)
 
 function AutoGal_PageRegenCache($selObj, $objs, $incSubGals)
 {
-	if (!AUTOGAL_ENABLEDBCACHE) return AUTOGAL_LANG_ADMIN_CACHE_4;
+	if (!$pref['autogal_enabledbcache']) return AUTOGAL_LANG_ADMIN_CACHE_4;
 	
 	foreach ($objs as $mediaObj)
 	{

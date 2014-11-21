@@ -16,7 +16,7 @@ $startAG = microtime(true);
 require_once(dirname(__FILE__)."/def.php");
 require_once(dirname(__FILE__)."/language.php");
 
-if (!AUTOGAL_ENABLESEARCH) {header("location:".AUTOGAL_AUTOGALLERY); exit;}
+if (!$pref['autogal_enablesearch']) {header("location:".AUTOGAL_AUTOGALLERY); exit;}
 
 $searchMatch    = ($_POST['autogal_searchMatch'] ? $_POST['autogal_searchMatch'] : "");
 $searchForGal   = ($_POST['autogal_searchForGal'] ? $_POST['autogal_searchForGal'] : ($searchMatch ? 0 : 1));
@@ -37,11 +37,11 @@ $searchGo       = $_POST['autogal_searchGo'];
 $start = ($_POST['start'] ? $_POST['start'] : 0);
 if (isset($_POST['agNextPage']))
 {
-	$start += AUTOGAL_SEARCHMAXRESULTS;
+	$start += $pref['autogal_searchmaxresults'];
 }
 else if (isset($_POST['agPrevPage']))
 {
-	$start -= AUTOGAL_SEARCHMAXRESULTS;
+	$start -= $pref['autogal_searchmaxresults'];
 	if ($start < 0) $start = 0;
 }
 else if (isset($_POST['agFirstPage']))
@@ -78,7 +78,7 @@ $botLinks = "<div style='text-align:center'>".(count($botLinksList) > 0 ? "<br /
 $text = '';
 if (!$isFromE107)
 {
-	define("e_PAGETITLE", AUTOGAL_TITLE. " / " . AUTOGAL_LANG_SEARCH_L1);
+	define("e_PAGETITLE", $pref['autogal_title']. " / " . AUTOGAL_LANG_SEARCH_L1);
 	require_once(HEADERF);
 	
 	$text = "
@@ -109,7 +109,7 @@ if (!$isFromE107)
 		<td class='forumheader3'>
 			<input type='checkbox' id='autogal_searchFieldNam' name='autogal_searchFieldNam'".($searchFieldNam ? " checked='checked'" : "")."><label for='autogal_searchFieldNam'>".AUTOGAL_LANG_SEARCH_L14."</label>&nbsp;&nbsp;
 			<input type='checkbox' id='autogal_searchFieldExt' name='autogal_searchFieldExt'".($searchFieldExt ? " checked='checked'" : "")."><label for='autogal_searchFieldExt'>".AUTOGAL_LANG_SEARCH_L15."</label>&nbsp;&nbsp;
-			".(AUTOGAL_XMLSEARCH && !AUTOGAL_AUTHCACHESEARCH ? "
+			".($pref['autogal_xmlsearch'] && !$pref['autogal_authcachesearch'] ? "
 			<input type='checkbox' id='autogal_searchFieldDes' name='autogal_searchFieldDes'".($searchFieldDes ? " checked='checked'" : "")."><label for='autogal_searchFieldDes'>".AUTOGAL_LANG_SEARCH_L17."</label>&nbsp;&nbsp;
 			<input type='checkbox' id='autogal_searchFieldSub' name='autogal_searchFieldSub'".($searchFieldSub ? " checked='checked'" : "")."><label for='autogal_searchFieldSub'>".AUTOGAL_LANG_SEARCH_L16."</label>&nbsp;&nbsp;
 			" : "")."
@@ -134,8 +134,8 @@ if ($searchGo)
 	$searchTargets = array(); 
 	if ($searchFieldNam) $searchTargets[] = 'title';
 	if ($searchFieldExt) $searchTargets[] = 'extension';
-	if (($searchFieldSub)&&(AUTOGAL_XMLSEARCH && !AUTOGAL_AUTHCACHESEARCH)) $searchTargets[] = 'submitbyusername';
-	if (($searchFieldDes)&&(AUTOGAL_XMLSEARCH && !AUTOGAL_AUTHCACHESEARCH)) $searchTargets[] = 'description';
+	if (($searchFieldSub)&&($pref['autogal_xmlsearch'] && !$pref['autogal_authcachesearch'])) $searchTargets[] = 'submitbyusername';
+	if (($searchFieldDes)&&($pref['autogal_xmlsearch'] && !$pref['autogal_authcachesearch'])) $searchTargets[] = 'description';
 	
 	if (strlen(str_replace("*", "", $searchMatch)) < AUTOGAL_MINSEARCHSTRLEN)
 	{
@@ -160,7 +160,7 @@ if ($searchGo)
 		}
 		else
 		{
-			$matchedObjs = array_slice($matchedObjs, $start, AUTOGAL_SEARCHMAXRESULTS);
+			$matchedObjs = array_slice($matchedObjs, $start, $pref['autogal_searchmaxresults']);
 			
 			$showNum = count($matchedObjs);
 			$showMsg = str_replace("[FIRST]", $start + 1, str_replace("[LAST]", $start + $showNum, str_replace("[TOTAL]", $numResults, AUTOGAL_LANG_SEARCH_L34))); 
@@ -234,7 +234,7 @@ if ($searchGo)
 			
 			$text .= "$botLinks<br /><br />$resultsText";
 			$nextButton  = '';
-			if ($start + AUTOGAL_SEARCHMAXRESULTS < $numResults)
+			if ($start + $pref['autogal_searchmaxresults'] < $numResults)
 			{
 				$nextButton = "<input name='agNextPage' type='submit' class='button' value='".AUTOGAL_LANG_L9."'/>";
 			}
@@ -258,7 +258,7 @@ if ($searchGo)
 $text .= "</form>";
 $text = "<br />$text$botLinks";
 
-if (AUTOGAL_SHOWAUTOGALVER)
+if ($pref['autogal_showautogalver'])
 {
 	$agVer = AutoGal_GetVersion();
 	$autoGalVer = 
@@ -272,12 +272,12 @@ else
 	$autoGalVer = '';
 }
 
-$ns->tablerender(AUTOGAL_TITLE.' - '.AUTOGAL_LANG_SEARCH_L1, $text);
+$ns->tablerender($pref['autogal_title'].' - '.AUTOGAL_LANG_SEARCH_L1, $text);
 $AGTime = microtime(true) - $startAG;
 print "<div class='smalltext' style='text-align:center'>".str_replace("[TIME]", substr("$AGTime", 0, 5), AUTOGAL_LANG_L5)."</div>";
 print $autoGalVer;
 
-if (AUTOGAL_SHOW_FOOTER){require_once(FOOTERF);}
+if ($pref['autogal_showfooter']){require_once(FOOTERF);}
 
 function AutoGal_ReplaceMatchStr($mediaObj, $str)
 {

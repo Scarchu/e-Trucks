@@ -26,7 +26,7 @@ else
 
 function AutoGal_GenerateCacheMenu($galObj, $incSubGals)
 {
-	if (!AUTOGAL_ENABLEDBCACHE) return;
+	if (!$pref['autogal_enabledbcache']) return;
 	global $ns;
 	
 	if (is_array($gallery))
@@ -50,7 +50,7 @@ function AutoGal_GenerateCacheMenu($galObj, $incSubGals)
 
 function AutoGal_GenerateCache($galObj, $incSubGals, $printLog=false)
 {
-	if (!AUTOGAL_ENABLEDBCACHE) return array(AUTOGAL_LANG_ADMIN_CACHE_4);
+	if (!$pref['autogal_enabledbcache']) return array(AUTOGAL_LANG_ADMIN_CACHE_4);
 	require_once(AUTOGAL_MEDIALISTCLASS);
 	
 	if (!is_object($galObj))
@@ -66,7 +66,7 @@ function AutoGal_GenerateCache($galObj, $incSubGals, $printLog=false)
 	
 	if ($incSubGals)
 	{
-		$galList = new AutoGal_CMediaList($galObj->Element(), array('sortorder' => 'name', 'recurse' => $incSubGals, 'usecache' => AUTOGAL_ENABLEDBCACHE));
+		$galList = new AutoGal_CMediaList($galObj->Element(), array('sortorder' => 'name', 'recurse' => $incSubGals, 'usecache' => $pref['autogal_enabledbcache']));
 
 		while ($mediaObj = $galList->NextElement())
 		{
@@ -86,22 +86,22 @@ function AutoGal_GenerateCache($galObj, $incSubGals, $printLog=false)
 function AutoGal_RegenLatestCommentsMenu()
 {
 	global $ns;
-	if (!AUTOGAL_USEXMLMETACOMS) return;
-	if (!AUTOGAL_DOLATESTCOMMS) return;
+	if (!$pref['autogal_metacomments']) return;
+	if (!$pref['autogal_latestcomms']) return;
 	$text = "<iframe src=\"".AUTOGAL_ADMINACTION."?op=regenlatestcomms\" width='100%' frameborder='1' scrolling='yes' height='".AUTOGAL_ADMINACTIONBOXHEIGHT."'></iframe>";
 	$ns->tablerender(AUTOGAL_LANG_ADMIN_FUNCTIONS_L139, $text);
 }
 
 function AutoGal_RegenLatestComments(&$error, $printMsgs=false)
 {
-	if (!AUTOGAL_USEXMLMETACOMS)
+	if (!$pref['autogal_metacomments'])
 	{
 		$error = "Comments not enabled";
 		if ($printMsgs) print "*** $error\n";
 		return false;
 	}
 	
-	if (!AUTOGAL_DOLATESTCOMMS)
+	if (!$pref['autogal_latestcomms'])
 	{
 		$error = "Latest comments not enabled";
 		if ($printMsgs) print "*** $error\n";
@@ -111,8 +111,8 @@ function AutoGal_RegenLatestComments(&$error, $printMsgs=false)
 	require_once(AUTOGAL_LTSTCOMSHANDLER);
 	require_once(AUTOGAL_MEDIALISTCLASS);
 	
-	$lComms = new AutoGal_LatestComms(AUTOGAL_MAXLATESTCOMMS);
-	$galList = new AutoGal_CMediaList('', array('sortorder' => 'name', 'recurse' => 1, 'usecache' => AUTOGAL_ENABLEDBCACHE));
+	$lComms = new AutoGal_LatestComms($pref['autogal_maxlatestcomms']);
+	$galList = new AutoGal_CMediaList('', array('sortorder' => 'name', 'recurse' => 1, 'usecache' => $pref['autogal_enabledbcache']));
 	
 	while ($mediaObj = $galList->NextElement())
 	{
@@ -190,7 +190,7 @@ function AutoGal_CheckTableDefs($tableTypes=array('cache'), $checkPref=true)
 	$msgs = '';
 	foreach ($tableTypes as $type)
 	{
-		if ((($type == 'cache')&&(!AUTOGAL_ENABLEDBCACHE))&&($checkPref)) continue;
+		if ((($type == 'cache')&&(!$pref['autogal_enabledbcache']))&&($checkPref)) continue;
 	
 		$struct = AutoGal_DBTableStructure($type);
 		if (!$struct) continue;
@@ -296,7 +296,7 @@ function AutoGal_CheckTableDefs($tableTypes=array('cache'), $checkPref=true)
 function AutoGal_CreateDBTable($type, $checkPrefs=trye)
 {
 	if (!AutoGal_IsMainAdmin()) return;
-	if (($checkPrefs)&&($type == 'cache')&&(!AUTOGAL_ENABLEDBCACHE)) return;
+	if (($checkPrefs)&&($type == 'cache')&&(!$pref['autogal_enabledbcache'])) return;
 	
 	$struct = AutoGal_DBTableStructure($type);
 	$table = $struct['name'];
@@ -324,7 +324,7 @@ function AutoGal_CreateDBTable($type, $checkPrefs=trye)
 function AutoGal_DropDBTable($type)
 {
 	if (!AutoGal_IsMainAdmin()) return;
-	if (($type == 'cache')&&(!AUTOGAL_ENABLEDBCACHE)) return;
+	if (($type == 'cache')&&(!$pref['autogal_enabledbcache'])) return;
 	
 	$struct = AutoGal_DBTableStructure($type);
 	if (!$struct) return;
@@ -386,7 +386,7 @@ function AutoGal_ShowAdmin(&$mediaObj, $ns)
 	$filePermsNum = substr(sprintf('%o', $filePerms), -3);
 	$filePermsStr = AutoGal_FormatFilePerms($filePerms) . " ($filePermsNum)";
 	
-	if (!AUTOGAL_CHMODWARNOFF)
+	if (!$pref['autogal_chmodwarnoff'])
 	{
 		if (($mediaObj->IsGallery())&&($filePermsNum != AUTOGAL_PERMSGALDIR))
 		{
@@ -410,7 +410,7 @@ function AutoGal_ShowAdmin(&$mediaObj, $ns)
 	if ($mediaObj->CheckUserPriv('clearmeta'))       $actions[] = array('id' => 'clearmeta',        'title' => AUTOGAL_LANG_MENU_L22);
 	if ($mediaObj->CheckUserPriv('editdescription')) $actions[] = array('id' => 'editdescription',  'title' => AUTOGAL_LANG_MENU_L11);
 	
-	if ((AUTOGAL_WMARKAUTO)&&($mediaObj->IsGallery()))
+	if (($pref['autogal_wmarkauto'])&&($mediaObj->IsGallery()))
 	{
 		if ($mediaObj->CheckUserPriv('autowatermark')) $actions[] = array('id' => 'autowatermark', 'title' => AUTOGAL_LANG_MENU_L20);
 	}
@@ -426,7 +426,7 @@ function AutoGal_ShowAdmin(&$mediaObj, $ns)
 		if ($mediaObj->CheckUserPriv('creategallery')) $actions[] = array('id' => 'creategallery',  'title' => AUTOGAL_LANG_MENU_L13);
 	}
 	
-	if (AUTOGAL_ENABLEDBCACHE)
+	if ($pref['autogal_enabledbcache'])
 	{
 		if ($mediaObj->CheckUserPriv('clearcache')) $actions[] = array('id' => 'clearcache',        'title' => AUTOGAL_LANG_MENU_L23);
 		if ($mediaObj->CheckUserPriv('clearcache')) $actions[] = array('id' => 'clearcachesubgals', 'title' => AUTOGAL_LANG_MENU_L24);

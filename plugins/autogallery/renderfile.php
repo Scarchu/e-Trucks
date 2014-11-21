@@ -1,6 +1,6 @@
 <?php
 
-function AutoGal_RenderFileObj($mediaObj, $showFullImage, $showLimitMsg=true, $fullImgNewWin=AUTOGAL_LARGEIMGNEWWINDOW)
+function AutoGal_RenderFileObj($mediaObj, $showFullImage, $showLimitMsg=true, $fullImgNewWin=$pref['autogal_largeimgnewwindow'])
 {
 	if (!$mediaObj->IsFile()) return '';
 	
@@ -18,8 +18,8 @@ function AutoGal_RenderFileObj($mediaObj, $showFullImage, $showLimitMsg=true, $f
 
 function AutoGal_RenderFileObj_flash($mediaObj)
 {
-	$pvWidth = ($mediaObj->ViewWidth() ? $mediaObj->ViewWidth() : AUTOGAL_FLASHWIDTH);
-	$pvHeight = ($mediaObj->ViewHeight() ? $mediaObj->ViewHeight() : AUTOGAL_FLASHHEIGHT);
+	$pvWidth = ($mediaObj->ViewWidth() ? $mediaObj->ViewWidth() : $pref['autogal_flashwidth']);
+	$pvHeight = ($mediaObj->ViewHeight() ? $mediaObj->ViewHeight() : $pref['autogal_flashheight']);
 	
 	$text = '
 	<object width="'.$pvWidth.'" height="'.$pvHeight.'">
@@ -43,10 +43,10 @@ function AutoGal_RenderFileObj_flv($mediaObj)
 	$url = urlencode($mediaObj->Url()); # FF
 	$target = AUTOGAL_FLVPLAYER.'?file='.$url.'&autoStart=false';
 	
-	$pvWidth = ($mediaObj->ViewWidth() ? $mediaObj->ViewWidth() : AUTOGAL_FLASHWIDTH);
-	$pvHeight = ($mediaObj->ViewHeight() ? $mediaObj->ViewHeight() : AUTOGAL_FLASHHEIGHT);
+	$pvWidth = ($mediaObj->ViewWidth() ? $mediaObj->ViewWidth() : $pref['autogal_flashwidth']);
+	$pvHeight = ($mediaObj->ViewHeight() ? $mediaObj->ViewHeight() : $pref['autogal_flashheight']);
 			
-	if (AUTOGAL_SHOWEMBEDLINK)
+	if ($pref['autogal_showembedlink'])
 	{
 		$embed = '<embed src="'.AUTOGAL_FLVPLAYER.'" width="'.$pvWidth.'" height="'.$pvHeight .'" name="'.$mediaObj->Title().'" type="application/x-shockwave-flash" pluginspace="http://www.macromedia.com/go/getflashplayer" flashvars="file='.AutoGal_ChangeToEmbed($mediaObj->Url()).'&autoStart=false&lightcolor=0x996600&backcolor=0x000000&frontcolor=0xCCCCCC&repeat=true&logo='.AUTOGAL_FLVPLAYER_LOGO.'"></embed>';
 		$inputEmbed ='<input name="ag_embedcode" type="text" value=\''.$embed.'\' readonly="true" onfocus=\'this.select();this.focus();\' onClick=\'this.select();this.focus();\'>';
@@ -81,8 +81,8 @@ function AutoGal_RenderFileObj_flv($mediaObj)
 
 function AutoGal_RenderFileObj_qt($mediaObj)
 {
-	$pvWidth = ($mediaObj->ViewWidth() ? $mediaObj->ViewWidth() : AUTOGAL_MOVIEWIDTH);
-	$pvHeight = ($mediaObj->ViewHeight() ? $mediaObj->ViewHeight() : AUTOGAL_MOVIEHEIGHT);
+	$pvWidth = ($mediaObj->ViewWidth() ? $mediaObj->ViewWidth() : $pref['autogal_moviewidth']);
+	$pvHeight = ($mediaObj->ViewHeight() ? $mediaObj->ViewHeight() : $pref['autogal_movieheight']);
 	
 	$text = '
 	<object classid="clsid:02BF25D5-8C17-4B23-BC80-D3488ABDDC6B" 
@@ -107,8 +107,8 @@ function AutoGal_RenderFileObj_qt($mediaObj)
 
 function AutoGal_RenderFileObj_wmv($mediaObj)
 {
-	$pvWidth = ($mediaObj->ViewWidth() ? $mediaObj->ViewWidth() : AUTOGAL_MOVIEWIDTH);
-	$pvHeight = ($mediaObj->ViewHeight() ? $mediaObj->ViewHeight() : AUTOGAL_MOVIEHEIGHT);
+	$pvWidth = ($mediaObj->ViewWidth() ? $mediaObj->ViewWidth() : $pref['autogal_moviewidth']);
+	$pvHeight = ($mediaObj->ViewHeight() ? $mediaObj->ViewHeight() : $pref['autogal_movieheight']);
 
 	$text = '
 	<table border="0" cellpadding="0" align="center" width="'.$pvWidth.'" height="'.$pvHeight.'">
@@ -218,8 +218,8 @@ function AutoGal_RenderFileObj_wma($mediaObj)
 	
 function AutoGal_RenderFileObj_rm($mediaObj)
 {	
-	$pvWidth = ($mediaObj->ViewWidth() ? $mediaObj->ViewWidth() : AUTOGAL_MOVIEWIDTH);
-	$pvHeight = ($mediaObj->ViewHeight() ? $mediaObj->ViewHeight() : AUTOGAL_MOVIEHEIGHT);
+	$pvWidth = ($mediaObj->ViewWidth() ? $mediaObj->ViewWidth() : $pref['autogal_moviewidth']);
+	$pvHeight = ($mediaObj->ViewHeight() ? $mediaObj->ViewHeight() : $pref['autogal_movieheight']);
 		
 	$text = '
 	<table border="0" cellpadding="0" align="center" width="'.$pvWidth.'" height="'.($pvHeight + 45).'">
@@ -286,11 +286,11 @@ function AutoGal_RenderFileObj_image($mediaObj, $showFullImage, $showLimitMsg, $
 		$hwRatio = ($imageHeight / $imageWidth);
 		
 		# CHECK IMAGE DIMENSIONS TO SEE IF IT LARGER THAN MAX DISPLAY SIZE
-		if (($imageWidth > AUTOGAL_MAXIMAGEWIDTH)||($imageHeight > AUTOGAL_MAXIMAGEHEIGHT))
+		if (($imageWidth > $pref['autogal_maximagewidth'])||($imageHeight > $pref['autogal_maximageheight']))
 		{
 			$isLimited = 1;
-			$targetWidth = AUTOGAL_MAXIMAGEWIDTH;
-			$targetHeight = AUTOGAL_MAXIMAGEHEIGHT;
+			$targetWidth = $pref['autogal_maximagewidth'];
+			$targetHeight = $pref['autogal_maximageheight'];
 						
 			if ($imageWidth > $imageHeight)
 			{
@@ -304,7 +304,7 @@ function AutoGal_RenderFileObj_image($mediaObj, $showFullImage, $showLimitMsg, $
 			} 
 							
 			# IF WE HAVE PREVIEW IMAGE RESIZING ON
-			if (AUTOGAL_RESIZEPREVIEWIMGS)
+			if ($pref['autogal_resizepreviewimgs'])
 			{
 				$makePvImg = 0;
 				# IF THE PREVIEW IMAGE EXISTS
@@ -337,7 +337,7 @@ function AutoGal_RenderFileObj_image($mediaObj, $showFullImage, $showLimitMsg, $
 					$opts['perms'] = AUTOGAL_PERMSGALTHUMBS;
 					
 					# RESIZE THE IMAGE
-					if (!$gdim->resize($mediaObj->AbsPath(), $mediaObj->PreviewImagePath(), AUTOGAL_MAXIMAGEWIDTH, AUTOGAL_MAXIMAGEHEIGHT, $opts))
+					if (!$gdim->resize($mediaObj->AbsPath(), $mediaObj->PreviewImagePath(), $pref['autogal_maximagewidth'], $pref['autogal_maximageheight'], $opts))
 					{
 						# SOMETHING FUCKED UP...
 						global $ns;
@@ -404,7 +404,7 @@ function AutoGal_RenderFileObj_image($mediaObj, $showFullImage, $showLimitMsg, $
 	$imgDims = substr($imgDims , 0, -1);
 
 	# Generate embed link/code HTML
-	if (AUTOGAL_SHOWEMBEDLINK)
+	if ($pref['autogal_showembedlink'])
 	{
 		$imageLink = "<img src=\"".AutoGal_ChangeToEmbed($mediaObj->Url())."\" alt=\"".htmlspecialchars($title)."\" style=\"border:0$imgDims\" />";
 		$inputEmbed = "<input class='tbox' name=\"ag_embedcode\" type=\"text\" value='".$imageLink."' readonly=\"true\" onfocus='this.select();this.focus();' onClick='this.select();this.focus();'>";

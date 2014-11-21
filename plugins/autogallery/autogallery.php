@@ -24,7 +24,7 @@ $text = '';
 AutoGal_LoadGlobals();
 if (!$g_mediaObj->IsValid())
 {
-	define("e_PAGETITLE", AUTOGAL_TITLE);
+	define("e_PAGETITLE", $pref['autogal_title']);
 	
 	$g_agRenderTime += microtime(true) - $g_agStartRender;
 	require_once(HEADERF);
@@ -32,15 +32,15 @@ if (!$g_mediaObj->IsValid())
 	
 	print "\n<!-- AUTOGALLERY START -->\n\n";
 	$text .= "<div style='text-align:center'><br />".AUTOGAL_LANG_L2."<br /><br /><b>".htmlspecialchars($g_element)."</b><br />".$g_mediaObj->LastError()."<br /><br /><a href=\"".AUTOGAL_AUTOGALLERY."\">".AUTOGAL_LANG_L3."</a><br /><br /></div>";
-	$ns -> tablerender(AUTOGAL_TITLE, $text);
-	if (AUTOGAL_SHOW_FOOTER){require_once(FOOTERF);}
+	$ns -> tablerender($pref['autogal_title'], $text);
+	if ($pref['autogal_showfooter']){require_once(FOOTERF);}
 	exit;
 }
 
 // DO PAGE HEADER
-define("e_PAGETITLE", AUTOGAL_TITLE." : ".$g_mediaObj->PathTitle());
+define("e_PAGETITLE", $pref['autogal_title']." : ".$g_mediaObj->PathTitle());
 
-if ((AUTOGAL_SHOWINNEWWINDOW)&&($g_mediaObj->IsFile())&&($g_isNewWindow))
+if (($pref['autogal_showinnewwindow'])&&($g_mediaObj->IsFile())&&($g_isNewWindow))
 {
 	$g_showInNewWindow = true;
 	$text .= "\n\n<!-- AUTOGALLERY START -->\n";
@@ -61,7 +61,7 @@ else
 	"<br />\n".
 	"<table class='border' style='width:97%' align='center'>\n".
 	"<tr>\n".
-	"<td class='".AUTOGAL_NAVCLASS."' style='text-align:left'>".$g_mediaObj->NavLinks()."</td>\n".
+	"<td class='".$pref['autogal_navclass']."' style='text-align:left'>".$g_mediaObj->NavLinks()."</td>\n".
 	"</tr>\n".
 	"</table>\n".
 	"<br />\n";
@@ -72,7 +72,7 @@ $g_mediaObj->LoadMeta();
 // CHECK IF XML FILE WAS OK
 if ($g_mediaObj->IsError())
 {
-	$ns -> tablerender(AUTOGAL_TITLE, "<font color='red'><b>".AUTOGAL_LANG_L38."</b></font> ".$g_mediaObj->LastError());
+	$ns -> tablerender($pref['autogal_title'], "<font color='red'><b>".AUTOGAL_LANG_L38."</b></font> ".$g_mediaObj->LastError());
 }
 
 if ($g_isAdminMode) $text .= "<form name='autogallery_admin' method='POST' action='".AUTOGAL_ADMINEDIT."'>\n";
@@ -90,7 +90,7 @@ else
 
 if ($g_mediaObj->CheckUserPriv('adminmenu')) $text .= "<div style='text-align:center'>".AutoGal_AdminModeLink($g_mediaObj)."</div>";
 
-$ns -> tablerender(AUTOGAL_TITLE, $text);
+$ns -> tablerender($pref['autogal_title'], $text);
 
 // RENDER ADMIN MENU
 if (($g_mediaObj->CheckUserPriv('adminmenu'))&&($g_isAdminMode))
@@ -115,7 +115,7 @@ AutoGal_RenderRating($g_mediaObj);
 AutoGal_RenderComments($g_mediaObj);
 
 // UPDATE VIEW HITS IF ENABLED
-if (AUTOGAL_USEXMLMETAVHITS) $g_mediaObj->ViewHitsInc();
+if ($pref['autogal_metaviewhits']) $g_mediaObj->ViewHitsInc();
 
 // PRINT VERSION/FOOTER
 $g_agRenderTime += microtime(true) - $g_agStartRender;
@@ -124,10 +124,10 @@ $g_agRenderTime = number_format(abs($g_agRenderTime), 4);
 print "
 <div class='smalltext' style='text-align:center'>".
 str_replace("[TIME]", $g_agRenderTime, AUTOGAL_LANG_L5).
-(((AUTOGAL_SHOWPEAKMEMORY)&&(function_exists('memory_get_peak_usage'))) ? ' '.str_replace("[MEMORY]", AutoGal_FormatBytes(memory_get_peak_usage(true)), AUTOGAL_LANG_L60) : '').
+((($pref['autogal_showpeakmemory'])&&(function_exists('memory_get_peak_usage'))) ? ' '.str_replace("[MEMORY]", AutoGal_FormatBytes(memory_get_peak_usage(true)), AUTOGAL_LANG_L60) : '').
 "</div>";
 
-if (AUTOGAL_SHOWAUTOGALVER)
+if ($pref['autogal_showautogalver'])
 {
 	$agVer = AutoGal_GetVersion();
 	print 
@@ -145,7 +145,7 @@ if ($g_showInNewWindow)
 {
 	print AutoGal_GetNewWindowFooter();
 }
-elseif (AUTOGAL_SHOW_FOOTER)
+elseif ($pref['autogal_showfooter'])
 {
 	require_once(FOOTERF);
 }
@@ -169,7 +169,7 @@ function AutoGal_ShowFile(&$mediaObj, $showFullImage)
     }
 	
 	$emailLink = $mediaObj->EmailLink();
-	$navButtons = $mediaObj->NavButtons(AUTOGAL_SLIDESENABLE, AUTOGAL_SHOWINNEWWINDOW); 
+	$navButtons = $mediaObj->NavButtons($pref['autogal_slidesenable'], $pref['autogal_showinnewwindow']); 
 	
 	require_once(AUTOGAL_RENDERFILE);
 	$previewHTML = AutoGal_RenderFileObj($mediaObj, $showFullImage);
@@ -177,7 +177,7 @@ function AutoGal_ShowFile(&$mediaObj, $showFullImage)
 	// Arcade top score update
 	if ($mediaObj->FileType() == 'flash')
 	{
-		if ((AUTOGAL_ARCADEUSEXMLTRACK)&&(AUTOGAL_ARCTOPSCORES))
+		if (($pref['autogal_arcadeusexmltrack'])&&($pref['autogal_arctopscores']))
 		{
 			require_once (AUTOGAL_ARCADEPLAYERS);
 			$players = new AutoGal_ArcadePlayers(AUTOGAL_ARCADEPLAYERSXML);
@@ -203,7 +203,7 @@ function AutoGal_ShowFile(&$mediaObj, $showFullImage)
 	// Update/Show XML Statistics
 	$hitStat = "";
 	
-	if ((AUTOGAL_USEXMLMETAVHITS)&&(AUTOGAL_USEXMLMETAEHITS))
+	if (($pref['autogal_metaviewhits'])&&($pref['autogal_metaemailhits']))
 	{
 		$hitStat = AUTOGAL_LANG_L28;
 		$hitStat = str_replace("[TYPE]", $mediaObj->FileTypeTitle(), $hitStat);
@@ -214,14 +214,14 @@ function AutoGal_ShowFile(&$mediaObj, $showFullImage)
 		$hitStat = str_replace("[HITS]", ($mediaObj->EmailHits() ? $mediaObj->EmailHits() : 0), $hitStat);
 		$hitStat = str_replace("[TIMES]", ($mediaObj->EmailHits() == 1 ? AUTOGAL_LANG_L32 : AUTOGAL_LANG_L33), $hitStat);
 	}
-	else if (AUTOGAL_USEXMLMETAVHITS)
+	else if ($pref['autogal_metaviewhits'])
 	{
 		$hitStat = AUTOGAL_LANG_L28;
 		$hitStat = str_replace("[TYPE]", $mediaObj->FileTypeTitle(), $hitStat);
 		$hitStat = str_replace("[HITS]", ($mediaObj->ViewHits() ? $mediaObj->ViewHits() : 1), $hitStat);
 		$hitStat = str_replace("[TIMES]", ($mediaObj->ViewHits() == 1 ? AUTOGAL_LANG_L32 : AUTOGAL_LANG_L33), $hitStat);
 	}
-	else if (AUTOGAL_USEXMLMETAEHITS)
+	else if ($pref['autogal_metaemailhits'])
 	{
 		$hitStat = AUTOGAL_LANG_L59;
 		$hitStat = str_replace("[TYPE]", $mediaObj->FileTypeTitle(), $hitStat);
@@ -232,7 +232,7 @@ function AutoGal_ShowFile(&$mediaObj, $showFullImage)
 	$hitStat = ($hitStat ? "$hitStat.<br />" : '');
 	
 	$submitStat = "";
-	if (AUTOGAL_SHOWSUBMITINFO)
+	if ($pref['autogal_showsubmitinfo'])
 	{
 		if ($mediaObj->SubmitDate() > 0)
 		{
@@ -248,7 +248,7 @@ function AutoGal_ShowFile(&$mediaObj, $showFullImage)
 			}
 			
 			$submitStat = str_replace("[USER]", $subUser, $submitStat);
-			$submitStat = str_replace("[DATE]", strftime(AUTOGAL_SUBMITTIMEFORMAT, $mediaObj->SubmitDate()), $submitStat);
+			$submitStat = str_replace("[DATE]", strftime($pref['autogal_timefmtsubmit'], $mediaObj->SubmitDate()), $submitStat);
 			$submitStat .= "<br />";
 		}
 	}
@@ -257,7 +257,7 @@ function AutoGal_ShowFile(&$mediaObj, $showFullImage)
 	$stats = ($stats ? "$stats<br />" : '');
 	$emailLink = ($emailLink ? "<br />$emailLink<br />" : '');
 	$subTitle = ($mediaObj->SubTitle() ? $mediaObj->SubTitle()."<br />" : '');
-	$title = "<h".AUTOGAL_TITLEHEADSTYLE.">$title</h".AUTOGAL_TITLEHEADSTYLE.">";
+	$title = "<h".$pref['autogal_titleheadstyle'].">$title</h".$pref['autogal_titleheadstyle'].">";
 		
 	$text = 
 	"<div style='text-align:center'>\n".
@@ -293,8 +293,8 @@ function AutoGal_ShowGallery(&$mediaObj)
 		$userGallery = AutoGal_UserGallery(USERNAME, $mediaObj);
 		
 		$text .= "<table class='border' align='center'>\n".
-		"<tr><td style='text-align:center' class='".AUTOGAL_USERGALTOPCAPCLASS."'>".AUTOGAL_LANG_USERGALS_L1."</td></tr>\n".
-		"<tr><td style='text-align:center' class='".AUTOGAL_SUBGALLERYCLASS."'>";
+		"<tr><td style='text-align:center' class='".$pref['autogal_usergaltopcapclass']."'>".AUTOGAL_LANG_USERGALS_L1."</td></tr>\n".
+		"<tr><td style='text-align:center' class='".$pref['autogal_subgalleryclass']."'>";
 			
 		if ($userGallery)
 		{
@@ -313,7 +313,7 @@ function AutoGal_ShowGallery(&$mediaObj)
 	$mediaFileHtml = AutoGal_RenderGalleryFiles($mediaObj, $nextEditID);
     
     $newImagesTable = '';
-	if (($mediaObj->IsRoot())&&(AUTOGAL_SHOWNEWESTINROOT))
+	if (($mediaObj->IsRoot())&&($pref['autogal_shownewestinroot']))
 	{
 		$newFilesTable = AutoGal_RenderLatestFiles();
 	}
@@ -355,7 +355,7 @@ function AutoGal_RenderGallerySubGals(&$mediaObj, &$nextEditID)
 	$totalGals = count($galObjs['galleries']);
 	if (!$totalGals) return;
     
-    $divCellBy = ($totalGals < AUTOGAL_NUMGALLCOLS ? $totalGals : AUTOGAL_NUMGALLCOLS);
+    $divCellBy = ($totalGals < $pref['autogal_numgallcols'] ? $totalGals : $pref['autogal_numgallcols']);
     	
 	$galleryI = 0; 
 	$colCount = 0;
@@ -365,13 +365,13 @@ function AutoGal_RenderGallerySubGals(&$mediaObj, &$nextEditID)
 	{
 		if ($galleryI >= $g_startGallery)
 		{
-			if ((!AUTOGAL_NOFILEVALIDATION)&&(!$subMediaObj->IsValid())) continue;
-			if ((AUTOGAL_CHECKSUBGALVCLASS)&&(!$subMediaObj->CheckUserPriv('view'))) continue;
+			if ((!$pref['autogal_nofilevalidation'])&&(!$subMediaObj->IsValid())) continue;
+			if (($pref['autogal_checksubgalvclass'])&&(!$subMediaObj->CheckUserPriv('view'))) continue;
 			
 			$text .= AutoGal_RenderSubGalleryCell($subMediaObj, $nextEditID, $divCellBy);
 			
 			$colCount ++;
-			if ($colCount == AUTOGAL_NUMGALLCOLS)
+			if ($colCount == $pref['autogal_numgallcols'])
 			{
 				$text .= "</tr>\n<tr>\n";
 				$colCount = 0;
@@ -384,7 +384,7 @@ function AutoGal_RenderGallerySubGals(&$mediaObj, &$nextEditID)
 		$galleryI ++;
 		$nextEditID ++;
 		
-		if ((AUTOGAL_MAXGALSPERPAGE)&&($numShown >= AUTOGAL_MAXGALSPERPAGE)) break;
+		if (($pref['autogal_maxgalsperpage'])&&($numShown >= $pref['autogal_maxgalsperpage'])) break;
 	}
 	
 	if (!$numShown) return $text;
@@ -394,23 +394,23 @@ function AutoGal_RenderGallerySubGals(&$mediaObj, &$nextEditID)
 		$text = substr($text, 0, strlen($text) - 11);
 	}
 	
-	while (($rowCount > 0)&&($colCount)&&($colCount < AUTOGAL_NUMGALLCOLS))
+	while (($rowCount > 0)&&($colCount)&&($colCount < $pref['autogal_numgallcols']))
 	{
-		$text .= "<td class='".AUTOGAL_SUBGALLERYCLASS."'>&#160;</td>";
+		$text .= "<td class='".$pref['autogal_subgalleryclass']."'>&#160;</td>";
 		$colCount ++;
 	}
 	
 	$text = "<tr>$text</tr>";
 	
-	if (AUTOGAL_SHOWSUBGALTOPCAP)
+	if ($pref['autogal_showsubgaltopcap'])
 	{
 		$topCapText = 
 		"<tr>\n".
-		"<td colspan='".AUTOGAL_NUMGALLCOLS."' class='".AUTOGAL_SUBGALTOPCAPCLASS."' style='text-align:center'>".AUTOGAL_LANG_L66."</td>\n".
+		"<td colspan='".$pref['autogal_numgallcols']."' class='".$pref['autogal_subgaltopcapclass']."' style='text-align:center'>".AUTOGAL_LANG_L66."</td>\n".
 		"</tr>\n";
 	}
 	
-	if (AUTOGAL_MAXGALSPERPAGE) $botCapText = AutoGal_RenderBottomCap($mediaObj, $totalGals, $galleryI, 'gallery');
+	if ($pref['autogal_maxgalsperpage']) $botCapText = AutoGal_RenderBottomCap($mediaObj, $totalGals, $galleryI, 'gallery');
 	
 	$text = 
 	"<table class='border' style='width:97%'>\n".
@@ -429,18 +429,18 @@ function AutoGal_RenderGalleryFiles(&$mediaObj, &$nextEditID)
 	global $g_isAdminMode;
 	
 	$showDate = 0;
-	if ((AUTOGAL_SHOWDATEORDNAME)&&(($sortOrder == 'nameasc')||($sortOrder == 'namedsc')))
+	if (($pref['autogal_showdateordname'])&&(($sortOrder == 'nameasc')||($sortOrder == 'namedsc')))
 	{
 		$showDate = 1;
 	}
-	else if ((AUTOGAL_SHOWDATEORDDATE)&&(($sortOrder == 'dateasc')||($sortOrder == 'datedsc')))
+	else if (($pref['autogal_showdateorddate'])&&(($sortOrder == 'dateasc')||($sortOrder == 'datedsc')))
 	{
 		$showDate = 1;
 	}
 	
 	$galObjs = $mediaObj->ChildMediaObjs($sortOrder);
 	$totalFiles = count($galObjs['files']);
-	$divCellBy = ($totalFiles < AUTOGAL_NUMCOLS ? $totalFiles : AUTOGAL_NUMCOLS);
+	$divCellBy = ($totalFiles < $pref['autogal_numcols'] ? $totalFiles : $pref['autogal_numcols']);
     if (!$totalFiles) return;
 	
 	$fileIndex = 0;
@@ -449,14 +449,14 @@ function AutoGal_RenderGalleryFiles(&$mediaObj, &$nextEditID)
 	$numShown = 0;
 	foreach ($galObjs['files'] as $subMediaObj)
 	{
-		if ((!AUTOGAL_NOFILEVALIDATION)&&(!$subMediaObj->IsValid())) continue;
+		if ((!$pref['autogal_nofilevalidation'])&&(!$subMediaObj->IsValid())) continue;
 		
 		if ($fileIndex >= $g_startFile)
 		{
 			$text .= AutoGal_RenderMediaFileCell($subMediaObj, $nextEditID, $divCellBy, $showDate);
 			
 			$colCount ++;
-			if ($colCount == AUTOGAL_NUMCOLS)
+			if ($colCount == $pref['autogal_numcols'])
 			{
 				$text .= "</tr><tr>";
 				$colCount = 0;
@@ -465,7 +465,7 @@ function AutoGal_RenderGalleryFiles(&$mediaObj, &$nextEditID)
 			
 			$numShown ++;
 			
-			if ((AUTOGAL_MAXPERPAGE)&&($numShown >= AUTOGAL_MAXPERPAGE)) break;
+			if (($pref['autogal_maxperpage'])&&($numShown >= $pref['autogal_maxperpage'])) break;
 		}
 		
 		$fileIndex ++;
@@ -481,25 +481,25 @@ function AutoGal_RenderGalleryFiles(&$mediaObj, &$nextEditID)
 	}
 	
 	# Finish of remaining cells with blank ones
-	while (($rowCount > 0)&&($colCount)&&($colCount < AUTOGAL_NUMCOLS))
+	while (($rowCount > 0)&&($colCount)&&($colCount < $pref['autogal_numcols']))
 	{
-		$text .= "<td class='".AUTOGAL_IMAGECELLCLASS."'>&#160;</td>";
+		$text .= "<td class='".$pref['autogal_imagecellclass']."'>&#160;</td>";
 		$colCount ++;
 	}
 	
 	$text = "<tr>$text</tr>";
 	
 	# Create the top cap cell
-	if (AUTOGAL_SHOWFILETOPCAP)
+	if ($pref['autogal_showfiletopcap'])
 	{
 		$topCapText = 
 		"\n".
 		"<tr>\n".
-		"<td colspan='".AUTOGAL_NUMCOLS."' class='".AUTOGAL_FILETOPCAPCLASS."' style='text-align:center'>".AUTOGAL_LANG_L67."</td>\n".
+		"<td colspan='".$pref['autogal_numcols']."' class='".$pref['autogal_filetopcapclass']."' style='text-align:center'>".AUTOGAL_LANG_L67."</td>\n".
 		"</tr>\n";
 	}
 	
-	if (AUTOGAL_MAXPERPAGE) $botCapText = AutoGal_RenderBottomCap($mediaObj, $totalFiles, $fileIndex, 'file');
+	if ($pref['autogal_maxperpage']) $botCapText = AutoGal_RenderBottomCap($mediaObj, $totalFiles, $fileIndex, 'file');
 		
 	$text = 
 	"<table class='border' style='width:97%'>\n".
@@ -530,11 +530,11 @@ function AutoGal_RenderSubGalleryCell($subMediaObj, $nextEditID, $divCellBy)
 	}
 	
 	$text = 
-	"<td class='".AUTOGAL_SUBGALLERYCLASS."' style='text-align:center;width:".sprintf("%0.0f", (100 / $divCellBy))."%'$adminCellJS>\n".
+	"<td class='".$pref['autogal_subgalleryclass']."' style='text-align:center;width:".sprintf("%0.0f", (100 / $divCellBy))."%'$adminCellJS>\n".
 	$adminChkBoxH.
 	$subMediaObj->ThumbImageHtml(1, 1)."\n".
 	$subMediaObj->TitleLink()."\n".
-	($subMediaObj->SubTitle() && AUTOGAL_SHOWSUBTITLESGAL ? "<br />\n<span class='smalltext'>(".$subMediaObj->SubTitle().")</span>\n" : '').
+	($subMediaObj->SubTitle() && $pref['autogal_showsubtitlesgal'] ? "<br />\n<span class='smalltext'>(".$subMediaObj->SubTitle().")</span>\n" : '').
 	$adminChkBoxF.
 	"</td>\n";
 	
@@ -560,14 +560,14 @@ function AutoGal_RenderMediaFileCell($subMediaObj, $nextEditID, $divCellBy, $sho
 	}
 	
 	$text = 
-	"<td class='".AUTOGAL_IMAGECELLCLASS."' style='text-align:center;width:".sprintf("%0.0f", (100 / $divCellBy))."%' $adminCellJS>\n".
+	"<td class='".$pref['autogal_imagecellclass']."' style='text-align:center;width:".sprintf("%0.0f", (100 / $divCellBy))."%' $adminCellJS>\n".
 		$adminChkBoxH.
 		$subMediaObj->ThumbImageHtml(1, 1).
-		(AUTOGAL_SHOWTITLEINGALL ? 
+		($pref['autogal_showtitleingall'] ? 
 			"\n".$subMediaObj->TitleLink()."\n".
-			($subMediaObj->SubTitle() && AUTOGAL_SHOWSUBTITLESGAL ? "<br /><span class='smalltext'>(".$subMediaObj->SubTitle().")</span>" : '')
+			($subMediaObj->SubTitle() && $pref['autogal_showsubtitlesgal'] ? "<br /><span class='smalltext'>(".$subMediaObj->SubTitle().")</span>" : '')
 		: '').
-		($showDate ? "<br /><br />\n<span class='smalltext'>".strftime(AUTOGAL_THUMBTIMEFORMAT, $subMediaObj->UpdateTime())."</span>" : '').
+		($showDate ? "<br /><br />\n<span class='smalltext'>".strftime($pref['autogal_timefmtthumb'], $subMediaObj->UpdateTime())."</span>" : '').
 		$adminChkBoxF.
 	"</td>\n";
 	
@@ -581,17 +581,17 @@ function AutoGal_RenderBottomCap($mediaObj, $total, $index, $type)
 	
 	if ($type == 'gallery')
 	{
-		$max = AUTOGAL_MAXPERPAGE;
-		$styleClass = AUTOGAL_SUBGALBOTCAPCLASS;
-		$numCols = AUTOGAL_NUMGALLCOLS;
+		$max = $pref['autogal_maxperpage'];
+		$styleClass = $pref['autogal_subgalbotcapclass'];
+		$numCols = $pref['autogal_numgallcols'];
 		$start = $g_startGallery;
 		$startVar = 'startgal';
 	}
 	else
 	{
-		$max = AUTOGAL_MAXPERPAGE;
-		$styleClass = AUTOGAL_FILEBOTCAPCLASS;
-		$numCols = AUTOGAL_NUMCOLS;
+		$max = $pref['autogal_maxperpage'];
+		$styleClass = $pref['autogal_filebotcapclass'];
+		$numCols = $pref['autogal_numcols'];
 		$start = $g_startFile;
 		$startVar = 'start';
 	}
@@ -644,13 +644,13 @@ function AutoGal_ThumbnailPageList($mediaObj, $type, $total)
 	
 	if ($type == 'gallery')
 	{
-		$maxPerPage = AUTOGAL_MAXGALSPERPAGE;
+		$maxPerPage = $pref['autogal_maxgalsperpage'];
 		$start = $g_startGallery;
 		$startVar = 'startgal';
 	}
 	else
 	{
-		$maxPerPage = AUTOGAL_MAXPERPAGE;
+		$maxPerPage = $pref['autogal_maxperpage'];
 		$start = $g_startFile;
 		$startVar = 'start';
 	}
@@ -663,7 +663,7 @@ function AutoGal_ThumbnailPageList($mediaObj, $type, $total)
 	
 	if ($numPages > 1)
 	{
-		$maxDist = (AUTOGAL_PAGEMAXDIST ? AUTOGAL_PAGEMAXDIST : $numPages);
+		$maxDist = ($pref['autogal_pagemaxdist'] ? $pref['autogal_pagemaxdist'] : $numPages);
 		$pages = array();
 		
 		# FIRST PAGES
@@ -744,13 +744,13 @@ function AutoGal_ThumbnailPageList($mediaObj, $type, $total)
 
 function AutoGal_RenderLatestFiles($startFile)
 {
-	$newFiles = AutoGal_GetLatestFiles(AUTOGAL_NUMCOLS, 0);
+	$newFiles = AutoGal_GetLatestFiles($pref['autogal_numcols'], 0);
 	if (count($newFiles) <= 0) return '';
 	
 	$text = 
 	"<table style='width:97%' class='border'>\n".
 	"<tr>\n".
-	"<td class='".AUTOGAL_LATESTTOPCAPCLASS."' colspan='".AUTOGAL_NUMCOLS."' style='text-align:center'>\n".
+	"<td class='".$pref['autogal_latesttopcapclass']."' colspan='".$pref['autogal_numcols']."' style='text-align:center'>\n".
 	AUTOGAL_LANG_STAT_L12."\n".
 	"</td>\n".
 	"</tr>\n".
@@ -760,21 +760,21 @@ function AutoGal_RenderLatestFiles($startFile)
 	foreach ($newFiles as $subMediaObj)
 	{
 		$text .= 
-		"<td class='".AUTOGAL_IMAGECELLCLASS."' style='text-align:center;width:".sprintf("%0.0f", (100 / AUTOGAL_NUMCOLS))."%'>\n".
+		"<td class='".$pref['autogal_imagecellclass']."' style='text-align:center;width:".sprintf("%0.0f", (100 / $pref['autogal_numcols']))."%'>\n".
 			$subMediaObj->ThumbImageHtml(0, 1).
-			(AUTOGAL_SHOWTITLEINGALL ? 
+			($pref['autogal_showtitleingall'] ? 
 				"<br />\n".$subMediaObj->TitleLink()."\n".
-				($subMediaObj->SubTitle() && AUTOGAL_SHOWSUBTITLESGAL ? "<br /><span class='smalltext'>(".$subMediaObj->SubTitle().")</span>" : '')
+				($subMediaObj->SubTitle() && $pref['autogal_showsubtitlesgal'] ? "<br /><span class='smalltext'>(".$subMediaObj->SubTitle().")</span>" : '')
 			: '').
-			"<br /><br />\n<span class='smalltext'>".strftime(AUTOGAL_THUMBTIMEFORMAT, $subMediaObj->UpdateTime())."</span>".
+			"<br /><br />\n<span class='smalltext'>".strftime($pref['autogal_timefmtthumb'], $subMediaObj->UpdateTime())."</span>".
 		"</td>\n";
 		
 		$newFileCount ++;
 	}
 	
-	while ($newFileCount < AUTOGAL_NUMCOLS)
+	while ($newFileCount < $pref['autogal_numcols'])
 	{
-		$text .= "<td class='".AUTOGAL_IMAGECELLCLASS."' style='width:".sprintf("%0.0f", (100 / AUTOGAL_NUMCOLS))."%'>&#160;</td>";
+		$text .= "<td class='".$pref['autogal_imagecellclass']."' style='width:".sprintf("%0.0f", (100 / $pref['autogal_numcols']))."%'>&#160;</td>";
 		$newFileCount ++;
 	}
 	
@@ -785,7 +785,7 @@ function AutoGal_RenderLatestFiles($startFile)
 
 function AutoGal_SortOrderText($mediaObj)
 {
-	if (!AUTOGAL_ENABLEGALDISPORD) return;
+	if (!$pref['autogal_enablegaldispord']) return;
 	
 	global $g_sortOrder;
 	
@@ -796,7 +796,7 @@ function AutoGal_SortOrderText($mediaObj)
 	
 	if (!$srtOrdLnk{$g_sortOrder})
 	{
-		$g_sortOrder = AUTOGAL_DEFAULTDISPORD;
+		$g_sortOrder = $pref['autogal_defaultdisporder'];
 	}
 	
 	foreach ($srtOrdLnk as $lstSrtOrd => $srtOrdTitle)

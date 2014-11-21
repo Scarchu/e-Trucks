@@ -21,7 +21,7 @@ $buttons = array();
 $buttons['main']['link'] = AUTOGAL_CONFIG;              $buttons['main']['text'] = AUTOGAL_LANG_ADMIN_MENU_L1;
 $buttons['appr']['link'] = AUTOGAL_APPEARANCESETTINGS;  $buttons['appr']['text'] = AUTOGAL_LANG_ADMIN_MENU_L3;
 $buttons['thmb']['link'] = AUTOGAL_THUMBNAILSETTINGS;   $buttons['thmb']['text'] = AUTOGAL_LANG_ADMIN_MENU_L2;
-$buttons['revu']['link'] = AUTOGAL_REVIEWUPLOADS;       $buttons['revu']['text'] = AUTOGAL_LANG_ADMIN_MENU_L6.(AUTOGAL_SHOWREVIEWCOUNT ? " (".AutoGal_NumUploads().")" : '');
+$buttons['revu']['link'] = AUTOGAL_REVIEWUPLOADS;       $buttons['revu']['text'] = AUTOGAL_LANG_ADMIN_MENU_L6.($pref['autogal_showreviewcount'] ? " (".AutoGal_NumUploads().")" : '');
 $buttons['usra']['link'] = AUTOGAL_USERACCESS;          $buttons['usra']['text'] = AUTOGAL_LANG_ADMIN_MENU_L17;
 $buttons['usrg']['link'] = AUTOGAL_USERGALLERYADMIN;    $buttons['usrg']['text'] = AUTOGAL_LANG_ADMIN_MENU_L18;
 $buttons['xmlm']['link'] = AUTOGAL_XMLMETASETTINGS;     $buttons['xmlm']['text'] = AUTOGAL_LANG_ADMIN_MENU_L5;

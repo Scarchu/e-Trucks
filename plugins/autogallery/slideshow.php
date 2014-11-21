@@ -18,7 +18,7 @@ require_once(AUTOGAL_RENDERFILE);
 
 $startAG = microtime(true);
 
-if (!AUTOGAL_SLIDESENABLE) {header("location:".AUTOGAL_AUTOGALLERY); exit;}
+if (!$pref['autogal_slidesenable']) {header("location:".AUTOGAL_AUTOGALLERY); exit;}
 
 $startImg = stripslashes(rawurldecode(($_GET['first'] ? $_GET['first'] : $_POST['first'])));
 $slideImg = stripslashes(rawurldecode(($_GET['slide'] ? $_GET['slide'] : $_POST['slide'])));
@@ -34,7 +34,7 @@ if (!$startObj->IsValid())
 	exit;
 }
 
-define("e_PAGETITLE", AUTOGAL_TITLE. " / " . AUTOGAL_LANG_SLIDESHOW_L1);
+define("e_PAGETITLE", $pref['autogal_title']. " / " . AUTOGAL_LANG_SLIDESHOW_L1);
 
 if ($status)
 {
@@ -80,14 +80,14 @@ function AutoGal_SlideShowNext($startObj, $slideObj, $changeTime, $repeatOn, $sh
 	$prevURL = AUTOGAL_SLIDESHOW."?first=".rawurlencode($startObj->Element())."&slide=".rawurlencode($prevObj->Element())."&chtime=$changeTime&repeat=$repeatOn&status=2&fullimg=$showFullImg";
 	$nextURL = AUTOGAL_SLIDESHOW."?first=".rawurlencode($startObj->Element())."&slide=".rawurlencode($nextObj->Element())."&chtime=$changeTime&repeat=$repeatOn&status=2&fullimg=$showFullImg";
 			
-	$title = "<h".AUTOGAL_TITLEHEADSTYLE.">".$slideObj->Title()."</h".AUTOGAL_TITLEHEADSTYLE.">";
+	$title = "<h".$pref['autogal_titleheadstyle'].">".$slideObj->Title()."</h".$pref['autogal_titleheadstyle'].">";
 	$subTitle = ($slideObj->SubTitle() ? $slideObj->SubTitle()."<br />" : '');
 	$fileShow = AutoGal_RenderFileObj($slideObj, $showFullImg, true, true);
 	
     $prevFile = "<input type='button' title=\"".$prevObj->Title()."\" class='button' value='".AUTOGAL_LANG_L8."' onclick='javascript:window.location.href=\"$prevURL\"' />";
     $nextFile = "<input type='button' title=\"".$nextObj->Title()."\" class='button' value='".AUTOGAL_LANG_L9."' onclick='javascript:window.location.href=\"$nextURL\"' />";
 	
-	if (AUTOGAL_SLIDESNEWWINDOW)
+	if ($pref['autogal_slidesnewwindow'])
 	{
 		$backLink = "<input type='button' class='button' value='".AUTOGAL_LANG_L25."' onClick='javascript:window.close()'>";
 	}
@@ -102,7 +102,7 @@ function AutoGal_SlideShowNext($startObj, $slideObj, $changeTime, $repeatOn, $sh
 	$fileShow<br />
 	$prevFile&#160;$backLink&#160;$nextFile";
 
-	$text = AutoGal_GetNewWindowHeader(e_PAGETITLE, "<meta http-equiv=\"refresh\" content=\"$changeTime; URL=$nextURL\">", AUTOGAL_SLIDEBODYCLASS, AUTOGAL_SLIDEBODYSTYLE);
+	$text = AutoGal_GetNewWindowHeader(e_PAGETITLE, "<meta http-equiv=\"refresh\" content=\"$changeTime; URL=$nextURL\">", $pref['autogal_slidebodyclass'], $pref['autogal_slidebodystyle']);
 	$text .= $fileText;
 	$text .= AutoGal_GetNewWindowFooter();
 	
@@ -113,11 +113,11 @@ function AutoGal_SlideShowEnd($startObj)
 {
 	$gallObj = $startObj->GalleryMediaObj();
 	
-	$text = AutoGal_GetNewWindowHeader(e_PAGETITLE, "", AUTOGAL_SLIDEBODYCLASS, AUTOGAL_SLIDEBODYSTYLE);
+	$text = AutoGal_GetNewWindowHeader(e_PAGETITLE, "", $pref['autogal_slidebodyclass'], $pref['autogal_slidebodystyle']);
 	$text .= "<br />";
 	$text .= "<h2>".AUTOGAL_LANG_SLIDESHOW_L14."</h2><br />";
 	
-	if (AUTOGAL_SLIDESNEWWINDOW)
+	if ($pref['autogal_slidesnewwindow'])
 	{
 		$text .= "<input type='button' class='button' value='".AUTOGAL_LANG_SLIDESHOW_L16."' onClick='javascript:window.close()'><br />";
 	}
@@ -139,9 +139,9 @@ function AutoGal_SlideShowStart($mediaObj)
 {
 	$galleryObj = $mediaObj->GalleryMediaObj();
 	
-	$text = AutoGal_GetNewWindowHeader(e_PAGETITLE, "", AUTOGAL_SLIDEBODYCLASS, AUTOGAL_SLIDEBODYSTYLE);
+	$text = AutoGal_GetNewWindowHeader(e_PAGETITLE, "", $pref['autogal_slidebodyclass'], $pref['autogal_slidebodystyle']);
 	
-	if (AUTOGAL_SLIDESNEWWINDOW)
+	if ($pref['autogal_slidesnewwindow'])
 	{
 		$backLink = "<input type='button' class='button' value='".AUTOGAL_LANG_L25."' onClick='javascript:window.close()'>";
 	}

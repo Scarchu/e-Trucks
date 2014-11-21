@@ -24,7 +24,7 @@ if (AutoGal_IsMainAdmin())
 }
 else
 {
-	define("e_PAGETITLE", AUTOGAL_TITLE.AUTOGAL_LANG_ADMIN_REVIEW_L1);
+	define("e_PAGETITLE", $pref['autogal_title'].AUTOGAL_LANG_ADMIN_REVIEW_L1);
 	require_once(HEADERF);
 }
 
@@ -32,7 +32,7 @@ else
 if (!AutoGal_IsReviewAllowed())
 {
 	$ns -> tablerender(AUTOGAL_LANG_ADMIN_REVIEW_L2, "<div style='text-align:center'><b>".AUTOGAL_LANG_ADMIN_REVIEW_L3."</b></div>");
-	if (AUTOGAL_SHOW_FOOTER){require_once(FOOTERF);}
+	if ($pref['autogal_showfooter']){require_once(FOOTERF);}
 	exit;
 }
 
@@ -62,7 +62,7 @@ for ($fileID = 0; $fileID < count($files); $fileID ++)
 	# Create a thumbnail if one doesn't exist
 	if (($mediaObj->FileType() == 'image')&&(!$mediaObj->ThumbImageExists()))
 	{
-		$error = AutoGal_ResizeImage($mediaObj->AbsPath(), $mediaObj->ThumbImagePath(), AUTOGAL_THUMBWIDTH, AUTOGAL_THUMBHEIGHT);
+		$error = AutoGal_ResizeImage($mediaObj->AbsPath(), $mediaObj->ThumbImagePath(), $pref['autogal_thumbwidth'], $pref['autogal_thumbheight']);
 		
 		if ($error) 
 		{
@@ -80,9 +80,9 @@ for ($fileID = 0; $fileID < count($files); $fileID ++)
 		$thumbWidth = $imageStats[0];
 		$thumbHeight = $imageStats[1];
 	
-		if (($thumbWidth > AUTOGAL_THUMBWIDTH)||($thumbHeight > AUTOGAL_THUMBHEIGHT))
+		if (($thumbWidth > $pref['autogal_thumbwidth'])||($thumbHeight > $pref['autogal_thumbheight']))
 		{
-			$error = AutoGal_ResizeImage($mediaObj->ThumbImagePath(), $mediaObj->ThumbImagePath(), AUTOGAL_THUMBWIDTH, AUTOGAL_THUMBHEIGHT);
+			$error = AutoGal_ResizeImage($mediaObj->ThumbImagePath(), $mediaObj->ThumbImagePath(), $pref['autogal_thumbwidth'], $pref['autogal_thumbheight']);
 		
 			if ($error) 
 			{
@@ -123,7 +123,7 @@ for ($fileID = 0; $fileID < count($files); $fileID ++)
 				<br /><br />".
 				(isset($submitByUsername) ? "
 				<b>".AUTOGAL_LANG_ADMIN_REVIEW_L19."</b> ".$mediaObj->SubmitByLink()."<br />
-				<b>".AUTOGAL_LANG_ADMIN_REVIEW_L20."</b> ".strftime(AUTOGAL_SUBMITTIMEFORMAT, $mediaObj->SubmitDate())."<br />
+				<b>".AUTOGAL_LANG_ADMIN_REVIEW_L20."</b> ".strftime($pref['autogal_timefmtsubmit'], $mediaObj->SubmitDate())."<br />
 				<b>".AUTOGAL_LANG_ADMIN_REVIEW_L21."</b><br />" : '')."
 				
 				<textarea class=\"tbox\" name=\"description_$fileID\" cols=\"45\" rows=\"5\">".
@@ -182,7 +182,7 @@ if (AutoGal_IsMainAdmin())
 }
 else
 {
-	if (AUTOGAL_SHOW_FOOTER){require_once(FOOTERF);}
+	if ($pref['autogal_showfooter']){require_once(FOOTERF);}
 }
 
 function AutoGal_ReviewDelete(&$mediaObj)

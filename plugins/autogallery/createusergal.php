@@ -15,7 +15,7 @@ require_once(dirname(__FILE__)."/def.php");
 require_once(dirname(__FILE__)."/language.php");
 require_once(AUTOGAL_MEDIAOBJCLASS);
 
-define("e_PAGETITLE", AUTOGAL_TITLE." - ".AUTOGAL_LANG_USERGALS_L8);
+define("e_PAGETITLE", $pref['autogal_title']." - ".AUTOGAL_LANG_USERGALS_L8);
 require_once(HEADERF);
 
 $user = stripslashes($_GET['user']);
@@ -73,7 +73,7 @@ $text .= "<br />".AutoGal_GetBotLinksStr();
 $text .= "</div>";
 $ns -> tablerender(e_PAGETITLE, $text);
 
-if (AUTOGAL_SHOW_FOOTER) require_once(FOOTERF);
+if ($pref['autogal_showfooter']) require_once(FOOTERF);
 exit;
 
 ?>

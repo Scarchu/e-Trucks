@@ -392,7 +392,7 @@ $text = "<div style='text-align:center'>
     <td style='width:50%' class='forumheader3'><input type='checkbox' name='autogal_sortdatectime'".($pref['autogal_sortdatectime'] ? " checked" : "")."></td>
 </tr>
 <tr>
-    <td style='width:50%' class='forumheader3'><b>".AUTOGAL_LANG_ADMIN_MAIN_L81."</b><br /><span class='smalltext'>".str_replace("[WIDTH]", AUTOGAL_MAXIMAGEWIDTH, str_replace("[HEIGHT]", AUTOGAL_MAXIMAGEHEIGHT, str_replace("[PREFIX]", AUTOGAL_PREVIEWIMGPREFIX, AUTOGAL_LANG_ADMIN_MAIN_L82)))."</span></td>
+    <td style='width:50%' class='forumheader3'><b>".AUTOGAL_LANG_ADMIN_MAIN_L81."</b><br /><span class='smalltext'>".str_replace("[WIDTH]", $pref['autogal_maximagewidth'], str_replace("[HEIGHT]", $pref['autogal_maximageheight'], str_replace("[PREFIX]", AUTOGAL_PREVIEWIMGPREFIX, AUTOGAL_LANG_ADMIN_MAIN_L82)))."</span></td>
     <td style='width:50%' class='forumheader3'><input type='checkbox' name='autogal_resizepreviewimgs'".($pref['autogal_resizepreviewimgs'] ? " checked" : "")."></td>
 </tr>
 </table>

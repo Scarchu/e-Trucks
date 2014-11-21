@@ -373,22 +373,22 @@ function AutoGal_EditSetGalleryThumbnail(&$gallObj, $thumbObj)
 		$width = $imageStats[0];
 		$height = $imageStats[1];
 		
-		if (($width > AUTOGAL_GALTHUMBWIDTH)||($height > AUTOGAL_GALTHUMBHEIGHT))
+		if (($width > $pref['autogal_galthumbwidth'])||($height > $pref['autogal_galthumbheight']))
 		{
-			if ($error = AutoGal_ResizeImage($newThumbPath, $newThumbPath, AUTOGAL_GALTHUMBWIDTH, AUTOGAL_GALTHUMBHEIGHT, AUTOGAL_KEEPASPECT))
+			if ($error = AutoGal_ResizeImage($newThumbPath, $newThumbPath, $pref['autogal_galthumbwidth'], $pref['autogal_galthumbheight'], $pref['autogal_keepaspect']))
 			{
 				$msg = AUTOGAL_LANG_ADMIN_FUNCTIONS_L130;
 				$msg = str_replace("[FILE]", $newThumbFile, $msg);
-				$msg = str_replace("[WIDTH]", AUTOGAL_GALTHUMBWIDTH, $msg);
-				$msg = str_replace("[HEIGHT]", AUTOGAL_GALTHUMBHEIGHT, $msg);
+				$msg = str_replace("[WIDTH]", $pref['autogal_galthumbwidth'], $msg);
+				$msg = str_replace("[HEIGHT]", $pref['autogal_galthumbheight'], $msg);
 				$msg = str_replace("[ERROR]", $error, $msg);
 			}
 			else
 			{
 				$msg = AUTOGAL_LANG_ADMIN_FUNCTIONS_L129;
 				$msg = str_replace("[FILE]", $gallObj->Element()."/".$newThumbFile, $msg);
-				$msg = str_replace("[WIDTH]", AUTOGAL_GALTHUMBWIDTH, $msg);
-				$msg = str_replace("[HEIGHT]", AUTOGAL_GALTHUMBHEIGHT, $msg);
+				$msg = str_replace("[WIDTH]", $pref['autogal_galthumbwidth'], $msg);
+				$msg = str_replace("[HEIGHT]", $pref['autogal_galthumbheight'], $msg);
 			}
 			
 			$msgs[] = $msg;

@@ -191,7 +191,7 @@ class AutoGal_CMediaObj
 	{
 		if (isset($this->m_info['isgallery'])) return $this->m_info['isgallery'];
 		
-		if (AUTOGAL_USEQUICKGALDETECT)
+		if ($pref['autogal_usequickgaldetect'])
 		{
 			if (AutoGal_IsMediaFile($this->AbsPath()))
 			{
@@ -264,7 +264,7 @@ class AutoGal_CMediaObj
 	{
 		if ($this->IsRoot())  
 		{
-			$title = AUTOGAL_ROOTNAME;
+			$title = $pref['autogal_rootname'];
 		}
 		elseif ($this->IsUserGalleryRoot())  
 		{
@@ -295,9 +295,9 @@ class AutoGal_CMediaObj
 			}
 		
 			// UPPERCASE FIRST LETTERS
-			if (AUTOGAL_UCASETITLES)
+			if ($pref['autogal_ucasetitles'])
 			{
-				$smallWordsStr = strtolower(str_replace(' ', '', AUTOGAL_SMALLWORDS));
+				$smallWordsStr = strtolower(str_replace(' ', '', $pref['autogal_smallwords']));
 				$smallWords = explode(',', $smallWordsStr);
 			
 				$title = ucwords($title);
@@ -419,20 +419,20 @@ class AutoGal_CMediaObj
 	{
 		if ($this->IsGallery())
 		{
-			return (AUTOGAL_DEFTHUMBGALLERY ? AUTOGAL_UNAVAILTHUMB_GALLERY : '');
+			return ($pref['autogal_defthumbgallery'] ? AUTOGAL_UNAVAILTHUMB_GALLERY : '');
 		}
 		else
 		{
 			$fileType = $this->FileType();
 			switch ($fileType)
 			{
-				case 'flash': return (AUTOGAL_DEFTHUMBANIMATION ?  AUTOGAL_UNAVAILTHUMB_ANIMATION : '');
-				case 'flv':   return (AUTOGAL_DEFTHUMBMOVIE ? AUTOGAL_UNAVAILTHUMB_MOVIE : '');
-				case 'qt':    return (AUTOGAL_DEFTHUMBMOVIE ? AUTOGAL_UNAVAILTHUMB_MOVIE : '');
-				case 'wmv':   return (AUTOGAL_DEFTHUMBMOVIE ? AUTOGAL_UNAVAILTHUMB_MOVIE : '');
-				case 'wma':   return (AUTOGAL_DEFTHUMBAUDIO ? AUTOGAL_UNAVAILTHUMB_AUDIO : '');
-				case 'rm':    return (AUTOGAL_DEFTHUMBMOVIE ? AUTOGAL_UNAVAILTHUMB_MOVIE : '');
-				case 'image': return (AUTOGAL_DEFTHUMBIMAGE ? AUTOGAL_UNAVAILTHUMB_IMAGE : '');
+				case 'flash': return ($pref['autogal_defthumbanimation'] ?  AUTOGAL_UNAVAILTHUMB_ANIMATION : '');
+				case 'flv':   return ($pref['autogal_defthumbmovie'] ? AUTOGAL_UNAVAILTHUMB_MOVIE : '');
+				case 'qt':    return ($pref['autogal_defthumbmovie'] ? AUTOGAL_UNAVAILTHUMB_MOVIE : '');
+				case 'wmv':   return ($pref['autogal_defthumbmovie'] ? AUTOGAL_UNAVAILTHUMB_MOVIE : '');
+				case 'wma':   return ($pref['autogal_defthumbaudio'] ? AUTOGAL_UNAVAILTHUMB_AUDIO : '');
+				case 'rm':    return ($pref['autogal_defthumbmovie'] ? AUTOGAL_UNAVAILTHUMB_MOVIE : '');
+				case 'image': return ($pref['autogal_defthumbimage'] ? AUTOGAL_UNAVAILTHUMB_IMAGE : '');
 			}
 		}
 		
@@ -441,7 +441,7 @@ class AutoGal_CMediaObj
 	
 	function ThumbImageFromCache($thumbBasename)
 	{
-		if (!AUTOGAL_USETHUMBNAILCACHE) return;
+		if (!$pref['autogal_usethumbnailcache']) return;
 		
 		if ($thumbBasename == '*') $thumbBasename = '';
 		$this->m_info['thumbbasename'] = $thumbBasename;
@@ -500,14 +500,14 @@ class AutoGal_CMediaObj
 					}
 				}
 				
-				if ((AUTOGAL_AUTOTHUMB)&&(AUTOGAL_AUTOSIZEGALTHUMBS)&&($thumb['ok']))
+				if (($pref['autogal_autothumb'])&&($pref['autogal_autosizegalthumbs'])&&($thumb['ok']))
 				{
 					$this->SpeedMsg("ThumbImageInfo: getimagesize(".$this->m_info['thumbpath'].")");
 					$image_stats = getimagesize($this->m_info['thumbpath']);
 					$imageWidth = $image_stats[0];
 					$imageHeight = $image_stats[1];
 					
-					if (($imageWidth > AUTOGAL_GALTHUMBWIDTH)||($imageHeight > AUTOGAL_GALTHUMBHEIGHT))
+					if (($imageWidth > $pref['autogal_galthumbwidth'])||($imageHeight > $pref['autogal_galthumbheight']))
 					{
 						$thumb['url'] = AUTOGAL_RESIZE."?img=".rawurlencode($this->Element());
 					}
@@ -552,7 +552,7 @@ class AutoGal_CMediaObj
 						$thumb['exists'] = true;
 						$thumb['url'] = AutoGal_GetImageURL("$gallery/".basename($thumbPath));
 					}
-					else if (AUTOGAL_AUTOTHUMB)
+					else if ($pref['autogal_autothumb'])
 					{
 						$thumb['url'] = AUTOGAL_RESIZE."?img=".rawurlencode($this->Element());
 						$thumb['ok'] = true;
@@ -728,7 +728,7 @@ class AutoGal_CMediaObj
 	{
 		if ($this->IsRoot())
 		{
-			return AUTOGAL_GALLERYDIR;
+			return $pref['autogal_gallerydir'];
 		}
 		elseif ($this->IsUpload())
 		{
@@ -759,7 +759,7 @@ class AutoGal_CMediaObj
 	
 	function AHref()
 	{
-		if (AUTOGAL_SHOWINNEWWINDOW)
+		if ($pref['autogal_showinnewwindow'])
 		{
 			$windowLink = $this->Link().($this->IsRoot() ? '' : '&')."newwindow=1";
 			$windowLink = str_replace("'", "\\'", $windowLink);
@@ -791,7 +791,7 @@ class AutoGal_CMediaObj
 		
 		if (!$vars['start']) unset($vars['start']);
 		if (!$vars['startgal']) unset($vars['startgal']);
-		if ($vars['order'] == AUTOGAL_DEFAULTDISPORD) unset($vars['order']);
+		if ($vars['order'] == $pref['autogal_defaultdisporder']) unset($vars['order']);
 		if (!$vars['order']) unset($vars['order']);
 		if (!$vars['newwindow']) unset($vars['newwindow']);
 		
@@ -814,7 +814,7 @@ class AutoGal_CMediaObj
 	
 	function UpdateTime()
 	{
-		if (AUTOGAL_SORTDATECTIME)
+		if ($pref['autogal_sortdatectime'])
 		{
 			return $this->CTime();
 		}
@@ -995,7 +995,7 @@ class AutoGal_CMediaObj
 				
 		if (!$this->IsRoot())
 		{
-			$navLinks[] = "<a href=\"".$rootGal->BackLink()."\">".AUTOGAL_ROOTNAME."</a>";
+			$navLinks[] = "<a href=\"".$rootGal->BackLink()."\">".$pref['autogal_rootname']."</a>";
 		}
 	
 		for ($galIndex = 0; $galIndex < count($galleries) - 1; $galIndex ++)
@@ -1009,14 +1009,14 @@ class AutoGal_CMediaObj
 		
 		$navLinks[] = "<a href=\"".$this->BackLink()."\"><b>".$this->Title()."</b></a>";
 		
-		return implode(AUTOGAL_NAVSEPERATOR, $navLinks);
+		return implode($pref['autogal_navseperator'], $navLinks);
 	}
 	
 	function EmailLink()
 	{
-		if (AUTOGAL_SHOWEMAILTOFRIEND)
+		if ($pref['autogal_emailtofriend'])
 		{
-			return "<b><a href=\"".AUTOGAL_EMAILTOFRIEND."?ele=".rawurlencode($this->Element()).(AUTOGAL_SHOWINNEWWINDOW ? "&newwindow=1" : '')."\">".AUTOGAL_LANG_L20."</a></b>";
+			return "<b><a href=\"".AUTOGAL_EMAILTOFRIEND."?ele=".rawurlencode($this->Element()).($pref['autogal_showinnewwindow'] ? "&newwindow=1" : '')."\">".AUTOGAL_LANG_L20."</a></b>";
 		}
 		else
 		{
@@ -1160,7 +1160,7 @@ class AutoGal_CMediaObj
 		
 		$this->SpeedMsg("GalleryMediaObjs: List Objects (".$this->Gallery().")");
 		require_once(AUTOGAL_MEDIALISTCLASS);
-		$galList = new AutoGal_CMediaList($this->Gallery(), array('sortorder' => ($sortOrder ? $sortOrder : $g_sortOrder), 'recurse' => 0, 'usecache' => AUTOGAL_ENABLEDBCACHE));
+		$galList = new AutoGal_CMediaList($this->Gallery(), array('sortorder' => ($sortOrder ? $sortOrder : $g_sortOrder), 'recurse' => 0, 'usecache' => $pref['autogal_enabledbcache']));
 		$galList->ListGallery();
 		
 		$this->m_info['galleryobjs'] = $galList->MediaObjects();
@@ -1176,7 +1176,7 @@ class AutoGal_CMediaObj
 		
 		$this->SpeedMsg("ChildMediaObjs: List Objects");
 		require_once(AUTOGAL_MEDIALISTCLASS);
-		$galList = new AutoGal_CMediaList($this->Element(), array('sortorder' => ($sortOrder ? $sortOrder : $g_sortOrder), 'recurse' => 0, 'usecache' => AUTOGAL_ENABLEDBCACHE));
+		$galList = new AutoGal_CMediaList($this->Element(), array('sortorder' => ($sortOrder ? $sortOrder : $g_sortOrder), 'recurse' => 0, 'usecache' => $pref['autogal_enabledbcache']));
 		$galList->ListGallery();
 		$this->m_info['childobjs'] = $galList->MediaObjects();
 		
@@ -1194,7 +1194,7 @@ class AutoGal_CMediaObj
 		
 		require_once(AUTOGAL_MEDIALISTCLASS);
 		
-		$galList = new AutoGal_CMediaList($this->Element(), array('sortorder' => 'name', 'recurse' => 1, 'usecache' => AUTOGAL_ENABLEDBCACHE));
+		$galList = new AutoGal_CMediaList($this->Element(), array('sortorder' => 'name', 'recurse' => 1, 'usecache' => $pref['autogal_enabledbcache']));
 		#$galList->EnableDebugMsgs(1);
 		#$galList->EnableMemoryMsgs(1);
 
@@ -1225,9 +1225,9 @@ class AutoGal_CMediaObj
 		$galleryLink = "<input type='button' title=\"".AUTOGAL_LANG_L13.$galObj->Title()."\" class='button' value='".AUTOGAL_LANG_L11."' onclick='javascript:window.location.href=\"".$galObj->BackLink()."\"' />";
 		$closeWindow = "<input type='button' class='button' value='".AUTOGAL_LANG_L25."' onClick='javascript:window.close()'>";
 		
-		if (AUTOGAL_SLIDESENABLE)
+		if ($pref['autogal_slidesenable'])
 		{
-			if (AUTOGAL_SLIDESNEWWINDOW)
+			if ($pref['autogal_slidesnewwindow'])
 			{
 				$slideShowURL = AUTOGAL_SLIDESHOW."?first=".rawurlencode($this->Element());
 				$slideOnClickJS = AutoGal_NewWindowJS('slide', $slideShowURL, 'slideshow');
@@ -1532,11 +1532,11 @@ class AutoGal_CMediaObj
 		
 		$this->m_info['comments'][] = $commentInfo;
 	
-		if (AUTOGAL_DOLATESTCOMMS)
+		if ($pref['autogal_latestcomms'])
 		{
 			# SAVE TO THE LATEST COMMENT XML FILE
 			require_once(AUTOGAL_LTSTCOMSHANDLER);
-			$lComms = new AutoGal_LatestComms(AUTOGAL_MAXLATESTCOMMS);
+			$lComms = new AutoGal_LatestComms($pref['autogal_maxlatestcomms']);
 			$lComms->LoadFile(AUTOGAL_LATESTCOMMSXML);
 			
 			$addComment = $commentInfo;
@@ -1665,7 +1665,7 @@ class AutoGal_CMediaObj
 		$scores = $this->m_info['arcade']['topscores'];
 		
 		usort($scores, "AutoGal_CmpArcadeScores");
-		$scores = array_slice($scores, 0, AUTOGAL_ARCMAXTOPSCORES);
+		$scores = array_slice($scores, 0, $pref['autogal_arcmaxtopscores']);
 		
 		return $scores;
 	}
@@ -1717,7 +1717,7 @@ class AutoGal_CMediaObj
 			return 0;
 		}
 		
-		if (($numScores < AUTOGAL_ARCMAXTOPSCORES)||($scores[$numScores - 1]['points'] < $points))
+		if (($numScores < $pref['autogal_arcmaxtopscores'])||($scores[$numScores - 1]['points'] < $points))
 		{
 			$scoreRec = array();
 			$scoreRec['userid'] = $userID;
@@ -1727,7 +1727,7 @@ class AutoGal_CMediaObj
 			$scores[] = $scoreRec;
 			
 			usort($scores, "AutoGal_CmpArcadeScores");
-			$scores = array_slice($scores, 0, AUTOGAL_ARCMAXTOPSCORES);
+			$scores = array_slice($scores, 0, $pref['autogal_arcmaxtopscores']);
 			$this->m_info['arcade']['topscores'] = $scores;
 			
 			$this->IsXmlChange(true);

@@ -50,7 +50,7 @@ if(IsSet($_POST['updatesettings'])||IsSet($_POST['resetthumbs']))
 ####################
 if (IsSet($_POST['resetthumbs']))
 {
-    $thumbImages = AutoGal_ListDirectory(AUTOGAL_GALLERYDIR, "^".AUTOGAL_THUMBPREFIX);        
+    $thumbImages = AutoGal_ListDirectory($pref['autogal_gallerydir'], "^".AUTOGAL_THUMBPREFIX);        
     foreach ($thumbImages as $thumbImage)
     {
         unlink ($thumbImage);

@@ -31,7 +31,7 @@ $speedSettingRecs = array
 	'autogal_randomdefaultimg'  => array('imp' => 2, 'rec' => 0, 'type' => 'check', 'title' => AUTOGAL_LANG_ADMIN_MAIN_L50, 'desc' => AUTOGAL_LANG_ADMIN_MAIN_L51),
 	'autogal_metaviewhits'      => array('imp' => 2, 'rec' => 0, 'type' => 'check', 'title' => AUTOGAL_LANG_ADMIN_METADATA_L7, 'desc' => AUTOGAL_LANG_ADMIN_METADATA_L8),
 	'autogal_wmarkauto'         => array('imp' => 2, 'rec' => 0, 'type' => 'check', 'title' => AUTOGAL_LANG_ADMIN_WATERMARK_17, 'desc' => AUTOGAL_LANG_ADMIN_WATERMARK_18),
-	'autogal_resizepreviewimgs' => array('imp' => 2, 'rec' => 1, 'type' => 'check', 'title' => AUTOGAL_LANG_ADMIN_MAIN_L81, 'desc' => str_replace("[WIDTH]", AUTOGAL_MAXIMAGEWIDTH, str_replace("[HEIGHT]", AUTOGAL_MAXIMAGEHEIGHT, str_replace("[PREFIX]", AUTOGAL_PREVIEWIMGPREFIX, AUTOGAL_LANG_ADMIN_MAIN_L82)))),
+	'autogal_resizepreviewimgs' => array('imp' => 2, 'rec' => 1, 'type' => 'check', 'title' => AUTOGAL_LANG_ADMIN_MAIN_L81, 'desc' => str_replace("[WIDTH]", $pref['autogal_maximagewidth'], str_replace("[HEIGHT]", $pref['autogal_maximageheight'], str_replace("[PREFIX]", AUTOGAL_PREVIEWIMGPREFIX, AUTOGAL_LANG_ADMIN_MAIN_L82)))),
 	'autogal_autosizegalthumbs' => array('imp' => 2, 'rec' => 0, 'type' => 'check', 'title' => AUTOGAL_LANG_ADMIN_THUMBS_L61, 'desc' => AUTOGAL_LANG_ADMIN_THUMBS_L62),
 
 	'autogal_checksubgalvclass' => array('imp' => 2, 'rec' => 0, 'type' => 'check', 'title' => AUTOGAL_LANG_ADMIN_USERACCESS_6, 'desc' => AUTOGAL_LANG_ADMIN_USERACCESS_7),

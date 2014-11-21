@@ -1,0 +1,23 @@
+PRIMARY TASKS:
+
+ * Overhaul of privilege settings - 1 XML file or DB table
+ * User gallery upload types
+ * User gallery granular privilege control
+ * Check privileges wherever necessary
+ * Memory tests
+ * Take down message
+ * Test watermarks
+ * User classes - cache
+ * Include sub galleries option for changing user classes
+ * Massive rubber ducky (thumbnail cache issue, won't work for images due to resize.php)
+ * Sort with SQL rather than manually
+ * Fix random image plugin
+
+USER REQUESTS:
+ * Next and Forward view should have the picture in an Iframe
+ * Print button
+ * X pictures have been added since your last visit
+ * Lightbox
+ * Remote images
+ * http://flowplayer.org/
+ * Popping up a new window for flv video - http://cerebralsynergy.com/bugs/view.php?id=116

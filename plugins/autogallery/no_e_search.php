@@ -17,7 +17,7 @@ require_once(dirname(__FILE__)."/def_core.php");
 $search_info[] = array
 (
    'sfile'     => e_PLUGINS.'autogallery/search.php',
-   'qtype'     => AUTOGAL_TITLE,
+   'qtype'     => $pref['autogal_title'],
    'refpage'   => basename(AUTOGAL_AUTOGALLERY),
 );
 

@@ -2,7 +2,7 @@
 
 function AutoGal_MetaDeleteComments(&$mediaObj, $IDs)
 {
-	if (!AUTOGAL_USEXMLMETACOMS) return;
+	if (!$pref['autogal_metacomments']) return;
 	if (!$mediaObj->CheckUserPriv('commentadmin')) return;
 
 	foreach ($IDs as $commentIndex => $commentID)
@@ -12,7 +12,7 @@ function AutoGal_MetaDeleteComments(&$mediaObj, $IDs)
 
 	$text = AUTOGAL_LANG_COMMENTS_L11;
 		
-	if (AUTOGAL_DOLATESTCOMMS) 
+	if ($pref['autogal_latestcomms']) 
 	{
 		$mediaObj->SaveMeta();
 		require_once(AUTOGAL_ADMINFUNCTIONS);
@@ -24,7 +24,7 @@ function AutoGal_MetaDeleteComments(&$mediaObj, $IDs)
 
 function AutoGal_RenderComments(&$mediaObj)
 {
-	if (!AUTOGAL_USEXMLMETACOMS) return;
+	if (!$pref['autogal_metacomments']) return;
 	
 	global $ns;
 	
@@ -104,7 +104,7 @@ function AutoGal_RenderComments(&$mediaObj)
 	$comments = $mediaObj->Comments();
 	foreach ($comments as $commentI => $comment)
 	{
-		if (AUTOGAL_COMMENTBBCODE)
+		if ($pref['autogal_metacommentsbb'])
 		{
 			$commentText = AutoGal_DoBBCode($comment['text']);
 		}
@@ -119,7 +119,7 @@ function AutoGal_RenderComments(&$mediaObj)
 		<div class='spacer' style='text-align:center'>
 		<table class='fborder' width='97%'>
 		<tr>
-			<td class='fcaption'".($isAdmin ? " colspan='2'" : '')."><b>".($comment['authorid'] == 0 ? $comment['authorusername'].AUTOGAL_LANG_COMMENTS_L8 : "<a href=\"".e_BASE."user.php?id.".$comment['authorid']."\">".$comment['authorusername']."</a>")."</b> @ ".strftime(AUTOGAL_COMMENTTIMEFORMAT, $comment['date'])."</td>
+			<td class='fcaption'".($isAdmin ? " colspan='2'" : '')."><b>".($comment['authorid'] == 0 ? $comment['authorusername'].AUTOGAL_LANG_COMMENTS_L8 : "<a href=\"".e_BASE."user.php?id.".$comment['authorid']."\">".$comment['authorusername']."</a>")."</b> @ ".strftime($pref['autogal_timefmtcomment'], $comment['date'])."</td>
 		</tr>
 		<tr>".
 			($isAdmin ?	"<td class='forumheader3' style='vertical-align:top'><input type='checkbox' name='AutoGal_CommentDelete_$commentI'></td>" : '').
@@ -140,7 +140,7 @@ function AutoGal_RenderComments(&$mediaObj)
 	</td></tr></table>
 	<input type='submit' name='AutoGal_SumbitComment' class='button' value='".AUTOGAL_LANG_COMMENTS_L2."'>" : '').
 	(($isAdmin)&&($mediaObj->NumComments() > 0) ? "<input type='submit' name='AutoGal_DeleteComments' class='button' value='".AUTOGAL_LANG_COMMENTS_L10."'>" : '')."<br />
-	<span class='smalltext'>".(AUTOGAL_COMMENTBBCODE ? AUTOGAL_LANG_COMMENTS_L13 : '')."</span>
+	<span class='smalltext'>".($pref['autogal_metacommentsbb'] ? AUTOGAL_LANG_COMMENTS_L13 : '')."</span>
 	</form>
 	</div>";
 	
@@ -161,15 +161,15 @@ function AutoGal_RenderDescription(&$mediaObj)
 
 function AutoGal_RenderRating(&$mediaObj)
 {
-	if (!AUTOGAL_USEXMLMETARATINGS) return;
+	if (!$pref['autogal_metaratings']) return;
 	if (!$mediaObj->IsFile()) return;
 	
 	global $ns;
 		
-	if (AUTOGAL_RATEIFRAME)
+	if ($pref['autogal_rateiniframe'])
 	{
 		$text = "
-		<iframe src=\"".AUTOGAL_RATING."?show=".rawurlencode($mediaObj->Element())."\" width='100%' frameborder='0' scrolling='no' height='".AUTOGAL_RATEIFRAMEHEIGHT."'>
+		<iframe src=\"".AUTOGAL_RATING."?show=".rawurlencode($mediaObj->Element())."\" width='100%' frameborder='0' scrolling='no' height='".$pref['autogal_rateiframeheight']."'>
 		</iframe>";
 		
 		print $text;
@@ -183,7 +183,7 @@ function AutoGal_RenderRating(&$mediaObj)
 
 function AutoGal_RatingHTML(&$mediaObj, $skipNew=0)
 {
-	if (!AUTOGAL_USEXMLMETARATINGS) return;
+	if (!$pref['autogal_metaratings']) return;
 	if (!$mediaObj->IsFile()) return;
 		
 	global $ns;
@@ -279,7 +279,7 @@ function AutoGal_RatingHTML(&$mediaObj, $skipNew=0)
 
 function AutoGal_RenderTopScores(&$mediaObj)
 {
-	if (!AUTOGAL_ARCTOPSCORES) return;
+	if (!$pref['autogal_arctopscores']) return;
 	if ($mediaObj->FileType() != 'flash') return;
 		
 	global $ns;
@@ -303,7 +303,7 @@ function AutoGal_RenderTopScores(&$mediaObj)
 		$user = $score['username'];
 		$userID = $score['userid'];
 		$points = $score['points'];
-		$date = strftime(AUTOGAL_TOPSCORETIMEFORMAT, $score['date']);
+		$date = strftime($pref['autogal_timefmttopscore'], $score['date']);
 		
 		if ($userID > 0)
 		{

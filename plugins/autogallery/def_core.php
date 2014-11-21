@@ -166,188 +166,188 @@ define("AUTOGAL_ADMINACTIONBOXHEIGHT",   100);
 define("AUTOGAL_USERGALLERYDIR",         'user');
 
 # USER SETTINGS FROM VERSIONS 0.1 - 1.0
-define('AUTOGAL_TITLE',             $pref['autogal_title'] );
-define('AUTOGAL_NUMCOLS',           $pref['autogal_numcols'] );
-define('AUTOGAL_NUMGALLCOLS',       $pref['autogal_numgallcols']);
-define('AUTOGAL_SHOW_FOOTER',       $pref['autogal_showfooter']);
-define('AUTOGAL_SUBGALLERYCLASS',   $pref['autogal_subgalleryclass']);
-define('AUTOGAL_IMAGECELLCLASS',    $pref['autogal_imagecellclass']);
-define('AUTOGAL_NAVCLASS',          $pref['autogal_navclass']);
-define('AUTOGAL_THUMBWIDTH',        $pref['autogal_thumbwidth']);
-define('AUTOGAL_THUMBHEIGHT',       $pref['autogal_thumbheight']);
-define('AUTOGAL_KEEPASPECT',        $pref['autogal_keepaspect']);
-define('AUTOGAL_NAVSEPERATOR',      $pref['autogal_navseperator']);
-define('AUTOGAL_ROOTNAME',          $pref['autogal_rootname']);
-define('AUTOGAL_UPLOADMAXSIZE',     $pref['autogal_uploadmaxsize']);
-define('AUTOGAL_SHOWEMAILTOFRIEND', $pref['autogal_emailtofriend']);
-define('AUTOGAL_REVUPLOADUC',       $pref['autogal_revuploaduc']);
-define('AUTOGAL_DEFAULTETFCOM',     $pref['autogal_defaultetfcom']);
+//define('AUTOGAL_TITLE',             $pref['autogal_title'] );
+//define('AUTOGAL_NUMCOLS',           $pref['autogal_numcols'] );
+//define('AUTOGAL_NUMGALLCOLS',       $pref['autogal_numgallcols']);
+//define('AUTOGAL_SHOW_FOOTER',       $pref['autogal_showfooter']);
+//define('AUTOGAL_SUBGALLERYCLASS',   $pref['autogal_subgalleryclass']);
+//define('AUTOGAL_IMAGECELLCLASS',    $pref['autogal_imagecellclass']);
+//define('AUTOGAL_NAVCLASS',          $pref['autogal_navclass']);
+//define('AUTOGAL_THUMBWIDTH',        $pref['autogal_thumbwidth']);
+//define('AUTOGAL_THUMBHEIGHT',       $pref['autogal_thumbheight']);
+//define('AUTOGAL_KEEPASPECT',        $pref['autogal_keepaspect']);
+//define('AUTOGAL_NAVSEPERATOR',      $pref['autogal_navseperator']);
+//define('AUTOGAL_ROOTNAME',          $pref['autogal_rootname']);
+//define('AUTOGAL_UPLOADMAXSIZE',     $pref['autogal_uploadmaxsize']);
+//define('AUTOGAL_SHOWEMAILTOFRIEND', $pref['autogal_emailtofriend']);
+//define('AUTOGAL_REVUPLOADUC',       $pref['autogal_revuploaduc']);
+//define('AUTOGAL_DEFAULTETFCOM',     $pref['autogal_defaultetfcom']);
 
 # USER SETTINGS FROM VERSION 1.5
-define('AUTOGAL_MAXIMAGEWIDTH',     $pref['autogal_maximagewidth']);
-define('AUTOGAL_MAXIMAGEHEIGHT',    $pref['autogal_maximageheight']);
-define('AUTOGAL_MAXPERPAGE',        $pref['autogal_maxperpage']);
-define('AUTOGAL_GALLERYDIR',        ($pref['autogal_gallerydir'] ? $pref['autogal_gallerydir'] : AUTOGAL_DEFGALLERYDIR));
+//define('AUTOGAL_MAXIMAGEWIDTH',     $pref['autogal_maximagewidth']);
+//define('AUTOGAL_MAXIMAGEHEIGHT',    $pref['autogal_maximageheight']);
+//define('AUTOGAL_MAXPERPAGE',        $pref['autogal_maxperpage']);
+//define('AUTOGAL_GALLERYDIR',        ($pref['autogal_gallerydir'] ? $pref['autogal_gallerydir'] : AUTOGAL_DEFGALLERYDIR));
 
 # USER SETTINGS FROM VERSION 1.6
-define('AUTOGAL_SHOWAUTOGALVER',    $pref['autogal_showautogalver']);
+//define('AUTOGAL_SHOWAUTOGALVER',    $pref['autogal_showautogalver']);
 define('AUTOGAL_SHOWADMINMENU',     1);
-define('AUTOGAL_UPLOADNUMBER', 		$pref['autogal_uploadnumber']);
+//define('AUTOGAL_UPLOADNUMBER', 		$pref['autogal_uploadnumber']);
 
 # USER SETTINGS FROM VERSION 1.7
-define('AUTOGAL_CHMODWARNOFF', 		$pref['autogal_chmodwarnoff']);
+//define('AUTOGAL_CHMODWARNOFF', 		$pref['autogal_chmodwarnoff']);
 
 # USER SETTINGS FROM VERSION 1.8
-define('AUTOGAL_ADMINREVIEWUC',     $pref['autogal_adminreviewuc']);
-define('AUTOGAL_SHOWSUBTITLESGAL',  $pref['autogal_showsubtitlesgal']);
-define('AUTOGAL_FLASHWIDTH',        $pref['autogal_flashwidth']);
-define('AUTOGAL_FLASHHEIGHT',       $pref['autogal_flashheight']);
+//define('AUTOGAL_ADMINREVIEWUC',     $pref['autogal_adminreviewuc']);
+//define('AUTOGAL_SHOWSUBTITLESGAL',  $pref['autogal_showsubtitlesgal']);
+//define('AUTOGAL_FLASHWIDTH',        $pref['autogal_flashwidth']);
+//define('AUTOGAL_FLASHHEIGHT',       $pref['autogal_flashheight']);
 
 # USER SETTINGS FROM VERSION 1.83
-define('AUTOGAL_IMKANIGIF1ST',      $pref['autogal_imkanigif1st']);
-define('AUTOGAL_GALTHUMBWIDTH',     $pref['autogal_galthumbwidth']);
-define('AUTOGAL_GALTHUMBHEIGHT',    $pref['autogal_galthumbheight']);
+//define('AUTOGAL_IMKANIGIF1ST',      $pref['autogal_imkanigif1st']);
+//define('AUTOGAL_GALTHUMBWIDTH',     $pref['autogal_galthumbwidth']);
+//define('AUTOGAL_GALTHUMBHEIGHT',    $pref['autogal_galthumbheight']);
 
 # USER SETTINGS FROM VERSION 1.84
-define("AUTOGAL_SHOWNEWESTLINK",    $pref['autogal_shownewest']);
-define("AUTOGAL_SHOWNEWESTINROOT",  $pref['autogal_shownewestinroot']);
+//define("AUTOGAL_SHOWNEWESTLINK",    $pref['autogal_shownewest']);
+//define("AUTOGAL_SHOWNEWESTINROOT",  $pref['autogal_shownewestinroot']);
 
 # USER SETTINGS FROM VERSION 1.87
-define("AUTOGAL_SHOWINNEWWINDOW",   $pref['autogal_showinnewwindow']);
-define("AUTOGAL_NEWWINDOWARGS",     $pref['autogal_newwindowargs']);
-define("AUTOGAL_MOVIEWIDTH",     	$pref['autogal_moviewidth']);
-define("AUTOGAL_MOVIEHEIGHT",   	$pref['autogal_movieheight']);
+//define("AUTOGAL_SHOWINNEWWINDOW",   $pref['autogal_showinnewwindow']);
+//define("AUTOGAL_NEWWINDOWARGS",     $pref['autogal_newwindowargs']);
+//define("AUTOGAL_MOVIEWIDTH",     	$pref['autogal_moviewidth']);
+//define("AUTOGAL_MOVIEHEIGHT",   	$pref['autogal_movieheight']);
 
 # USER SETTINGS FROM VERSION 2.0
-define("AUTOGAL_AUTOTHUMB",         $pref['autogal_autothumb']);
-define("AUTOGAL_USEXMLMETACOMS",    $pref['autogal_metacomments']);
-define("AUTOGAL_USEXMLMETAVHITS",   $pref['autogal_metaviewhits']);
-define("AUTOGAL_USEXMLMETAEHITS",   $pref['autogal_metaemailhits']);
-define("AUTOGAL_TITLEHEADSTYLE",    $pref['autogal_titleheadstyle']);
-define("AUTOGAL_SHOWERRORLOG",      $pref['autogal_showerrorlog']);
-define("AUTOGAL_GENERATEDEBUGLOG",  $pref['autogal_generatedebuglog']);
-define("AUTOGAL_ENABLESEARCH",  	$pref['autogal_enablesearch']);
-define("AUTOGAL_SEARCHMAXRESULTS", 	$pref['autogal_searchmaxresults']);
-define("AUTOGAL_XMLSEARCH", 		$pref['autogal_xmlsearch']);
+//define("AUTOGAL_AUTOTHUMB",         $pref['autogal_autothumb']);
+//define("AUTOGAL_USEXMLMETACOMS",    $pref['autogal_metacomments']);
+//define("AUTOGAL_USEXMLMETAVHITS",   $pref['autogal_metaviewhits']);
+//define("AUTOGAL_USEXMLMETAEHITS",   $pref['autogal_metaemailhits']);
+//define("AUTOGAL_TITLEHEADSTYLE",    $pref['autogal_titleheadstyle']);
+//define("AUTOGAL_SHOWERRORLOG",      $pref['autogal_showerrorlog']);
+//define("AUTOGAL_GENERATEDEBUGLOG",  $pref['autogal_generatedebuglog']);
+//define("AUTOGAL_ENABLESEARCH",  	$pref['autogal_enablesearch']);
+//define("AUTOGAL_SEARCHMAXRESULTS", 	$pref['autogal_searchmaxresults']);
+//define("AUTOGAL_XMLSEARCH", 		$pref['autogal_xmlsearch']);
 
 # USER SETTINGS FROM VERSION 2.1
-define("AUTOGAL_LARGEIMGNEWWINDOW",	$pref['autogal_largeimgnewwindow']);
-define("AUTOGAL_SHOWTITLEINGALL", 	$pref['autogal_showtitleingall']);
+//define("AUTOGAL_LARGEIMGNEWWINDOW",	$pref['autogal_largeimgnewwindow']);
+//define("AUTOGAL_SHOWTITLEINGALL", 	$pref['autogal_showtitleingall']);
 
 # USER SETTINGS FROM VERSION 2.2
-define("AUTOGAL_COMMENTBBCODE",      $pref['autogal_metacommentsbb']);
-define("AUTOGAL_APACHEINDEXIGNORE",  $pref['autogal_apacheindexignore']);
-define("AUTOGAL_APACHEDENYEXTS",     $pref['autogal_apachedenyexts']);
-define("AUTOGAL_APACHELEECHPROTECT", $pref['autogal_apacheleechprotect']);
-define("AUTOGAL_APACHEALLOWEDSITES", $pref['autogal_apacheallowedsites']);
-define("AUTOGAL_APACHELEECHIMAGE",   $pref['autogal_apacheleechimage']);
+//define("AUTOGAL_COMMENTBBCODE",      $pref['autogal_metacommentsbb']);
+#define("AUTOGAL_APACHEINDEXIGNORE",  $pref['autogal_apacheindexignore']);
+#define("AUTOGAL_APACHEDENYEXTS",     $pref['autogal_apachedenyexts']);
+#define("AUTOGAL_APACHELEECHPROTECT", $pref['autogal_apacheleechprotect']);
+#define("AUTOGAL_APACHEALLOWEDSITES", $pref['autogal_apacheallowedsites']);
+#define("AUTOGAL_APACHELEECHIMAGE",   $pref['autogal_apacheleechimage']);
 #define("AUTOGAL_RANDOMDEFAULTIMG",   $pref['autogal_randomdefaultimg']);
-define("AUTOGAL_SORTDATECTIME",      $pref['autogal_sortdatectime']);
+//define("AUTOGAL_SORTDATECTIME",      $pref['autogal_sortdatectime']);
 
 # USER SETTINGS FROM VERSION 2.4
-define("AUTOGAL_UPLOADEXTS",         $pref['autogal_uploadexts']);
-define("AUTOGAL_UCASETITLES",        $pref['autogal_ucasetitles']);
-define('AUTOGAL_SMALLWORDS',         $pref['autogal_smallwords']);
-define("AUTOGAL_USEXMLMETARATINGS",  $pref['autogal_metaratings']);
-define("AUTOGAL_RATECLASS",          $pref['autogal_rateclass']);
-define("AUTOGAL_RATEIFRAME",         $pref['autogal_rateiniframe']);
-define("AUTOGAL_RATEIFRAMEHEIGHT",   $pref['autogal_rateiframeheight']);
+//define("AUTOGAL_UPLOADEXTS",         $pref['autogal_uploadexts']);
+//define("AUTOGAL_UCASETITLES",        $pref['autogal_ucasetitles']);
+//define('AUTOGAL_SMALLWORDS',         $pref['autogal_smallwords']);
+//define("AUTOGAL_USEXMLMETARATINGS",  $pref['autogal_metaratings']);
+//define("AUTOGAL_RATECLASS",          $pref['autogal_rateclass']);
+//define("AUTOGAL_RATEIFRAME",         $pref['autogal_rateiniframe']);
+//define("AUTOGAL_RATEIFRAMEHEIGHT",   $pref['autogal_rateiframeheight']);
 	
 # USER SETTINGS FROM VERSION 2.5
-define("AUTOGAL_WMARKIMAGE",         $pref['autogal_wmarkimage']);
-define("AUTOGAL_WMARKINTENSITY",     $pref['autogal_wmarkintensity']);
-define('AUTOGAL_WMARKXALIGN',        $pref['autogal_wmarkxalign']);
-define("AUTOGAL_WMARKYALIGN",        $pref['autogal_wmarkyalign']);
-define("AUTOGAL_WMARKXOFFSET",       $pref['autogal_wmarkxoffset']);
-define("AUTOGAL_WMARKYOFFSET",       $pref['autogal_wmarkyoffset']);
-define("AUTOGAL_WMARKAUTO",          $pref['autogal_wmarkauto']);
-define("AUTOGAL_WMARKNOSMALL",       $pref['autogal_wmarknosmall']);
-define("AUTOGAL_ARCTOPSCORES",       $pref['autogal_arctopscores']);
-define("AUTOGAL_ARCMAXTOPSCORES",    $pref['autogal_arcmaxtopscores']);
-define("AUTOGAL_DOLATESTCOMMS",      $pref['autogal_latestcomms']);
-define("AUTOGAL_MAXLATESTCOMMS",     $pref['autogal_maxlatestcomms']);
-define("AUTOGAL_LCMAXTEXTLENGTH",    $pref['autogal_lcmaxtextlength']);
-define("AUTOGAL_LCSTRIPBBCODE",      $pref['autogal_lcstripbbcode']);
+//define("AUTOGAL_WMARKIMAGE",         $pref['autogal_wmarkimage']);
+//define("AUTOGAL_WMARKINTENSITY",     $pref['autogal_wmarkintensity']);
+//define('AUTOGAL_WMARKXALIGN',        $pref['autogal_wmarkxalign']);
+//define("AUTOGAL_WMARKYALIGN",        $pref['autogal_wmarkyalign']);
+//define("AUTOGAL_WMARKXOFFSET",       $pref['autogal_wmarkxoffset']);
+//define("AUTOGAL_WMARKYOFFSET",       $pref['autogal_wmarkyoffset']);
+//define("AUTOGAL_WMARKAUTO",          $pref['autogal_wmarkauto']);
+//define("AUTOGAL_WMARKNOSMALL",       $pref['autogal_wmarknosmall']);
+//define("AUTOGAL_ARCTOPSCORES",       $pref['autogal_arctopscores']);
+//define("AUTOGAL_ARCMAXTOPSCORES",    $pref['autogal_arcmaxtopscores']);
+//define("AUTOGAL_DOLATESTCOMMS",      $pref['autogal_latestcomms']);
+//define("AUTOGAL_MAXLATESTCOMMS",     $pref['autogal_maxlatestcomms']);
+//define("AUTOGAL_LCMAXTEXTLENGTH",    $pref['autogal_lcmaxtextlength']);
+//define("AUTOGAL_LCSTRIPBBCODE",      $pref['autogal_lcstripbbcode']);
 
 # USER SETTINGS FROM VERSION 2.54
-define("AUTOGAL_SEARCHSMALLFORM",    $pref['autogal_searchsmallform']);
+#define("AUTOGAL_SEARCHSMALLFORM",    $pref['autogal_searchsmallform']);
 
 # USER SETTINGS FROM VERSION 2.55
-define("AUTOGAL_PAGEMAXDIST",        $pref['autogal_pagemaxdist']);
-define("AUTOGAL_ARCADEUSEXMLTRACK",  $pref['autogal_arcadeusexmltrack']);
+//define("AUTOGAL_PAGEMAXDIST",        $pref['autogal_pagemaxdist']);
+//define("AUTOGAL_ARCADEUSEXMLTRACK",  $pref['autogal_arcadeusexmltrack']);
 
 # USER SETTINGS FROM VERSION 2.60
 @define("AUTOGAL_DIRCACHEMINS",       $pref['autogal_dircachemins']); 
 @define("AUTOGAL_DIRCACHEMETHOD",     $pref['autogal_dircachemethod']); 
-define("AUTOGAL_RESIZEPREVIEWIMGS",  $pref['autogal_resizepreviewimgs']); 
-define("AUTOGAL_SLIDESENABLE",       $pref['autogal_slidesenable']); 
-define("AUTOGAL_SLIDESNEWWINDOW",    $pref['autogal_slidesnewwindow']); 
-define("AUTOGAL_SLIDENWINWIDTH",     $pref['autogal_slidenwinwidth']); 
-define("AUTOGAL_SLIDENWINHEIGHT",    $pref['autogal_slidenwinheight']); 
-define("AUTOGAL_SLIDENWINTOOBAR",    $pref['autogal_slidenwintoobar']); 
-define("AUTOGAL_SLIDENWINLOCBAR",    $pref['autogal_slidenwinlocbar']); 
-define("AUTOGAL_SLIDENWINDIRECT",    $pref['autogal_slidenwindirect']); 
-define("AUTOGAL_SLIDENWINSTSBAR",    $pref['autogal_slidenwinstsbar']); 
-define("AUTOGAL_SLIDENWINMNUBAR",    $pref['autogal_slidenwinmnubar']); 
-define("AUTOGAL_SLIDENWINSCRBAR",    $pref['autogal_slidenwinscrbar']); 
-define("AUTOGAL_SLIDENWINCPHIST",    $pref['autogal_slidenwincphist']); 
-define("AUTOGAL_SLIDENWINRESIZE",    $pref['autogal_slidenwinresize']); 
-define("AUTOGAL_SLIDENWINEXARGS",    $pref['autogal_slidenwinexargs']); 
-define("AUTOGAL_SLIDEBODYCLASS",     $pref['autogal_slidebodyclass']); 
-define("AUTOGAL_SLIDEBODYSTYLE",     $pref['autogal_slidebodystyle']); 
-define("AUTOGAL_SHOWEMBEDLINK",  	 $pref['autogal_showembedlink']);
+//define("AUTOGAL_RESIZEPREVIEWIMGS",  $pref['autogal_resizepreviewimgs']); 
+//define("AUTOGAL_SLIDESENABLE",       $pref['autogal_slidesenable']); 
+//define("AUTOGAL_SLIDESNEWWINDOW",    $pref['autogal_slidesnewwindow']); 
+//define("AUTOGAL_SLIDENWINWIDTH",     $pref['autogal_slidenwinwidth']); 
+//define("AUTOGAL_SLIDENWINHEIGHT",    $pref['autogal_slidenwinheight']); 
+//define("AUTOGAL_SLIDENWINTOOBAR",    $pref['autogal_slidenwintoobar']); 
+//define("AUTOGAL_SLIDENWINLOCBAR",    $pref['autogal_slidenwinlocbar']); 
+//define("AUTOGAL_SLIDENWINDIRECT",    $pref['autogal_slidenwindirect']); 
+//define("AUTOGAL_SLIDENWINSTSBAR",    $pref['autogal_slidenwinstsbar']); 
+//define("AUTOGAL_SLIDENWINMNUBAR",    $pref['autogal_slidenwinmnubar']); 
+//define("AUTOGAL_SLIDENWINSCRBAR",    $pref['autogal_slidenwinscrbar']); 
+//define("AUTOGAL_SLIDENWINCPHIST",    $pref['autogal_slidenwincphist']); 
+//define("AUTOGAL_SLIDENWINRESIZE",    $pref['autogal_slidenwinresize']); 
+//define("AUTOGAL_SLIDENWINEXARGS",    $pref['autogal_slidenwinexargs']); 
+//define("AUTOGAL_SLIDEBODYCLASS",     $pref['autogal_slidebodyclass']); 
+//define("AUTOGAL_SLIDEBODYSTYLE",     $pref['autogal_slidebodystyle']); 
+//define("AUTOGAL_SHOWEMBEDLINK",  	 $pref['autogal_showembedlink']);
 @define("AUTOGAL_USELIGHTBOX",        $pref['autogal_uselightbox']);
-define("AUTOGAL_SHOWNWINWIDTH",      $pref['autogal_shownwinwidth']); 
-define("AUTOGAL_SHOWNWINHEIGHT",     $pref['autogal_shownwinheight']); 
-define("AUTOGAL_SHOWNWINTOOBAR",     $pref['autogal_shownwintoobar']); 
-define("AUTOGAL_SHOWNWINLOCBAR",     $pref['autogal_shownwinlocbar']); 
-define("AUTOGAL_SHOWWINDIRECT",      $pref['autogal_shownwindirect']); 
-define("AUTOGAL_SHOWNWINSTSBAR",     $pref['autogal_shownwinstsbar']); 
-define("AUTOGAL_SHOWNWINMNUBAR",     $pref['autogal_shownwinmnubar']); 
-define("AUTOGAL_SHOWNWINSCRBAR",     $pref['autogal_shownwinscrbar']); 
-define("AUTOGAL_SHOWNWINCPHIST",     $pref['autogal_shownwincphist']); 
-define("AUTOGAL_SHOWNWINRESIZE",     $pref['autogal_shownwinresize']); 
-define("AUTOGAL_SHOWNWINEXARGS",     $pref['autogal_shownwinexargs']); 
+//define("AUTOGAL_SHOWNWINWIDTH",      $pref['autogal_shownwinwidth']); 
+//define("AUTOGAL_SHOWNWINHEIGHT",     $pref['autogal_shownwinheight']); 
+//define("AUTOGAL_SHOWNWINTOOBAR",     $pref['autogal_shownwintoobar']); 
+//define("AUTOGAL_SHOWNWINLOCBAR",     $pref['autogal_shownwinlocbar']); 
+//define("AUTOGAL_SHOWWINDIRECT",      $pref['autogal_shownwindirect']); 
+//define("AUTOGAL_SHOWNWINSTSBAR",     $pref['autogal_shownwinstsbar']); 
+//define("AUTOGAL_SHOWNWINMNUBAR",     $pref['autogal_shownwinmnubar']); 
+//define("AUTOGAL_SHOWNWINSCRBAR",     $pref['autogal_shownwinscrbar']); 
+//define("AUTOGAL_SHOWNWINCPHIST",     $pref['autogal_shownwincphist']); 
+//define("AUTOGAL_SHOWNWINRESIZE",     $pref['autogal_shownwinresize']); 
+//define("AUTOGAL_SHOWNWINEXARGS",     $pref['autogal_shownwinexargs']); 
 
 # USER SETTINGS FROM VERSION 2.61
-define("AUTOGAL_ENABLESEARCHE107",   $pref['autogal_enablesearche107']); 
+#define("AUTOGAL_ENABLESEARCHE107",   $pref['autogal_enablesearche107']); 
 
 # USER SETTINGS FROM VERSION 2.65
-define("AUTOGAL_CHECKSUBGALVCLASS",  $pref['autogal_checksubgalvclass']);
-define("AUTOGAL_ENABLEDBCACHE",      $pref['autogal_enabledbcache']);
+//define("AUTOGAL_CHECKSUBGALVCLASS",  $pref['autogal_checksubgalvclass']);
+//define("AUTOGAL_ENABLEDBCACHE",      $pref['autogal_enabledbcache']);
 
 # USER SETTINGS FROM VERSION 3.00
-define("AUTOGAL_AUTOSIZEGALTHUMBS",  $pref['autogal_autosizegalthumbs']);
-define("AUTOGAL_SHOWSUBMITINFO",     $pref['autogal_showsubmitinfo']);
-define("AUTOGAL_SHOWPEAKMEMORY",     $pref['autogal_showpeakmemory']);
-define("AUTOGAL_SHOWREVIEWCOUNT",    $pref['autogal_showreviewcount']); 
-define("AUTOGAL_ENABLEGALDISPORD",   $pref['autogal_enablegaldispord']); 
-define("AUTOGAL_DEFAULTDISPORD",     $pref['autogal_defaultdisporder']); 
-define("AUTOGAL_SHOWDATEORDNAME",    $pref['autogal_showdateordname']); 
-define("AUTOGAL_SHOWDATEORDDATE",    $pref['autogal_showdateorddate']); 
-define("AUTOGAL_LATESTTIMEFORMAT",   $pref['autogal_timefmtlatest']);
-define("AUTOGAL_SUBMITTIMEFORMAT", 	 $pref['autogal_timefmtsubmit']);
-define("AUTOGAL_TOPSCORETIMEFORMAT", $pref['autogal_timefmttopscore']);
-define("AUTOGAL_THUMBTIMEFORMAT",    $pref['autogal_timefmtthumb']);
-define("AUTOGAL_LOGTIMEFORMAT",      $pref['autogal_timefmtlog']);
-define("AUTOGAL_COMMENTTIMEFORMAT",  $pref['autogal_timefmtcomment']);
-define("AUTOGAL_LATCOMMTIMEFORMAT",  $pref['autogal_timefmtlatcomm']);
-define("AUTOGAL_AUTHCACHELATEST",    $pref['autogal_authcachelatest']);
-define("AUTOGAL_AUTHCACHESEARCH",    $pref['autogal_authcachesearch']);
-define("AUTOGAL_USEQUICKGALDETECT",  $pref['autogal_usequickgaldetect']);
-define("AUTOGAL_USETHUMBNAILCACHE",  $pref['autogal_usethumbnailcache']);
-define("AUTOGAL_NOFILEVALIDATION",   $pref['autogal_nofilevalidation']);
-define("AUTOGAL_DEFTHUMBGALLERY",    $pref['autogal_defthumbgallery']);
-define("AUTOGAL_DEFTHUMBIMAGE",      $pref['autogal_defthumbimage']);
-define("AUTOGAL_DEFTHUMBAUDIO",      $pref['autogal_defthumbaudio']);
-define("AUTOGAL_DEFTHUMBMOVIE",      $pref['autogal_defthumbmovie']);
-define("AUTOGAL_DEFTHUMBANIMATION",  $pref['autogal_defthumbanimation']);
+//define("AUTOGAL_AUTOSIZEGALTHUMBS",  $pref['autogal_autosizegalthumbs']);
+//define("AUTOGAL_SHOWSUBMITINFO",     $pref['autogal_showsubmitinfo']);
+//define("AUTOGAL_SHOWPEAKMEMORY",     $pref['autogal_showpeakmemory']);
+//define("AUTOGAL_SHOWREVIEWCOUNT",    $pref['autogal_showreviewcount']); 
+//define("AUTOGAL_ENABLEGALDISPORD",   $pref['autogal_enablegaldispord']); 
+//define("AUTOGAL_DEFAULTDISPORD",     $pref['autogal_defaultdisporder']); 
+//define("AUTOGAL_SHOWDATEORDNAME",    $pref['autogal_showdateordname']); 
+//define("AUTOGAL_SHOWDATEORDDATE",    $pref['autogal_showdateorddate']); 
+//define("AUTOGAL_LATESTTIMEFORMAT",   $pref['autogal_timefmtlatest']);
+//define("AUTOGAL_SUBMITTIMEFORMAT", 	 $pref['autogal_timefmtsubmit']);
+//define("AUTOGAL_TOPSCORETIMEFORMAT", $pref['autogal_timefmttopscore']);
+//define("AUTOGAL_THUMBTIMEFORMAT",    $pref['autogal_timefmtthumb']);
+//define("AUTOGAL_LOGTIMEFORMAT",      $pref['autogal_timefmtlog']);
+//define("AUTOGAL_COMMENTTIMEFORMAT",  $pref['autogal_timefmtcomment']);
+//define("AUTOGAL_LATCOMMTIMEFORMAT",  $pref['autogal_timefmtlatcomm']);
+//define("AUTOGAL_AUTHCACHELATEST",    $pref['autogal_authcachelatest']);
+//define("AUTOGAL_AUTHCACHESEARCH",    $pref['autogal_authcachesearch']);
+//define("AUTOGAL_USEQUICKGALDETECT",  $pref['autogal_usequickgaldetect']);
+//define("AUTOGAL_USETHUMBNAILCACHE",  $pref['autogal_usethumbnailcache']);
+//define("AUTOGAL_NOFILEVALIDATION",   $pref['autogal_nofilevalidation']);
+//define("AUTOGAL_DEFTHUMBGALLERY",    $pref['autogal_defthumbgallery']);
+//define("AUTOGAL_DEFTHUMBIMAGE",      $pref['autogal_defthumbimage']);
+//define("AUTOGAL_DEFTHUMBAUDIO",      $pref['autogal_defthumbaudio']);
+//define("AUTOGAL_DEFTHUMBMOVIE",      $pref['autogal_defthumbmovie']);
+//define("AUTOGAL_DEFTHUMBANIMATION",  $pref['autogal_defthumbanimation']);
 
 # USER SETTINGS FROM VERSION 3.01
-define("AUTOGAL_CHECKLATESTVCLASS",  $pref['autogal_checklatestvclass']);
-define("AUTOGAL_CHECKSEARCHVCLASS",  $pref['autogal_checksearchvclass']);
-define("AUTOGAL_CHECKLCOMMSVCLASS",  $pref['autogal_checklcommsvclass']);
-define("AUTOGAL_CHECKUPLOADVCLASS",  $pref['autogal_checkuploadvclass']);
+//define("AUTOGAL_CHECKLATESTVCLASS",  $pref['autogal_checklatestvclass']);
+//define("AUTOGAL_CHECKSEARCHVCLASS",  $pref['autogal_checksearchvclass']);
+//define("AUTOGAL_CHECKLCOMMSVCLASS",  $pref['autogal_checklcommsvclass']);
+//define("AUTOGAL_CHECKUPLOADVCLASS",  $pref['autogal_checkuploadvclass']);
 define("AUTOGAL_USERCLASSCACHE",     0);
 
 # USER SETTINGS FROM VERSION 3.10
@@ -355,15 +355,15 @@ define("AUTOGAL_USERCLASSCACHE",     0);
 @define("AUTOGAL_USERGALENABLE",      $pref['autogal_usergalenable']);
 @define("AUTOGAL_USERGALNAME",        $pref['autogal_usergalname']);
 @define("AUTOGAL_USERGALUSERCLASS",   $pref['autogal_usergaluserclass']);
-define("AUTOGAL_MAXGALSPERPAGE",     $pref['autogal_maxgalsperpage']);
-define("AUTOGAL_SHOWSUBGALTOPCAP",   $pref['autogal_showsubgaltopcap']);
-define("AUTOGAL_SHOWFILETOPCAP",     $pref['autogal_showfiletopcap']);
-define("AUTOGAL_SUBGALTOPCAPCLASS",  $pref['autogal_subgaltopcapclass']);
-define("AUTOGAL_SUBGALBOTCAPCLASS",  $pref['autogal_subgalbotcapclass']);
-define("AUTOGAL_FILETOPCAPCLASS",    $pref['autogal_filetopcapclass']);
-define("AUTOGAL_FILEBOTCAPCLASS",    $pref['autogal_filebotcapclass']);
-define("AUTOGAL_LATESTTOPCAPCLASS",  $pref['autogal_latesttopcapclass']);
-define("AUTOGAL_USERGALTOPCAPCLASS", $pref['autogal_usergaltopcapclass']);
+//define("AUTOGAL_MAXGALSPERPAGE",     $pref['autogal_maxgalsperpage']);
+//define("AUTOGAL_SHOWSUBGALTOPCAP",   $pref['autogal_showsubgaltopcap']);
+//define("AUTOGAL_SHOWFILETOPCAP",     $pref['autogal_showfiletopcap']);
+//define("AUTOGAL_SUBGALTOPCAPCLASS",  $pref['autogal_subgaltopcapclass']);
+//define("AUTOGAL_SUBGALBOTCAPCLASS",  $pref['autogal_subgalbotcapclass']);
+//define("AUTOGAL_FILETOPCAPCLASS",    $pref['autogal_filetopcapclass']);
+//define("AUTOGAL_FILEBOTCAPCLASS",    $pref['autogal_filebotcapclass']);
+//define("AUTOGAL_LATESTTOPCAPCLASS",  $pref['autogal_latesttopcapclass']);
+//define("AUTOGAL_USERGALTOPCAPCLASS", $pref['autogal_usergaltopcapclass']);
 
 function AutoGal_GuessUrlPrefix()
 {
@@ -563,7 +563,7 @@ function AutoGal_IsEleInGallery($ele, $isAbsPath=0)
 
 function AutoGal_GetAbsGalPath($element, $useRealPath=0)
 {
-	$absPath = dirname(__FILE__)."/".AUTOGAL_GALLERYDIR."/$element";
+	$absPath = dirname(__FILE__)."/".$pref['autogal_gallerydir']."/$element";
 	
 	if ($useRealPath) $absPath = realpath($absPath);
 	

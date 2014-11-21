@@ -73,7 +73,7 @@ class AutoGal_LatestComms
 			$mediaObj = new AutoGal_CMediaObj($element);
 			if (!$mediaObj->IsValid()) continue;
 		
-			if (AUTOGAL_CHECKLCOMMSVCLASS)
+			if ($pref['autogal_checklcommsvclass'])
 			{
 				if ($mediaObj->IsGallery())
 				{

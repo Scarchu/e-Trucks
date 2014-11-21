@@ -19,7 +19,7 @@ $ele = stripslashes(rawurldecode($_GET['img']));
 $logID = basename($ele);
 AutoGal_AddLog($logID, "START");
 
-if (!AUTOGAL_AUTOTHUMB)
+if (!$pref['autogal_autothumb'])
 {
 	AutoGal_AddLog($logID, "Auto thumbnails turned off.");
 	AutoGal_DrawImage(AutoGal_GetUnavailThumb($image)); 
@@ -76,15 +76,15 @@ elseif ((file_exists($thumbImage))&&(!AUTOGAL_RESIZEDEBUG))
 if (AutoGal_IsDefaultImage($image))
 {
 	AutoGal_AddLog($logID, "Image is a default image.");	
-	$resizeWidth = AUTOGAL_GALTHUMBWIDTH;
-	$resizeHeight = AUTOGAL_GALTHUMBHEIGHT;
+	$resizeWidth = $pref['autogal_galthumbwidth'];
+	$resizeHeight = $pref['autogal_galthumbheight'];
 	$thumbImage = $image;
 }
 else
 {
 	AutoGal_AddLog($logID, "Image is NOT a default image.");	
-	$resizeWidth = AUTOGAL_THUMBWIDTH;
-	$resizeHeight = AUTOGAL_THUMBHEIGHT;
+	$resizeWidth = $pref['autogal_thumbwidth'];
+	$resizeHeight = $pref['autogal_thumbheight'];
 }
 
 # GET RESIZE OPTIONS FROM e107 SETTINGS
@@ -95,8 +95,8 @@ $imPath = $pref['im_path'];
 # INITIALISE GDIM OBJECT
 $gdim = new GDIM($mode, $imPath, $imQuality);
 
-$opts['keepaspect'] = AUTOGAL_KEEPASPECT;
-$opts['1stframe'] = AUTOGAL_IMKANIGIF1ST;
+$opts['keepaspect'] = $pref['autogal_keepaspect'];
+$opts['1stframe'] = $pref['autogal_imkanigif1st'];
 $opts['iflarger'] = 1;
 $opts['perms'] = AUTOGAL_PERMSGALTHUMBS;
 
@@ -130,7 +130,7 @@ function AutoGal_AddLog($logID, $message, $writeToError=false)
 		return;
 	}
 	
-	if (AUTOGAL_GENERATEDEBUGLOG)
+	if ($pref['autogal_generatedebuglog'])
 	{
 		$HANDLE = fopen(AUTOGAL_RESIZELOG, 'a+'); 
 		flock($HANDLE, LOCK_EX);
@@ -139,7 +139,7 @@ function AutoGal_AddLog($logID, $message, $writeToError=false)
 		fclose($HANDLE);
 	}
 	
-	if (($writeToError)&&(AUTOGAL_SHOWERRORLOG))
+	if (($writeToError)&&($pref['autogal_showerrorlog']))
 	{
 		$time = date('h:i:s');
 		$HANDLE = fopen(AUTOGAL_ERRORLOG, 'a+'); 

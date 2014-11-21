@@ -16,12 +16,12 @@ $startAG = microtime(true);
 require_once(dirname(__FILE__)."/def.php");
 require_once(dirname(__FILE__)."/language.php");
 
-if (!AUTOGAL_SHOWNEWESTLINK) {header("location:".AUTOGAL_AUTOGALLERY); exit;}
+if (!$pref['autogal_shownewest']) {header("location:".AUTOGAL_AUTOGALLERY); exit;}
 
 $start = ($_GET['start'] ? $_GET['start'] : 0);
 $newObjects = AutoGal_GetLatestFiles(AUTOGAL_SHOWNEWESTNUM, $start, $totalImages);
 
-define("e_PAGETITLE", AUTOGAL_TITLE." / ".AUTOGAL_LANG_STAT_L12);
+define("e_PAGETITLE", $pref['autogal_title']." / ".AUTOGAL_LANG_STAT_L12);
 require_once(HEADERF);
 
 $rank = $start + 1;
@@ -33,9 +33,9 @@ foreach ($newObjects as $mediaObj)
 	$text .= "
 	<tr>
 		<td class='forumheader3' style='text-align:center'>$rank.</td>
-		<td class='forumheader3' style='text-align:center'>".$mediaObj->ThumbAndTitleHtml(AUTOGAL_SHOWSUBTITLESGAL)."</td>
+		<td class='forumheader3' style='text-align:center'>".$mediaObj->ThumbAndTitleHtml($pref['autogal_showsubtitlesgal'])."</td>
 		<td class='forumheader3' style='text-align:center'>".$galObj->TitleLink()."</td>
-		<td class='forumheader3' style='text-align:center'>".strftime(AUTOGAL_LATESTTIMEFORMAT, $mediaObj->UpdateTime())."</td>
+		<td class='forumheader3' style='text-align:center'>".strftime($pref['autogal_timefmtlatest'], $mediaObj->UpdateTime())."</td>
 	</tr>";
 	
 	$rank ++;
@@ -73,7 +73,7 @@ $botLinks = AutoGal_GetBotLinks('', true, false);
 
 $text = "<br />$text<br /><div style='text-align:center'>$prevButton $nextButton".(count($botLinks) > 0 ? "<br />".implode(' ', $botLinks) : '')."</div>";
 
-if (AUTOGAL_SHOWAUTOGALVER)
+if ($pref['autogal_showautogalver'])
 {
 	$agVer = AutoGal_GetVersion();
 	$autoGalVer = 
@@ -87,11 +87,11 @@ else
 	$autoGalVer = '';
 }
 
-$ns->tablerender(AUTOGAL_TITLE.' - '.AUTOGAL_LANG_STAT_L12, $text);
+$ns->tablerender($pref['autogal_title'].' - '.AUTOGAL_LANG_STAT_L12, $text);
 $AGTime = abs(microtime(true) - $startAG);
 print "<div class='smalltext' style='text-align:center'>".str_replace("[TIME]", substr($AGTime, 0, 5), AUTOGAL_LANG_L5)."</div>";
 print $autoGalVer;
 
-if (AUTOGAL_SHOW_FOOTER){require_once(FOOTERF);}
+if ($pref['autogal_showfooter']){require_once(FOOTERF);}
 
 ?>

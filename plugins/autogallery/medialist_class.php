@@ -56,7 +56,7 @@ class AutoGal_CMediaList
 		$this->m_gallery = $gallery;
 		$this->m_sortOrder = (isset($opts['sortorder']) ?  $opts['sortorder'] : 'name');
 		$this->m_recurse = (isset($opts['recurse']) ?  $opts['recurse'] : 0);
-		$this->m_isCaching = (isset($opts['usecache']) ?  $opts['usecache'] : AUTOGAL_ENABLEDBCACHE);
+		$this->m_isCaching = (isset($opts['usecache']) ?  $opts['usecache'] : $pref['autogal_enabledbcache']);
 		
 		$this->m_printDebugMsgs = 0;
 		$this->m_printMemoryMsgs = 0;

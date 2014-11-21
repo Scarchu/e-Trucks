@@ -20,7 +20,7 @@ if (!AutoGal_IsUploadAllowed())
 {
 	$botLinks = AutoGal_GetBotLinks(false);
 	require_once(e_HANDLER."userclass_class.php");
-	$className = AutoGal_UserClassName(AUTOGAL_REVUPLOADUC);
+	$className = AutoGal_UserClassName($pref['autogal_revuploaduc']);
 	
 	$text = "
 	<div style='text-align:center'>
@@ -31,8 +31,8 @@ if (!AutoGal_IsUploadAllowed())
 	".(count($botLinks) > 0 ? "<br />".implode(' ', $botLinks) : '')."
 	</div>";
 	
-	$ns -> tablerender(AUTOGAL_TITLE . " - ".AUTOGAL_LANG_UPLOAD_L20, $text);
-	if (AUTOGAL_SHOW_FOOTER){require_once(FOOTERF);}
+	$ns -> tablerender($pref['autogal_title'] . " - ".AUTOGAL_LANG_UPLOAD_L20, $text);
+	if ($pref['autogal_showfooter']){require_once(FOOTERF);}
 	exit;
 }
 
@@ -42,8 +42,8 @@ $galleryObj = new AutoGal_CMediaObj($selGallery);
 if (!$galleryObj->IsValid())
 {
 	$text = "Invalid gallery selected: $selGallery!<br />(".$galleryObj->LastError().")";
-	$ns -> tablerender(AUTOGAL_TITLE . " - ".AUTOGAL_LANG_UPLOAD_L20, $text);
-	if (AUTOGAL_SHOW_FOOTER){require_once(FOOTERF);}
+	$ns -> tablerender($pref['autogal_title'] . " - ".AUTOGAL_LANG_UPLOAD_L20, $text);
+	if ($pref['autogal_showfooter']){require_once(FOOTERF);}
 	exit;
 }
 
@@ -60,7 +60,7 @@ function AutoGal_UploadFilesForm ($galleryObj)
 	$botLinks = AutoGal_GetBotLinks(false);
 	
 	# BUILD THE LIST OF GALLERIES USER CAN UPLOAD TO
-	$galSelect = AutoGal_GallerySelect($galleryObj->Element(), NULL, (AUTOGAL_CHECKUPLOADVCLASS ? 'view' : NULL));
+	$galSelect = AutoGal_GallerySelect($galleryObj->Element(), NULL, ($pref['autogal_checkuploadvclass'] ? 'view' : NULL));
 	$galSelect = "<select name='gallery' class='tbox'>$galSelect</select>";
 	
 	$text = AutoGal_UploadJavascript();
@@ -71,10 +71,10 @@ function AutoGal_UploadFilesForm ($galleryObj)
 		<b>".AUTOGAL_LANG_UPLOAD_L35."</b><br />
 		$galSelect<br />
 		<br />
-		".AUTOGAL_LANG_UPLOAD_L8.(str_replace('|', ', ', AUTOGAL_UPLOADEXTS)).".<br />
-		".str_replace("[SIZE]", AutoGal_FormatBytes(AUTOGAL_UPLOADMAXSIZE), AUTOGAL_LANG_UPLOAD_L42)."<br />
+		".AUTOGAL_LANG_UPLOAD_L8.(str_replace('|', ', ', $pref['autogal_uploadexts'])).".<br />
+		".str_replace("[SIZE]", AutoGal_FormatBytes($pref['autogal_uploadmaxsize']), AUTOGAL_LANG_UPLOAD_L42)."<br />
 		<br />
-		<input type='hidden' name='MAX_FILE_SIZE' value='".AUTOGAL_UPLOADMAXSIZE."'>
+		<input type='hidden' name='MAX_FILE_SIZE' value='".$pref['autogal_uploadmaxsize']."'>
 		<table class='border' width='97%'>
 		<tr>
 			<td class='forumheader'>".AUTOGAL_LANG_UPLOAD_L15."</td>
@@ -82,7 +82,7 @@ function AutoGal_UploadFilesForm ($galleryObj)
 			<td class='forumheader'>".AUTOGAL_LANG_UPLOAD_L17."</td>    
 		</tr>";
 		
-		for ($fileNum = 0; $fileNum < AUTOGAL_UPLOADNUMBER; $fileNum ++)
+		for ($fileNum = 0; $fileNum < $pref['autogal_uploadnumber']; $fileNum ++)
 		{
 			$text .= "
 			<tr>
@@ -124,8 +124,8 @@ function AutoGal_UploadFilesForm ($galleryObj)
 		".(count($botLinks) > 0 ? "<br />".implode(' ', $botLinks) : '')."
 		</div>";
 	
-	$ns -> tablerender(AUTOGAL_TITLE . " - ".AUTOGAL_LANG_UPLOAD_L20, $text);
-	if (AUTOGAL_SHOW_FOOTER){require_once(FOOTERF);}
+	$ns -> tablerender($pref['autogal_title'] . " - ".AUTOGAL_LANG_UPLOAD_L20, $text);
+	if ($pref['autogal_showfooter']){require_once(FOOTERF);}
 }
 
 function AutoGal_ProcessUploadedFiles($galleryObj)
@@ -143,13 +143,13 @@ function AutoGal_ProcessUploadedFiles($galleryObj)
 	else
 	{
 		$text = AUTOGAL_LANG_UPLOAD_L1;
-		$ns->tablerender(AUTOGAL_TITLE . " - ".AUTOGAL_LANG_UPLOAD_L20, $text);
-		if (AUTOGAL_SHOW_FOOTER){require_once(FOOTERF);}
+		$ns->tablerender($pref['autogal_title'] . " - ".AUTOGAL_LANG_UPLOAD_L20, $text);
+		if ($pref['autogal_showfooter']){require_once(FOOTERF);}
 		exit;
 	}
 		
 	$msgs = '';
-    for ($fileNum = 0; $fileNum < AUTOGAL_UPLOADNUMBER; $fileNum ++)
+    for ($fileNum = 0; $fileNum < $pref['autogal_uploadnumber']; $fileNum ++)
     {
         $uploadFile = $_FILES["ag_file_$fileNum"]['name'];
 		$uploadThumb = $_FILES["ag_thumb_$fileNum"]['name'];
@@ -172,9 +172,9 @@ function AutoGal_ProcessUploadedFiles($galleryObj)
 		
 		$uploadTitle = preg_replace("/^".AUTOGAL_THUMBPREFIX."/", "fun thumb rum", $uploadTitle);
 
-        if (!preg_match("/^(".AUTOGAL_UPLOADEXTS.")$/i", $imgPathInfo['extension']))
+        if (!preg_match("/^(".$pref['autogal_uploadexts'].")$/i", $imgPathInfo['extension']))
         {
-			$msgs .= "<li><b>$uploadFile</b> - <font color='red'><b>".AUTOGAL_LANG_UPLOAD_L25."</b></font> ".AUTOGAL_LANG_UPLOAD_L8.(str_replace('|', ', ', AUTOGAL_UPLOADEXTS))."</li>";
+			$msgs .= "<li><b>$uploadFile</b> - <font color='red'><b>".AUTOGAL_LANG_UPLOAD_L25."</b></font> ".AUTOGAL_LANG_UPLOAD_L8.(str_replace('|', ', ', $pref['autogal_uploadexts']))."</li>";
 			continue;
 		}
 		
@@ -232,7 +232,7 @@ function AutoGal_ProcessUploadedFiles($galleryObj)
 		# CHECK UPLOAD FOLDER #
 		#######################
 		$uploadDirPermWarn = '<br />';
-		if ((!AUTOGAL_CHMODWARNOFF)&&(AutoGal_IsMainAdmin()))
+		if ((!$pref['autogal_chmodwarnoff'])&&(AutoGal_IsMainAdmin()))
 		{
 			if ($uploadDirPermWarn = IsBadUploadDirPerms()) $ns -> tablerender(AUTOGAL_LANG_UPLOAD_L40, $uploadPerms); 
 		}
@@ -278,12 +278,12 @@ function AutoGal_ProcessUploadedFiles($galleryObj)
 					$msgs .= "<li><b>$thumbFile</b> - " . AUTOGAL_LANG_UPLOAD_L4."</li>";
 					if ($uploadType == 'direct') AutoGal_AdminLog(AUTOGAL_LANG_LOG_L2, $mediaObj->Element(), $thumbPath);
 					
-					if (AUTOGAL_AUTOTHUMB)
+					if ($pref['autogal_autothumb'])
 					{
 						$thumbImgStats = getimagesize();
-						if (($thumbImgStats[0] != AUTOGAL_THUMBWIDTH)||($thumbImgStats[0] != AUTOGAL_THUMBHEIGHT))
+						if (($thumbImgStats[0] != $pref['autogal_thumbwidth'])||($thumbImgStats[0] != $pref['autogal_thumbheight']))
 						{
-							$error = AutoGal_ResizeImage($thumbPath, $thumbPath, AUTOGAL_THUMBWIDTH, AUTOGAL_THUMBHEIGHT);
+							$error = AutoGal_ResizeImage($thumbPath, $thumbPath, $pref['autogal_thumbwidth'], $pref['autogal_thumbheight']);
 							
 							if ($error)
 							{
@@ -291,7 +291,7 @@ function AutoGal_ProcessUploadedFiles($galleryObj)
 							}
 							else
 							{
-								$msgs .= "<li><b>$uploadTitle</b> - " . str_replace("[WIDTH]", AUTOGAL_THUMBWIDTH, str_replace("[HEIGHT]", AUTOGAL_THUMBHEIGHT, AUTOGAL_LANG_UPLOAD_L37))."</li>\n";
+								$msgs .= "<li><b>$uploadTitle</b> - " . str_replace("[WIDTH]", $pref['autogal_thumbwidth'], str_replace("[HEIGHT]", $pref['autogal_thumbheight'], AUTOGAL_LANG_UPLOAD_L37))."</li>\n";
 							}
 						}
 					}
@@ -308,7 +308,7 @@ function AutoGal_ProcessUploadedFiles($galleryObj)
 		}
     }
     
-    if ($msgs) $ns -> tablerender(AUTOGAL_TITLE, "<div style='text-align: left'>$uploadDirPermWarn<ul>$msgs</ul></div><br /><div style='text-align: center'><b>".AUTOGAL_LANG_UPLOAD_L29."</b></div>");    
+    if ($msgs) $ns -> tablerender($pref['autogal_title'], "<div style='text-align: left'>$uploadDirPermWarn<ul>$msgs</ul></div><br /><div style='text-align: center'><b>".AUTOGAL_LANG_UPLOAD_L29."</b></div>");    
 	if ($uploadType == 'direct') AutoGal_ClearCacheMenu($galleryObj->Element(), 0);
 }
 
@@ -334,13 +334,13 @@ function AutoGal_UploadJavascript()
 		
 		fileExtI = filePath.lastIndexOf('.');
 		fileExt = filePath.substr(fileExtI + 1);
-		allowedExtRegex = /^(".AUTOGAL_UPLOADEXTS.")/i;
+		allowedExtRegex = /^(".$pref['autogal_uploadexts'].")/i;
 		
 		needThumbExtRegex = /^(".AUTOGAL_EXTCLASS_MOVIE.'|'.AUTOGAL_EXTCLASS_AUDIO.'|'.AUTOGAL_EXTCLASS_ANIMATION.")/i;
 			
 		if (!fileExt.match(allowedExtRegex))
 		{
-			alert('".AUTOGAL_LANG_UPLOAD_L8.(str_replace('|', ', ', AUTOGAL_UPLOADEXTS))."');
+			alert('".AUTOGAL_LANG_UPLOAD_L8.(str_replace('|', ', ', $pref['autogal_uploadexts']))."');
 			fileObj.value = '';
 			return;
 		}

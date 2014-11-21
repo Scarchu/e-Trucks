@@ -18,19 +18,19 @@ require_once(dirname(__FILE__)."/language.php");
 require_once(AUTOGAL_LTSTCOMSHANDLER);
 require_once(AUTOGAL_MEDIAOBJCLASS);
 
-if (!AUTOGAL_DOLATESTCOMMS) {header("location:".AUTOGAL_AUTOGALLERY); exit;}
-define("e_PAGETITLE", AUTOGAL_TITLE. " / " . AUTOGAL_LANG_STAT_L13);
+if (!$pref['autogal_latestcomms']) {header("location:".AUTOGAL_AUTOGALLERY); exit;}
+define("e_PAGETITLE", $pref['autogal_title']. " / " . AUTOGAL_LANG_STAT_L13);
 require_once(HEADERF);
 
 $botLinks = AutoGal_GetBotLinks('', true, true, true, true, false);
 
-$lComms = new AutoGal_LatestComms(AUTOGAL_MAXLATESTCOMMS);
+$lComms = new AutoGal_LatestComms($pref['autogal_maxlatestcomms']);
 if (!$lComms->LoadFile(AUTOGAL_LATESTCOMMSXML))
 {
 	$text = $lComms->GetLastError();
 	$text = "<br />$text<div style='text-align:center'>".(count($botLinks) > 0 ? "<br />".implode(' ', $botLinks) : '')."</div>";
-	$ns->tablerender(AUTOGAL_TITLE.' - '.AUTOGAL_LANG_STAT_L13, $text);
-	if (AUTOGAL_SHOW_FOOTER){require_once(FOOTERF);}
+	$ns->tablerender($pref['autogal_title'].' - '.AUTOGAL_LANG_STAT_L13, $text);
+	if ($pref['autogal_showfooter']){require_once(FOOTERF);}
 	exit;
 }
 
@@ -56,10 +56,10 @@ else
 		$mediaObj = new AutoGal_CMediaObj($element);
 	
 		$author = ($comment['authorid'] > 0 ? "<a href=\"".e_BASE."user.php?id.".$comment['authorid']."\">".$comment['authorusername']."</a>" : $comment['authorusername']);
-		$date = strftime(AUTOGAL_LATCOMMTIMEFORMAT, $comment['date']);
+		$date = strftime($pref['autogal_timefmtlatcomm'], $comment['date']);
 		$commentText = $comment['text'];
 		
-		if (AUTOGAL_COMMENTBBCODE)
+		if ($pref['autogal_metacommentsbb'])
 		{
 			$commentText = AutoGal_DoBBCode($commentText);
 		}
@@ -75,12 +75,12 @@ else
 		$textNoTags = strip_tags($textNoTags);
 		$textNoTags = str_replace("\n", "", $textNoTags);
 		
-		if ((AUTOGAL_LCMAXTEXTLENGTH)&&(strlen($textNoTags) > AUTOGAL_LCMAXTEXTLENGTH))
+		if (($pref['autogal_lcmaxtextlength'])&&(strlen($textNoTags) > $pref['autogal_lcmaxtextlength']))
 		{
 			$commentText = $textNoTags;
-			$commentText = substr($commentText, 0, AUTOGAL_LCMAXTEXTLENGTH).'...';
+			$commentText = substr($commentText, 0, $pref['autogal_lcmaxtextlength']).'...';
 		}
-		elseif (AUTOGAL_LCSTRIPBBCODE)
+		elseif ($pref['autogal_lcstripbbcode'])
 		{
 			$commentText = $textNoTags;
 		}
@@ -102,7 +102,7 @@ else
 
 $text = "<br />$text<div style='text-align:center'>$prevButton $nextButton".(count($botLinks) > 0 ? "<br />".implode(' ', $botLinks) : '')."</div>";
 
-if (AUTOGAL_SHOWAUTOGALVER)
+if ($pref['autogal_showautogalver'])
 {
 	$agVer = AutoGal_GetVersion();
 	$autoGalVer = 
@@ -116,11 +116,11 @@ else
 	$autoGalVer = '';
 }
 
-$ns->tablerender(AUTOGAL_TITLE.' - '.AUTOGAL_LANG_STAT_L13, $text);
+$ns->tablerender($pref['autogal_title'].' - '.AUTOGAL_LANG_STAT_L13, $text);
 $AGTime = abs(microtime(true) - $startAG);
 print "<div class='smalltext' style='text-align:center'>".str_replace("[TIME]", substr($AGTime, 0, 5), AUTOGAL_LANG_L5)."</div>";
 print $autoGalVer;
 
-if (AUTOGAL_SHOW_FOOTER){require_once(FOOTERF);}
+if ($pref['autogal_showfooter']){require_once(FOOTERF);}
 
 ?>
