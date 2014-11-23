@@ -450,14 +450,19 @@ $ns = new eTRtable;
 function tablestyle($caption, $text)
 {
 	echo "<div style='width:100%;vertical-align:top'>
-	<table style='width:100%' cellpadding='0' cellspacing='0'>
-	<tr >
-	<td>
-	<div class=\"caption2\" style='color:black;padding:3px'>
-	$caption
-	</div>
-	<div class=\"forumheader3\" style='padding:6px'>{$text}</div>
-	</td></tr></table></div>";
+		<table style='width:100%' cellpadding='0' cellspacing='0'>
+			<tr >
+				<td>
+					<div style='color:black;padding:1px'>
+						<h1>{$caption}</h1>
+					</div>
+					<div class=\"forumheader3\" style='padding:6px'>
+						{$text}
+					</div>
+				</td>
+			</tr>
+		</table>
+	</div>";
 }
 
 function filter($data)

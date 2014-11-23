@@ -55,7 +55,7 @@ AutoGal_UploadFilesForm($galleryObj);
 ////////////////////////////////////////////////////////
 function AutoGal_UploadFilesForm ($galleryObj)
 {
-	global $ns;
+	global $ns, $pref;
 	
 	$botLinks = AutoGal_GetBotLinks(false);
 	
@@ -130,7 +130,7 @@ function AutoGal_UploadFilesForm ($galleryObj)
 
 function AutoGal_ProcessUploadedFiles($galleryObj)
 {
-	global $ns;
+	global $ns, $pref;
 	
 	if ($galleryObj->CheckUserPriv('directupload'))
 	{
@@ -314,6 +314,7 @@ function AutoGal_ProcessUploadedFiles($galleryObj)
 
 function AutoGal_UploadJavascript()
 {
+	global $pref;
 	return "
 	<script type='text/javascript'>
 	function ag_checkFileType(fileNum)

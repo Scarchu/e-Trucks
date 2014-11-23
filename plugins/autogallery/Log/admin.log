@@ -32,3 +32,27 @@ Nov 16 2014, 08:36PM> bobby [CreateGallery] "user/bobby":
 Nov 16 2014, 08:40PM> bobby [DirectUpload] "user/bobby/3416785.flv": 
 Nov 16 2014, 08:57PM> test [MoveObject] "Root": Потребителски галерии
 Nov 21 2014, 11:48AM> bobby [DirectUpload] "_angel33.jpg": 
+Nov 22 2014, 10:24AM> bobby [DirectUpload] "normal_629_1000.jpg": 
+Nov 22 2014, 10:40AM> bobby [DeleteFile] "_angel33.jpg": 
+Nov 22 2014, 10:43AM> bobby [DirectUpload] "lajno/PA091380~0.JPG": 
+Nov 22 2014, 10:51AM> bobby [DirectUpload] "lajno/tumblr_m8uqgyH5Z81rdk7h5o1_1280.jpg": 
+Nov 22 2014, 10:51AM> bobby [DirectUpload] "lajno/tumblr_m8uqgyH5Z81rdk7h5o1_1280.jpg": 
+Nov 22 2014, 10:59AM> bobby [DirectUpload] "lajno/tumblr_m8uqgyH5Z81rdk7h5o1_1280.jpg": 
+Nov 22 2014, 11:00AM> bobby [DirectUpload] "lajno/510_1000~0.jpg": 
+Nov 22 2014, 11:00AM> bobby [DirectUpload] "lajno/3416785.flv": 
+Nov 22 2014, 11:00AM> bobby [DirectUpload] "lajno/tumblr_n9xvcb1lZL1rh7t0co1_500.jpg": 
+Nov 22 2014, 11:01AM> bobby [SetThumbnail] "lajno": From source file "lajno/510_1000~0.jpg"
+Nov 23 2014, 02:13PM> bobby [DeleteGallery] "lajno": 
+Nov 23 2014, 02:18PM> bobby [CreateGallery] "test1": 
+Nov 23 2014, 02:18PM> bobby [CreateGallery] "test2": 
+Nov 23 2014, 02:18PM> bobby [CreateGallery] "test3": 
+Nov 23 2014, 02:18PM> bobby [CreateGallery] "test4": 
+Nov 23 2014, 02:18PM> bobby [CreateGallery] "test5": 
+Nov 23 2014, 02:27PM> bobby [DirectUpload] "test1/tumblr_mwa73fWrls1snax6ro1_1280.jpg": 
+Nov 23 2014, 02:29PM> bobby [SetThumbnail] "test1": From source file "test1/tumblr_mwa73fWrls1snax6ro1_1280.jpg"
+Nov 23 2014, 02:32PM> bobby [UploadThumbnail] "test1": thumb_tumblr_n30812sSKr1toxp0do1_1280.jpg
+Nov 23 2014, 02:41PM> bobby [CreateGallery] "user": 
+Nov 23 2014, 02:42PM> bobby [CreateGallery] "user/bobby": 
+Nov 23 2014, 02:43PM> bobby [DirectUpload] "user/bobby/tumblr_mroz9h8sjS1sdntmgo1_1280.jpg": 
+Nov 23 2014, 04:24PM> bobby [DirectUpload] "test4/normal_tumblr_mwj6osul5L1rqenbko1_1280.png": 
+Nov 23 2014, 04:25PM> bobby [SetThumbnail] "test4": From source file "test4/normal_tumblr_mwj6osul5L1rqenbko1_1280.png"

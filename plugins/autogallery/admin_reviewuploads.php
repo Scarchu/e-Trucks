@@ -15,18 +15,18 @@ require_once(dirname(__FILE__)."/def.php");
 require_once(dirname(__FILE__)."/admin_functions.php");
 require_once(dirname(__FILE__)."/language.php");
 require_once(AUTOGAL_MEDIAOBJCLASS);
-require_once(e_HANDLER."userclass_class.php");
+/*require_once(e_HANDLER."userclass_class.php");
 
 if (AutoGal_IsMainAdmin())
 {
 	require_once(e_ADMIN."auth.php");
 	if(!getperms("P")){ header("location:".e_BASE."index.php"); }
 }
-else
-{
+else*/
+//{
 	define("e_PAGETITLE", $pref['autogal_title'].AUTOGAL_LANG_ADMIN_REVIEW_L1);
 	require_once(HEADERF);
-}
+//}
 
 
 if (!AutoGal_IsReviewAllowed())
@@ -178,7 +178,8 @@ $ns -> tablerender(AUTOGAL_LANG_ADMIN_REVIEW_L29, $text);
 
 if (AutoGal_IsMainAdmin())
 {
-	require_once(e_ADMIN."footer.php");
+	//require_once(e_ADMIN."footer.php");
+	require_once(FOOTERF);
 }
 else
 {

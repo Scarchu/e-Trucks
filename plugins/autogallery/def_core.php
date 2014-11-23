@@ -561,8 +561,9 @@ function AutoGal_IsEleInGallery($ele, $isAbsPath=0)
 	return 0;
 }
 
-function AutoGal_GetAbsGalPath($element, $useRealPath=0)
+function AutoGal_GetAbsGalPath($element, $useRealPath=0)	//ziwlichane pytia na osnownata galeria!!!
 {
+	global $pref;
 	$absPath = dirname(__FILE__)."/".$pref['autogal_gallerydir']."/$element";
 	
 	if ($useRealPath) $absPath = realpath($absPath);

@@ -113,6 +113,7 @@ else
 
 function AutoGal_AddLog($logID, $message, $writeToError=false)
 {
+	global $pref;
 	static $logIDNum;
 	
 	if (AUTOGAL_RESIZEDEBUG)

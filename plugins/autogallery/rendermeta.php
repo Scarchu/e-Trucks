@@ -2,6 +2,7 @@
 
 function AutoGal_MetaDeleteComments(&$mediaObj, $IDs)
 {
+	global $pref;
 	if (!$pref['autogal_metacomments']) return;
 	if (!$mediaObj->CheckUserPriv('commentadmin')) return;
 
@@ -24,6 +25,7 @@ function AutoGal_MetaDeleteComments(&$mediaObj, $IDs)
 
 function AutoGal_RenderComments(&$mediaObj)
 {
+	global $pref;
 	if (!$pref['autogal_metacomments']) return;
 	
 	global $ns;
@@ -161,6 +163,7 @@ function AutoGal_RenderDescription(&$mediaObj)
 
 function AutoGal_RenderRating(&$mediaObj)
 {
+	global $pref;
 	if (!$pref['autogal_metaratings']) return;
 	if (!$mediaObj->IsFile()) return;
 	
@@ -183,6 +186,7 @@ function AutoGal_RenderRating(&$mediaObj)
 
 function AutoGal_RatingHTML(&$mediaObj, $skipNew=0)
 {
+	global $pref;
 	if (!$pref['autogal_metaratings']) return;
 	if (!$mediaObj->IsFile()) return;
 		
@@ -279,6 +283,7 @@ function AutoGal_RatingHTML(&$mediaObj, $skipNew=0)
 
 function AutoGal_RenderTopScores(&$mediaObj)
 {
+	global $pref;
 	if (!$pref['autogal_arctopscores']) return;
 	if ($mediaObj->FileType() != 'flash') return;
 		

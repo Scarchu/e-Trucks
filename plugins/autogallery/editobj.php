@@ -314,6 +314,7 @@ function AutoGal_EditMove($mediaObj, $toGalleryObj)
 
 function AutoGal_EditSetGalleryThumbnail(&$gallObj, $thumbObj)
 {
+	global $pref;
 	if ($gallObj->IsRoot()) 
 	{
 		$msgs[] = "*** ".AUTOGAL_LANG_ADMIN_FUNCTIONS_L124;

@@ -53,6 +53,7 @@ class AutoGal_CMediaList
 	#####################################################################
 	function AutoGal_CMediaList($gallery, $opts=array())
 	{
+		global $pref;
 		$this->m_gallery = $gallery;
 		$this->m_sortOrder = (isset($opts['sortorder']) ?  $opts['sortorder'] : 'name');
 		$this->m_recurse = (isset($opts['recurse']) ?  $opts['recurse'] : 0);

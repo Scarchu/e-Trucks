@@ -59,10 +59,10 @@ else
 	$text .=
 	"\n".
 	"<br />\n".
-	"<table class='border' style='width:97%' align='center'>\n".
-	"<tr>\n".
-	"<td class='".$pref['autogal_navclass']."' style='text-align:left'>".$g_mediaObj->NavLinks()."</td>\n".
-	"</tr>\n".
+	"<table class='box' style='width:99%' align='center'>\n".
+		"<tr>\n".
+			"<td class='".$pref['autogal_navclass']."' style='text-align:left'>".$g_mediaObj->NavLinks()."</td>\n".
+		"</tr>\n".
 	"</table>\n".
 	"<br />\n";
 }
@@ -118,7 +118,7 @@ AutoGal_RenderComments($g_mediaObj);
 if ($pref['autogal_metaviewhits']) $g_mediaObj->ViewHitsInc();
 
 // PRINT VERSION/FOOTER
-$g_agRenderTime += microtime(true) - $g_agStartRender;
+/*$g_agRenderTime += microtime(true) - $g_agStartRender;
 $g_agRenderTime = number_format(abs($g_agRenderTime), 4);
 
 print "
@@ -136,7 +136,7 @@ if ($pref['autogal_showautogalver'])
 	"<a target='_blank' href='".AUTOGAL_DOWNLOADURL."'>Auto Gallery</a> v$agVer".
 	"</div>";
 }
-
+*/
 $g_mediaObj->SaveMeta();
 	
 print "\n<!-- AUTOGALLERY END -->\n\n";
@@ -154,6 +154,7 @@ elseif ($pref['autogal_showfooter'])
 // SHOWS A SINGLE IMAGE
 function AutoGal_ShowFile(&$mediaObj, $showFullImage)
 {
+	global $pref;
 	$element = $mediaObj->Element();
 	$gallery = $mediaObj->Gallery();
     $title = $mediaObj->Title();
@@ -163,15 +164,16 @@ function AutoGal_ShowFile(&$mediaObj, $showFullImage)
 	$botLinks = (count($botLinks) > 0 ? "<br />".implode(' ', $botLinks) : '');
 	
 	# Check user's class
+	
     if (!$mediaObj->CheckUserPriv('view'))
     {
         return ("<div style='text-align:center'><b>".AUTOGAL_LANG_L6."</b><br />$botLinks</div>");    
     }
-	
 	$emailLink = $mediaObj->EmailLink();
 	$navButtons = $mediaObj->NavButtons($pref['autogal_slidesenable'], $pref['autogal_showinnewwindow']); 
 	
 	require_once(AUTOGAL_RENDERFILE);
+	
 	$previewHTML = AutoGal_RenderFileObj($mediaObj, $showFullImage);
 	
 	// Arcade top score update
@@ -277,6 +279,7 @@ function AutoGal_ShowFile(&$mediaObj, $showFullImage)
 
 function AutoGal_ShowGallery(&$mediaObj)
 {
+	global $pref;
 	$gallery = $mediaObj->Element();
 	
 	$botLinks = AutoGal_GetBotLinks($gallery);
@@ -348,9 +351,8 @@ function AutoGal_ShowGallery(&$mediaObj)
 
 function AutoGal_RenderGallerySubGals(&$mediaObj, &$nextEditID)
 {
-	global $g_startGallery;
-	global $g_isAdminMode;
-	
+	global $g_startGallery, $g_isAdminMode, $pref;
+		
     $galObjs = $mediaObj->ChildMediaObjs($sortOrder);
 	$totalGals = count($galObjs['galleries']);
 	if (!$totalGals) return;
@@ -425,8 +427,7 @@ function AutoGal_RenderGallerySubGals(&$mediaObj, &$nextEditID)
 
 function AutoGal_RenderGalleryFiles(&$mediaObj, &$nextEditID)
 {
-	global $g_startFile;
-	global $g_isAdminMode;
+	global $g_startFile, $g_isAdminMode, $pref;
 	
 	$showDate = 0;
 	if (($pref['autogal_showdateordname'])&&(($sortOrder == 'nameasc')||($sortOrder == 'namedsc')))
@@ -514,7 +515,7 @@ function AutoGal_RenderGalleryFiles(&$mediaObj, &$nextEditID)
 
 function AutoGal_RenderSubGalleryCell($subMediaObj, $nextEditID, $divCellBy)
 {
-	global $g_isAdminMode;
+	global $g_isAdminMode, $pref;
 	
 	if ($g_isAdminMode)
 	{
@@ -543,7 +544,7 @@ function AutoGal_RenderSubGalleryCell($subMediaObj, $nextEditID, $divCellBy)
 
 function AutoGal_RenderMediaFileCell($subMediaObj, $nextEditID, $divCellBy, $showDate)
 {
-	global $g_isAdminMode;
+	global $g_isAdminMode, $pref;
 	
 	if ($g_isAdminMode)
 	{
@@ -576,8 +577,7 @@ function AutoGal_RenderMediaFileCell($subMediaObj, $nextEditID, $divCellBy, $sho
 
 function AutoGal_RenderBottomCap($mediaObj, $total, $index, $type)
 {
-	global $g_startFile;
-	global $g_startGallery;
+	global $g_startFile, $g_startGallery, $pref;
 	
 	if ($type == 'gallery')
 	{
@@ -639,9 +639,8 @@ function AutoGal_RenderBottomCap($mediaObj, $total, $index, $type)
 
 function AutoGal_ThumbnailPageList($mediaObj, $type, $total)
 {
-	global $g_startFile;
-	global $g_startGallery;
-	
+	global $g_startFile, $g_startGallery, $pref;
+		
 	if ($type == 'gallery')
 	{
 		$maxPerPage = $pref['autogal_maxgalsperpage'];
@@ -744,6 +743,8 @@ function AutoGal_ThumbnailPageList($mediaObj, $type, $total)
 
 function AutoGal_RenderLatestFiles($startFile)
 {
+	global $pref;
+	
 	$newFiles = AutoGal_GetLatestFiles($pref['autogal_numcols'], 0);
 	if (count($newFiles) <= 0) return '';
 	
@@ -785,6 +786,8 @@ function AutoGal_RenderLatestFiles($startFile)
 
 function AutoGal_SortOrderText($mediaObj)
 {
+	global $pref;
+	
 	if (!$pref['autogal_enablegaldispord']) return;
 	
 	global $g_sortOrder;

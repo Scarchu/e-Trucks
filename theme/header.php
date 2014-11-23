@@ -49,6 +49,7 @@ if(isset($_SESSION['user_id']))		//podsigurqwane za wqrnata smqna na header-a (d
 				<a href="'.e_BASE.'index.php">Начало</a> | 
 				  
 				<a href="'.e_PLUGINS.'forum/">Форум</a> | ';
+				if($pref['gallery_enabled']) $text_h .='<a href="'.e_PLUGINS.'autogallery/">Галерия</a> | ';
 				if(USERLV >= 4) $text_h .='<a href="'.e_BASE.'advanced.php">Допълнителни</a> | ';
 				if(USERLV >= 4) $text_h .='<a href="'.e_BASE.'designations.php">Назначения</a> | ';
 				$text_h .='<a href="'.e_BASE.'logout.php">Изход</a>

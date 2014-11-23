@@ -1,7 +1,10 @@
 <?php
 
-function AutoGal_RenderFileObj($mediaObj, $showFullImage, $showLimitMsg=true, $fullImgNewWin=$pref['autogal_largeimgnewwindow'])
+//function AutoGal_RenderFileObj($mediaObj, $showFullImage, $showLimitMsg=true, $fullImgNewWin=$pref['autogal_largeimgnewwindow'])
+function AutoGal_RenderFileObj($mediaObj, $showFullImage, $showLimitMsg=true)
 {
+	
+	global $pref;
 	if (!$mediaObj->IsFile()) return '';
 	
 	switch ($mediaObj->FileType())
@@ -12,12 +15,13 @@ function AutoGal_RenderFileObj($mediaObj, $showFullImage, $showLimitMsg=true, $f
 		case 'wma':   return AutoGal_RenderFileObj_wma  ($mediaObj);
 		case 'qt':    return AutoGal_RenderFileObj_qt   ($mediaObj);
 		case 'rm':    return AutoGal_RenderFileObj_rm   ($mediaObj);
-		case 'image': return AutoGal_RenderFileObj_image($mediaObj, $showFullImage, $showLimitMsg, $fullImgNewWin);
+		case 'image': return AutoGal_RenderFileObj_image($mediaObj, $showFullImage, $showLimitMsg, $pref['autogal_largeimgnewwindow']);
 	}
 }
 
 function AutoGal_RenderFileObj_flash($mediaObj)
 {
+	global $pref;
 	$pvWidth = ($mediaObj->ViewWidth() ? $mediaObj->ViewWidth() : $pref['autogal_flashwidth']);
 	$pvHeight = ($mediaObj->ViewHeight() ? $mediaObj->ViewHeight() : $pref['autogal_flashheight']);
 	
@@ -40,6 +44,7 @@ function AutoGal_RenderFileObj_flash($mediaObj)
 
 function AutoGal_RenderFileObj_flv($mediaObj)
 {
+	global $pref;
 	$url = urlencode($mediaObj->Url()); # FF
 	$target = AUTOGAL_FLVPLAYER.'?file='.$url.'&autoStart=false';
 	
@@ -81,6 +86,7 @@ function AutoGal_RenderFileObj_flv($mediaObj)
 
 function AutoGal_RenderFileObj_qt($mediaObj)
 {
+	global $pref;
 	$pvWidth = ($mediaObj->ViewWidth() ? $mediaObj->ViewWidth() : $pref['autogal_moviewidth']);
 	$pvHeight = ($mediaObj->ViewHeight() ? $mediaObj->ViewHeight() : $pref['autogal_movieheight']);
 	
@@ -107,6 +113,7 @@ function AutoGal_RenderFileObj_qt($mediaObj)
 
 function AutoGal_RenderFileObj_wmv($mediaObj)
 {
+	global $pref;
 	$pvWidth = ($mediaObj->ViewWidth() ? $mediaObj->ViewWidth() : $pref['autogal_moviewidth']);
 	$pvHeight = ($mediaObj->ViewHeight() ? $mediaObj->ViewHeight() : $pref['autogal_movieheight']);
 
@@ -218,6 +225,7 @@ function AutoGal_RenderFileObj_wma($mediaObj)
 	
 function AutoGal_RenderFileObj_rm($mediaObj)
 {	
+	global $pref;
 	$pvWidth = ($mediaObj->ViewWidth() ? $mediaObj->ViewWidth() : $pref['autogal_moviewidth']);
 	$pvHeight = ($mediaObj->ViewHeight() ? $mediaObj->ViewHeight() : $pref['autogal_movieheight']);
 		
@@ -270,6 +278,7 @@ function AutoGal_RenderFileObj_rm($mediaObj)
 
 function AutoGal_RenderFileObj_image($mediaObj, $showFullImage, $showLimitMsg, $fullImgNewWin)
 {
+	global $pref;
 	$imgUrl = $mediaObj->Url();
 	$pvWidth = 0;
 	$pvHeight = 0;

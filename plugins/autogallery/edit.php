@@ -1567,6 +1567,7 @@ function AutoGal_PageUploadThumb($selObj, $objs)
 
 function AutoGal_PageClearCache($selObj, $objs, $incSubGals)
 {
+	global $pref;
 	if (!$pref['autogal_enabledbcache']) return AUTOGAL_LANG_ADMIN_CACHE_4;
 	
 	foreach ($objs as $mediaObj)
@@ -1595,6 +1596,7 @@ function AutoGal_PageClearCache($selObj, $objs, $incSubGals)
 
 function AutoGal_PageRegenCache($selObj, $objs, $incSubGals)
 {
+	global $pref;
 	if (!$pref['autogal_enabledbcache']) return AUTOGAL_LANG_ADMIN_CACHE_4;
 	
 	foreach ($objs as $mediaObj)

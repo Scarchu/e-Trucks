@@ -20,6 +20,7 @@ require_once(AUTOGAL_MEDIAOBJCLASS);
 
 function AutoGal_AdminLog($type, $element, $message)
 {
+	global $pref;
 	if (USER){
 		$username = USERNAME;
 	}else{
@@ -159,6 +160,8 @@ function AutoGal_GetImageDimensions($image, $isFullPath=false)
 
 function AutoGal_GetImageURL($element)
 {
+	global $pref;
+
 	$element = AutoGal_CleanPath($element);
 	
 	if ((preg_match('/['.chr(127).'-'.chr(255).']/', $element))&&(!AutoGal_IsFlashVideo($element)))
@@ -173,16 +176,19 @@ function AutoGal_GetImageURL($element)
 
 function AutoGal_IsUploadAllowed()
 {
+	global $pref;
 	return AutoGal_CheckUserClass($pref['autogal_revuploaduc']);
 }
 
 function AutoGal_IsReviewAllowed()
 {
+	global $pref;
 	return AutoGal_CheckUserClass($pref['autogal_adminreviewuc']);
 }
 
 function AutoGal_IsRatingAllowed()
 {
+	global $pref;
 	return AutoGal_CheckUserClass($pref['autogal_rateclass']);
 }
 
@@ -256,6 +262,7 @@ function AutoGal_NumUploads()
 
 function AutoGal_GetReviewLink()
 {
+	global $pref;
 	if (AutoGal_IsReviewAllowed())
 	{
 		return "[<a href=\"".AUTOGAL_REVIEWUPLOADS."\">".AUTOGAL_LANG_L21.($pref['autogal_showreviewcount'] ? " (".AutoGal_NumUploads().")" : '')."</a>]";
@@ -288,16 +295,19 @@ function AutoGal_GetUploadLink($element)
 
 function AutoGal_GetStatNewestLink()
 {
+	global $pref;
 	return ($pref['autogal_shownewest'] ? "[<a href=\"".AUTOGAL_STATNEWEST."\">".AUTOGAL_LANG_STAT_L12."</a>]" : '');
 }
 
 function AutoGal_GetSearchLink($gallery)
 {
+	global $pref;
 	return ($pref['autogal_enablesearch'] ? "[<a href=\"".AUTOGAL_SEARCH.($gallery != '' ? '?gallery='.rawurlencode($gallery) : '')."\">".AUTOGAL_LANG_SEARCH_L0."</a>]" : '');
 }
 
 function AutoGal_GetLatestCommentsLink()
 {
+	global $pref;
 	return ($pref['autogal_latestcomms'] ? "[<a href=\"".AUTOGAL_LATESTCOMMSVIEW."\">".AUTOGAL_LANG_COMMENTS_L14."</a>]" : '');
 }
 
@@ -308,6 +318,7 @@ function AutoGal_GetAdminLink()
 
 function AutoGal_GetEmailLink($image)
 {
+	global $pref;
 	return ($pref['autogal_emailtofriend'] ? "<b><a href=\"".AUTOGAL_EMAILTOFRIEND."?ele=".rawurlencode($image).($pref['autogal_showinnewwindow'] ? "&newwindow=1" : '')."\">".AUTOGAL_LANG_L20."</a></b>" : '');
 }
 
@@ -320,6 +331,7 @@ function AutoGal_GetBotLinksStr($imageGallery='', $showReview=true, $showNewest=
 
 function AutoGal_GetBotLinks($imageGallery='', $showReview=true, $showNewest=true, $showMain=true, $showSearch=true, $showLatestComms=true)
 {
+	global $pref;
 	$botLinks = array();
 
 	if ($showMain)
@@ -455,6 +467,7 @@ function AutoGal_CheckResizeMethod(&$text)
 
 function AutoGal_GetLatestFiles($maxFiles=10, $start=0, &$totalFiles)
 {
+	global $pref;
 	$DEBUG = 0;
 	$vClasses = array();
 	
@@ -559,6 +572,7 @@ function AutoGal_GetLatestFiles($maxFiles=10, $start=0, &$totalFiles)
 
 function IsBadUploadDirPerms()
 {
+	global $pref;
 	if ($pref['autogal_chmodwarnoff']) return;
 	
 	if (!file_exists(AUTOGAL_UPLOADDIRABS))
@@ -579,6 +593,7 @@ function IsBadUploadDirPerms()
 
 function IsBadGalleryDirPerms($gallery='')
 {
+	global $pref;
 	if ($pref['autogal_chmodwarnoff']) return;
 	
 	$absPath = AutoGal_GetAbsGalPath($gallery);
@@ -601,6 +616,7 @@ function IsBadGalleryDirPerms($gallery='')
 
 function IsBadLogDirPerms()
 {
+	global $pref;
 	if ($pref['autogal_chmodwarnoff']) return;
 	
 	if (!file_exists(realpath(AUTOGAL_LOGDIR)))
@@ -688,6 +704,7 @@ function AutoGal_DoBBCode($text)
 
 function AutoGal_GetEleFromUrl($url, &$error)
 {
+	global $pref;
 	$server = $_SERVER['SERVER_NAME'];
 	$uri = $_SERVER['REQUEST_URI'];
 	
@@ -805,6 +822,7 @@ function AutoGal_ResizeImage($imgPath, $destPath, $width, $height, $keepAspect=n
 
 function AutoGal_UploadFile($name, $path)
 {
+	global $pref;
 	if (move_uploaded_file($_FILES[$name]['tmp_name'], $path))
 	{
 		if (!file_exists($path))
@@ -831,7 +849,8 @@ function AutoGal_UploadFile($name, $path)
 }
 
 function AutoGal_ClearCacheMenu($gallery, $incSubGals, $inIFrame=false)
-{
+{	
+	global $pref;
 	if (!$pref['autogal_enabledbcache']) return;
 	global $ns;
 	
@@ -871,6 +890,7 @@ function AutoGal_ClearCacheMenu($gallery, $incSubGals, $inIFrame=false)
 
 function AutoGal_ClearCache($gallery, $incSubGals=false, $printMsgs=false)
 {
+	global $pref;
 	if (!$pref['autogal_enabledbcache']) return array(AUTOGAL_LANG_ADMIN_CACHE_4);
 	
 	if (is_array($gallery))
@@ -982,6 +1002,7 @@ function AutoGal_AdminModeLink($mediaObj)
 
 function AutoGal_AddScoreGetUser($points)
 {
+	global $pref;
 	if (!$pref['autogal_arctopscores']) return;
 	
 	if ($pref['autogal_arcadeusexmltrack'])
@@ -1110,6 +1131,7 @@ function AutoGal_AddScore($element, $userID, $username, $points, &$error)
 
 function AutoGal_SearchMediaObjs($gallery, $searchStr, $targets, $extensions)
 {
+	global $pref;
 	$matches = array();
 	$searchGals = in_array('', $extensions);
 	$searchRegex = preg_quote($searchStr, '/');
@@ -1270,6 +1292,7 @@ function AutoGal_SearchMediaObjs($gallery, $searchStr, $targets, $extensions)
 
 function AutoGal_LoadUserClassCache()
 {
+	global $pref;
 	if (!$pref['autogal_enabledbcache']) return;
 	if (!AUTOGAL_USERCLASSCACHE) return;
 	

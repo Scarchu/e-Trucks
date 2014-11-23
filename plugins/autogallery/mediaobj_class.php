@@ -189,6 +189,7 @@ class AutoGal_CMediaObj
 	
 	function IsGallery()
 	{
+		global $pref;
 		if (isset($this->m_info['isgallery'])) return $this->m_info['isgallery'];
 		
 		if ($pref['autogal_usequickgaldetect'])
@@ -262,6 +263,7 @@ class AutoGal_CMediaObj
 		
 	function Title($part)
 	{
+		global $pref;
 		if ($this->IsRoot())  
 		{
 			$title = $pref['autogal_rootname'];
@@ -417,6 +419,7 @@ class AutoGal_CMediaObj
 	
 	function ThumbImageNoneUrl()
 	{
+		global $pref;
 		if ($this->IsGallery())
 		{
 			return ($pref['autogal_defthumbgallery'] ? AUTOGAL_UNAVAILTHUMB_GALLERY : '');
@@ -441,6 +444,7 @@ class AutoGal_CMediaObj
 	
 	function ThumbImageFromCache($thumbBasename)
 	{
+		global $pref;
 		if (!$pref['autogal_usethumbnailcache']) return;
 		
 		if ($thumbBasename == '*') $thumbBasename = '';
@@ -450,6 +454,7 @@ class AutoGal_CMediaObj
 	
 	function ThumbImageInfo()
 	{
+		global $pref;
 		if (isset($this->m_info['thumbimage'])) return $this->m_info['thumbimage'];
 		
 		$thumb['ok'] = false;
@@ -726,6 +731,7 @@ class AutoGal_CMediaObj
 	
 	function Url()
 	{
+		global $pref;
 		if ($this->IsRoot())
 		{
 			return $pref['autogal_gallerydir'];
@@ -759,6 +765,7 @@ class AutoGal_CMediaObj
 	
 	function AHref()
 	{
+		global $pref;
 		if ($pref['autogal_showinnewwindow'])
 		{
 			$windowLink = $this->Link().($this->IsRoot() ? '' : '&')."newwindow=1";
@@ -779,7 +786,7 @@ class AutoGal_CMediaObj
 		
 	function BackLink($vars)
 	{
-		global $g_startFile;
+		global $g_startFile, $pref;
 		global $g_startGallery;
 		global $g_sortOrder;
 		global $g_isNewWindow;
@@ -814,6 +821,7 @@ class AutoGal_CMediaObj
 	
 	function UpdateTime()
 	{
+		global $pref;
 		if ($pref['autogal_sortdatectime'])
 		{
 			return $this->CTime();
@@ -989,6 +997,7 @@ class AutoGal_CMediaObj
 	
 	function NavLinks()
 	{
+		global $pref;
 		$galleries = explode ('/', $this->Element());
 		
 		$rootGal = new AutoGal_CMediaObj('');
@@ -1014,6 +1023,7 @@ class AutoGal_CMediaObj
 	
 	function EmailLink()
 	{
+		global $pref;
 		if ($pref['autogal_emailtofriend'])
 		{
 			return "<b><a href=\"".AUTOGAL_EMAILTOFRIEND."?ele=".rawurlencode($this->Element()).($pref['autogal_showinnewwindow'] ? "&newwindow=1" : '')."\">".AUTOGAL_LANG_L20."</a></b>";
@@ -1154,7 +1164,7 @@ class AutoGal_CMediaObj
 	
 	function GalleryMediaObjs($sortOrder)
 	{
-		global $g_sortOrder;
+		global $g_sortOrder, $pref;
 		
 		if (isset($this->m_info['galleryobjs'])) return $this->m_info['galleryobjs'];
 		
@@ -1169,7 +1179,7 @@ class AutoGal_CMediaObj
 	
 	function ChildMediaObjs($sortOrder)
 	{
-		global $g_sortOrder;
+		global $g_sortOrder, $pref;
 		
 		if (isset($this->m_info['childobjs'])) return $this->m_info['childobjs'];
 		if (!$this->IsGallery()) return;
@@ -1187,6 +1197,7 @@ class AutoGal_CMediaObj
 	
 	function SubGalleries($sortOrder)
 	{
+		global $pref;
 		if (isset($this->m_info['subgalleries'])) return $this->m_info['subgalleries'];
 		if (!$this->IsGallery()) return;
 		
@@ -1209,6 +1220,7 @@ class AutoGal_CMediaObj
 	
 	function NavButtons($showSlideShow, $showClose)
 	{
+		global $pref;
 		$element = $this->Element();
 		$gallery = $this->Gallery();
 		
@@ -1516,6 +1528,7 @@ class AutoGal_CMediaObj
 		
 	function AddComment($commentInfoOrText, $username, $userID, $time)
 	{
+		global $pref;
 		if (is_array($commentInfoOrText))
 		{
 			$commentInfo = $commentInfoOrText;
@@ -1655,6 +1668,7 @@ class AutoGal_CMediaObj
 	
 	function ArcadeTopScores()
 	{
+		global $pref;
 		if ($this->FileType() != 'flash')
 		{
 			$this->LastError("ArcadeTopScores: Not a flash file!");
@@ -1686,6 +1700,7 @@ class AutoGal_CMediaObj
 	
 	function ArcadeAddTopScore($points, $userID, $username, $scoreTime)
 	{
+		global $pref;
 		if ($this->FileType() != 'flash')
 		{
 			$this->LastError("ArcadeAddTopScore: Not a flash file!");

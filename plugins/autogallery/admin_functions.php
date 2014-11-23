@@ -26,6 +26,7 @@ else
 
 function AutoGal_GenerateCacheMenu($galObj, $incSubGals)
 {
+	global $pref;
 	if (!$pref['autogal_enabledbcache']) return;
 	global $ns;
 	
@@ -50,6 +51,7 @@ function AutoGal_GenerateCacheMenu($galObj, $incSubGals)
 
 function AutoGal_GenerateCache($galObj, $incSubGals, $printLog=false)
 {
+	global $pref;
 	if (!$pref['autogal_enabledbcache']) return array(AUTOGAL_LANG_ADMIN_CACHE_4);
 	require_once(AUTOGAL_MEDIALISTCLASS);
 	
@@ -85,7 +87,7 @@ function AutoGal_GenerateCache($galObj, $incSubGals, $printLog=false)
 
 function AutoGal_RegenLatestCommentsMenu()
 {
-	global $ns;
+	global $ns, $pref;
 	if (!$pref['autogal_metacomments']) return;
 	if (!$pref['autogal_latestcomms']) return;
 	$text = "<iframe src=\"".AUTOGAL_ADMINACTION."?op=regenlatestcomms\" width='100%' frameborder='1' scrolling='yes' height='".AUTOGAL_ADMINACTIONBOXHEIGHT."'></iframe>";
@@ -94,6 +96,7 @@ function AutoGal_RegenLatestCommentsMenu()
 
 function AutoGal_RegenLatestComments(&$error, $printMsgs=false)
 {
+	global $pref;
 	if (!$pref['autogal_metacomments'])
 	{
 		$error = "Comments not enabled";
@@ -295,6 +298,7 @@ function AutoGal_CheckTableDefs($tableTypes=array('cache'), $checkPref=true)
 
 function AutoGal_CreateDBTable($type, $checkPrefs=trye)
 {
+	global $pref;
 	if (!AutoGal_IsMainAdmin()) return;
 	if (($checkPrefs)&&($type == 'cache')&&(!$pref['autogal_enabledbcache'])) return;
 	
@@ -323,6 +327,7 @@ function AutoGal_CreateDBTable($type, $checkPrefs=trye)
 
 function AutoGal_DropDBTable($type)
 {
+	global $pref;
 	if (!AutoGal_IsMainAdmin()) return;
 	if (($type == 'cache')&&(!$pref['autogal_enabledbcache'])) return;
 	
@@ -374,7 +379,7 @@ function AutoGal_DBTableStructure($type)
 
 function AutoGal_ShowAdmin(&$mediaObj, $ns)
 {
-	global $g_startFile;
+	global $g_startFile, $pref;
 	global $g_startGallery;
 	global $g_absPath;
 	
