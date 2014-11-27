@@ -64,7 +64,7 @@ else
 ################
 $text = "
 <div style='text-align:center'>
-<form method='post' name='autogal_xmladmin' action='".e_SELF."'>
+<form method='post' name='autogal_xmladmin' action='".e_SELF."?".e_QUERY."'>
 <br />
 <table style='width:97%' class='fborder'>
 <tr style='vertical-align:top'>
@@ -98,5 +98,5 @@ $text = "
 </div>";
 
 $ns -> tablerender(AUTOGAL_LANG_ADMIN_USERGALS_1, $text);
-require_once(e_ADMIN."footer.php");
+require_once(FOOTERF);
 exit;

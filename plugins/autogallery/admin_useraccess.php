@@ -48,7 +48,7 @@ if ($message)
 ################
 $text = "
 <div style='text-align:center'>
-<form method='post' name='autogal_xmladmin' action='".e_SELF."'>
+<form method='post' name='autogal_xmladmin' action='".e_SELF."?".e_QUERY."'>
 <br />
 <table style='width:97%' class='fborder'>
 <tr style='vertical-align:top'>

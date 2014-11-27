@@ -14,11 +14,11 @@
 require_once(dirname(__FILE__)."/def.php");
 require_once(dirname(__FILE__)."/admin_functions.php");
 require_once(dirname(__FILE__)."/language.php");
- 
+/* 
 if(!getperms("P")){ header("location:".e_BASE."index.php"); }
 require_once(e_ADMIN."auth.php");
 require_once(e_ADMIN."header.php");
-
+*/
 $logFile = file(AUTOGAL_ADMINLOG);
 $numEntries = count($logFile);
 
@@ -48,6 +48,6 @@ else
 }
 
 $ns -> tablerender(AUTOGAL_LANG_ADMIN_ADMINLOG_L3, $text);
-require_once(e_ADMIN."footer.php");
-
+require_once(FOOTERF);
+exit;
 ?>

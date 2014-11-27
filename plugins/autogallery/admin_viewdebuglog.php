@@ -14,11 +14,11 @@
 require_once(dirname(__FILE__)."/def.php");
 require_once(dirname(__FILE__)."/admin_functions.php");
 require_once(dirname(__FILE__)."/language.php");
- 
+/*
 if(!getperms("P")){ header("location:".e_BASE."index.php"); }
 require_once(e_ADMIN."auth.php");
 require_once(e_ADMIN."header.php");
-
+*/
 if (!$pref['autogal_generatedebuglog'])
 {
 	$text = AUTOGAL_LANG_ADMIN_DEBUGLOG_L1." (<a href=\"".AUTOGAL_THUMBNAILSETTINGS."\">".AUTOGAL_LANG_ADMIN_DEBUGLOG_L2."</a>)";

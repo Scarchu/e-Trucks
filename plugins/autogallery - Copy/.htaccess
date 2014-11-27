@@ -1,7 +1,0 @@
-IndexIgnore *
-
-<FilesMatch "(\.xml$|\.htaccess$|\.log$)">
-	order deny,allow
-	Deny from all
-</FilesMatch>
-

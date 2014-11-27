@@ -14,11 +14,11 @@
 require_once(dirname(__FILE__)."/def.php");
 require_once(dirname(__FILE__)."/admin_functions.php");
 require_once(dirname(__FILE__)."/language.php");
- 
+/*
 if(!getperms("P")){ header("location:".e_BASE."index.php"); }
 require_once(e_ADMIN."auth.php");
 require_once(e_ADMIN."header.php");
-
+*/
 $text = "";
 
 if ($_POST['dochmod'])
@@ -221,7 +221,7 @@ if ($_POST['dochmod'])
 
 $text = "
 <div style='text-align:center'>
-<form method='post'>
+<form method='post' action='".e_SELF."?".e_QUERY."'>
 ".AUTOGAL_LANG_ADMIN_DOCHMOD_L8."<br />
 <br />
 <table cellpadding='3'>

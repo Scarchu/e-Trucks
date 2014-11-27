@@ -14,11 +14,11 @@
 require_once(dirname(__FILE__)."/def.php");
 require_once(dirname(__FILE__)."/admin_functions.php");
 require_once(dirname(__FILE__)."/language.php");
-
+/*
 require_once(e_ADMIN."auth.php");
 if(!getperms("P")){ header("location:".e_BASE."index.php"); }
 require_once(e_HANDLER."userclass_class.php");
-
+*/
 unset ($message);
 
 ###################
@@ -107,7 +107,7 @@ if ($selWMarkImg)
 # INPUT FIELDS #
 ################
 $text = "<div style='text-align:center'>
-<form method='post' action='".e_SELF."'>
+<form method='post' action='".e_SELF."?".e_QUERY."'>
 <br />
 <table style='width:97%' class='fborder'>
 <tr style='vertical-align:top'>
@@ -197,15 +197,12 @@ $text .= "
 ".str_replace("[DIR]", AUTOGAL_WATERMARKDIRABS, AUTOGAL_LANG_ADMIN_WATERMARK_23)."<br />
 <br />
 ".AUTOGAL_LANG_ADMIN_WATERMARK_26."<br />
-<br />
-<a href='http://www.cerebralsynergy.com'><img style='border:0' alt='Cerebral Synergy' src='".e_PLUGINS."autogallery/Images/button.png' /></a><br />
-<a href='".AUTOGAL_SUPPORTLINK."'>".AUTOGAL_LANG_ADMIN_MAIN_L46."</a><br />
 </form>
 </div>";
 
 $ns -> tablerender(AUTOGAL_LANG_ADMIN_WATERMARK_2, $text);
 
-require_once(e_ADMIN."footer.php");
+require_once(FOOTERF);
 exit;
 ?>
 

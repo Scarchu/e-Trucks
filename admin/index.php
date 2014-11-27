@@ -124,6 +124,7 @@ if(isset($_POST['trucks'])) // za nastroikata na kamionite
 		<td><a href="<?php echo e_SELF; ?>?mode=maint"><img src="../theme/Images/maintain_32.png"><br />Затваряне</a></td>
 		<td><a href="<?php echo e_SELF; ?>?mode=modules"><img src="../theme/Images/modules_32.png"><br />Модули</a></td>
 		<td><a href="<?php echo e_SELF; ?>?mode=companies"><img src="../theme/Images/modules_32.png"><br />Фирми</a></td>
+		<td><a href="<?php echo e_SELF; ?>?mode=gallery"><img src="../theme/Images/.png"><br />Галерия</a></td>
 	</tr>
 </table>
 <br />
@@ -132,6 +133,92 @@ if(isset($_POST['trucks'])) // za nastroikata na kamionite
 <?php
 $pageTitle = 'e-КАМИОНИ::Админ';
 
+//=================================================Gallery=================================================================//
+
+if($mode == "gallery")
+{
+	$action = varset($_GET['action']);
+	echo "
+		<h1>Галерия</h1>
+		<br />
+		<div class='center'>
+			<button type='submit' method='get' onclick=\"location='index.php?mode=gallery&action=1';\">Изглед</button>
+			<button type='submit' method='get' onclick=\"location='index.php?mode=gallery&action=2';\">База данни</button>
+			<button type='submit' method='get' onclick=\"location='index.php?mode=gallery&action=3';\">файл права</button>
+			<button type='submit' method='get' onclick=\"location='index.php?mode=gallery&action=4';\">Файл обновяване</button>
+			<button type='submit' method='get' onclick=\"location='index.php?mode=gallery&action=5';\">Езици</button>
+			<button type='submit' method='get' onclick=\"location='index.php?mode=gallery&action=6';\">Основни</button>
+			<button type='submit' method='get' onclick=\"location='index.php?mode=gallery&action=7';\">Мета инфо</button>
+			<button type='submit' method='get' onclick=\"location='index.php?mode=gallery&action=8';\">Преглеждане файлове</button>
+			<button type='submit' method='get' onclick=\"location='index.php?mode=gallery&action=9';\">Сигурност</button>
+			<button type='submit' method='get' onclick=\"location='index.php?mode=gallery&action=10';\">Слайдшоу</button>
+			<button type='submit' method='get' onclick=\"location='index.php?mode=gallery&action=11';\">Скорост</button>
+			<button type='submit' method='get' onclick=\"location='index.php?mode=gallery&action=12';\">Миниатюри</button>
+			<button type='submit' method='get' onclick=\"location='index.php?mode=gallery&action=13';\">Потребителски достъп</button>
+			<button type='submit' method='get' onclick=\"location='index.php?mode=gallery&action=14';\">Потребителски галерии</button>
+			<button type='submit' method='get' onclick=\"location='index.php?mode=gallery&action=15';\">Админ лог</button>
+			<button type='submit' method='get' onclick=\"location='index.php?mode=gallery&action=16';\">Бъг лог</button>
+			<button type='submit' method='get' onclick=\"location='index.php?mode=gallery&action=17';\">Воден знак</button>
+		</div>
+		<br />
+		<hr>
+		<br />
+		";
+	switch($action)
+	{
+		case 1:
+			require e_PLUGINS.'autogallery/admin_appearance.php';
+			break;
+		case 2:
+			require e_PLUGINS.'autogallery/admin_dbupdate.php';
+			break;
+		case 3:
+			require e_PLUGINS.'autogallery/admin_dochmod.php';
+			break;
+		case 4:
+			require e_PLUGINS.'autogallery/admin_fileupdate.php';
+			break;
+		case 5:
+			require e_PLUGINS.'autogallery/admin_languages.php';
+			break;
+		case 6:
+			require e_PLUGINS.'autogallery/admin_main.php';
+			break;
+		case 7:
+			require e_PLUGINS.'autogallery/admin_metadata.php';
+			break;
+		case 8:
+			require e_PLUGINS.'autogallery/admin_reviewuploads.php';
+			break;
+		case 9:
+			require e_PLUGINS.'autogallery/admin_security.php';
+			break;
+		case 10:
+			require e_PLUGINS.'autogallery/admin_slideshow.php';
+			break;
+		case 11:
+			require e_PLUGINS.'autogallery/admin_speed.php';
+			break;
+		case 12:
+			require e_PLUGINS.'autogallery/admin_thumbnails.php';
+			break;
+		case 13:
+			require e_PLUGINS.'autogallery/admin_useraccess.php';
+			break;
+		case 14:
+			require e_PLUGINS.'autogallery/admin_usergalleries.php';
+			break;
+		case 15:
+			require e_PLUGINS.'autogallery/admin_viewadminlog.php';
+			break;
+		case 16:
+			require e_PLUGINS.'autogallery/admin_viewdebuglog.php';
+			break;
+		case 17:
+			require e_PLUGINS.'autogallery/admin_watermark.php';
+			break;
+	}
+}
 
 //==================================================Firmi==================================================================//
 if($mode == "companies")

@@ -65,7 +65,8 @@ $commentDis = (!$pref['autogal_metacomments'] ? " disabled='disabled'" : '');
 $latestCommentDis = (!$pref['autogal_metacomments'] || !$pref['autogal_maxlatestcomms'] ? " disabled='disabled'" : '');
 $ratingDis = (!$pref['autogal_metaratings'] ? " disabled='disabled'" : '');
 $arcadeDis = (!$pref['autogal_arctopscores'] ? " disabled='disabled'" : '');
-
+//echo e_SELF;
+//echo e_QUERY;
 ################
 # INPUT FIELDS #
 ################
@@ -109,7 +110,7 @@ function enableArcadeSettings()
 }
 </script>
 <div style='text-align:center'>
-<form method='post' name='autogal_xmladmin' action='".e_SELF."'>
+<form method='post' name='autogal_xmladmin' action='".e_SELF."?".e_QUERY."'>
 <br />
 <table style='width:97%' class='fborder'>
 <tr style='vertical-align:top'>
@@ -233,12 +234,9 @@ function enableArcadeSettings()
 <u>".AUTOGAL_LANG_ADMIN_METADATA_L15."</u><br />
 ".AUTOGAL_LANG_ADMIN_METADATA_L16."<br />
 <br />
-<a href='http://www.cerebralsynergy.com'><img style='border:0' alt='Cerebral Synergy' src='".e_PLUGINS."autogallery/Images/button.png' /></a><br />
-<a href='".AUTOGAL_SUPPORTLINK."'>".AUTOGAL_LANG_ADMIN_METADATA_L17."</a><br />
-<br />
 </form>
 </div>";
 
 $ns -> tablerender(AUTOGAL_LANG_ADMIN_METADATA_L18, $text);
-require_once(e_ADMIN."footer.php");
+require_once(FOOTERF);
 exit;

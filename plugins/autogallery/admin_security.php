@@ -132,14 +132,12 @@ if (is_readable(AUTOGAL_HTACCESS)) $text .= AutoGal_HtaccessPreview(AUTOGAL_HTAC
 if (is_readable($galHtaccessFile)) $text .= AutoGal_HtaccessPreview($galHtaccessFile);
 
 $text .= "
-<a href='http://www.cerebralsynergy.com'><img style='border:0' alt='Cerebral Synergy' src='".e_PLUGINS."autogallery/Images/button.png' /></a><br />
-<a href='".AUTOGAL_SUPPORTLINK."'>".AUTOGAL_LANG_ADMIN_MAIN_L46."</a><br />
 </form>
 </div>";
 
 $ns -> tablerender(AUTOGAL_LANG_ADMIN_SECURITY_L16, $text);
 
-require_once(e_ADMIN."footer.php");
+require_once(FOOTERF);
 
 function AutoGal_HtaccessPreview($filePath)
 {
@@ -166,8 +164,7 @@ function AutoGal_HtaccessPreview($filePath)
 			<tr style='vertical-align:top'>
 				<td style='text-align:left' class='forumheader3'><font face='courier new'><pre>$htaccessData</pre></font></td>
 			</tr>
-			</table>
-			<br />";
+			</table>";
 		}
 	}
 	
