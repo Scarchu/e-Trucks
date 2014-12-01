@@ -16,9 +16,9 @@ require_once(dirname(__FILE__)."/admin_functions.php");
 require_once(dirname(__FILE__)."/language.php");
  
 /*if(!getperms("P")){ header("location:".e_BASE."index.php"); }
-require_once(e_ADMIN."auth.php");
+require_once(e_ADMIN."auth.php");*/
 require_once(e_HANDLER."userclass_class.php");
-*/
+
 ###################
 # SET PREFERENCES #
 ###################
@@ -404,14 +404,11 @@ $text = "<div style='text-align:center'>
 </ol>
 </div>
 <br />
-<a href='http://www.cerebralsynergy.com'><img style='border:0' alt='Cerebral Synergy' src='".e_PLUGINS."autogallery/Images/button.png' /></a><br />
-<a href='".AUTOGAL_SUPPORTLINK."'>Auto Gallery Support Forum</a><br />
-<br />
 </form>
 </div>";
 
 $ns -> tablerender(AUTOGAL_LANG_ADMIN_APPEARENCE_L0, $text);
-require_once(e_ADMIN."footer.php");
+require_once(FOOTERF);
 exit;
 
 ?>

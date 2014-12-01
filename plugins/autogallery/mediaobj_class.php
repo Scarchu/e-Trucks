@@ -1452,6 +1452,7 @@ class AutoGal_CMediaObj
 	
 	function CheckUserPriv($privName)
 	{
+		global $pref;
 		if (AutoGal_IsMainAdmin()) return 1;
 		
 		switch ($privName)
@@ -1476,10 +1477,10 @@ class AutoGal_CMediaObj
 			case 'setfilethumb':    $privOK = $this->UserCanEdit(); break;
 			case 'setviewsize':     $privOK = $this->UserCanEdit(); break;
 			case 'directupload':    $privOK = (($this->IsUserGalleryOwner())||($this->CheckUserClass('upload'))); break;
-			case 'reviewupload':    $privOK = (AutoGal_IsUploadAllowed()); break;
+			case 'reviewupload':    $privOK = check_class($pref['autogal_revuploaduc']); break;
 			case 'upload':          $privOK = (($this->CheckUserPriv('reviewupload'))||($this->CheckUserPriv('directupload'))); break;
-			case 'review':          $privOK = (AutoGal_IsReviewAllowed()); break;
-			case 'rating':          $privOK = (AutoGal_IsRatingAllowed()); break;
+			case 'review':          $privOK = check_class($pref['autogal_adminreviewuc']); break;
+			case 'rating':          $privOK = check_class($pref['autogal_rateclass']); break;
 			case 'addfile':         $privOK = $this->UserCanEdit(); break;
 			case 'adminmenu':       $privOK = $this->UserCanEdit(); break;
 			case 'commentadmin':    $privOK = $this->UserCanEdit(); break;

@@ -115,5 +115,5 @@ $text = "
 </div>";
 
 $ns -> tablerender(AUTOGAL_LANG_ADMIN_USERACCESS_1, $text);
-require_once(e_ADMIN."footer.php");
+require_once(FOOTERF);
 exit;

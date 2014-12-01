@@ -141,7 +141,7 @@ define("AUTOGAL_PERMSBSEDIR", 		755);
 define("AUTOGAL_PERMSHTACCESS", 	666);
 
 # MISC SETTINGS
-define('AUTOGAL_DIRCACHETABLE',          'e107_agDirCache');
+define('AUTOGAL_DIRCACHETABLE',          MPREFIX.'agDirCache');
 define('AUTOGAL_THUMBPREFIX', 			 'th_');
 define('AUTOGAL_PREVIEWIMGPREFIX',       'pv_');
 define('AUTOGAL_GALLERYTHUMBFILENAME',	 '__thumbnail');

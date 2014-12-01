@@ -85,7 +85,17 @@ define('e_QUERY', $e_QUERY);
 //echo e_QUERY;
 define("e_TBQS", $_SERVER['QUERY_STRING']);
 $_SERVER['QUERY_STRING'] = e_QUERY;
-
+/**********************************************************************/
+define("e_UC_PUBLIC", 0);
+define('e_UC_NEWUSER', 247);	// Users in 'probationary' period
+define('e_UC_BOTS', 246);	// Reserved to identify search bots
+define("e_UC_MAINADMIN", 250);
+define("e_UC_READONLY", 251);
+define("e_UC_GUEST", 252);
+define("e_UC_MEMBER", 253);
+define("e_UC_ADMIN", 254);
+define("e_UC_NOBODY", 255);
+/**********************************************************************/
 //=================================================================//
 
 //---------------MySQL------------------//
@@ -584,6 +594,50 @@ function PwdHash($pwd, $salt = null)
         $salt = substr($salt, 0, SALT_LENGTH);
     }
     return $salt . sha1($pwd . $salt);
+}
+
+// -----------------------------------------------------------------------------
+
+function check_class($var)
+{
+	$_user = USER;
+	$_admin = ADMIN;
+
+	if ($var == e_UC_MAINADMIN)
+	{
+       	return TRUE;
+	}
+
+	if ($var == e_UC_MEMBER && $_user == TRUE)
+	//if ($var == e_UC_MEMBER)
+	{
+		return TRUE;
+	}
+	
+	if ($var == e_UC_GUEST && $_user == FALSE)
+	{
+		return TRUE;
+	}
+	
+	if ($var == e_UC_PUBLIC)
+	{
+		return TRUE;
+	}
+
+	if ($var == e_UC_NOBODY)
+	{
+			return FALSE;
+	}
+
+	if ($var == e_UC_ADMIN && $_admin)
+	{
+		return TRUE;
+	}
+
+	if ($var == e_UC_READONLY)
+	{
+		return TRUE;
+	}
 }
 
 // -----------------------------------------------------------------------------

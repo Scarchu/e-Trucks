@@ -16,7 +16,8 @@ require_once(dirname(__FILE__)."/language.php");
 require_once(AUTOGAL_MEDIAOBJCLASS);
 require_once(HEADERF);
 
-if (!AutoGal_IsUploadAllowed())
+
+if (!check_class($pref['autogal_revuploaduc']))
 {
 	$botLinks = AutoGal_GetBotLinks(false);
 	require_once(e_HANDLER."userclass_class.php");
@@ -32,7 +33,8 @@ if (!AutoGal_IsUploadAllowed())
 	</div>";
 	
 	$ns -> tablerender($pref['autogal_title'] . " - ".AUTOGAL_LANG_UPLOAD_L20, $text);
-	if ($pref['autogal_showfooter']){require_once(FOOTERF);}
+//	if ($pref['autogal_showfooter']){require_once(FOOTERF);}
+	require_once(FOOTERF);
 	exit;
 }
 

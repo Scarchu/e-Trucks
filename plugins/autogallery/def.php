@@ -174,40 +174,45 @@ function AutoGal_GetImageURL($element)
 	}
 }
 
-function AutoGal_IsUploadAllowed()
+/*function AutoGal_IsUploadAllowed()
 {
 	global $pref;
-	return AutoGal_CheckUserClass($pref['autogal_revuploaduc']);
-}
+	//return AutoGal_CheckUserClass($pref['autogal_revuploaduc']);
+	return check_class($pref['autogal_revuploaduc']);
+}*/
 
-function AutoGal_IsReviewAllowed()
+/*function AutoGal_IsReviewAllowed()
 {
 	global $pref;
-	return AutoGal_CheckUserClass($pref['autogal_adminreviewuc']);
-}
+	//return AutoGal_CheckUserClass($pref['autogal_adminreviewuc']);
+	return check_class($pref['autogal_adminreviewuc']);
+}*/
 
-function AutoGal_IsRatingAllowed()
+/*function AutoGal_IsRatingAllowed()
 {
 	global $pref;
-	return AutoGal_CheckUserClass($pref['autogal_rateclass']);
-}
+	//return AutoGal_CheckUserClass($pref['autogal_rateclass']);
+	return check_class($pref['autogal_rateclass']);
+}*/
 
 function AutoGal_IsEditAllowed()
 {
-	return ((AutoGal_IsMainAdmin())||AutoGal_CheckUserClass(AUTOGAL_EDITUSERCLASS));
+	//return ((AutoGal_IsMainAdmin())||AutoGal_CheckUserClass(AUTOGAL_EDITUSERCLASS));
+	return ((AutoGal_IsMainAdmin())|| check_class(AUTOGAL_EDITUSERCLASS));
 }
 
 function AutoGal_IsUserGalleryAllowed()
 {
-	return ((AUTOGAL_USERGALENABLE)&&(AutoGal_CheckUserClass(AUTOGAL_USERGALUSERCLASS)));
+	//return ((AUTOGAL_USERGALENABLE)&&(AutoGal_CheckUserClass(AUTOGAL_USERGALUSERCLASS)));
+	return ((AUTOGAL_USERGALENABLE)&&(check_class(AUTOGAL_USERGALUSERCLASS)));
 }
 
 # So we can detach from e107 in the future...
 function AutoGal_CheckUserClass($class)
 {
-	//require_once(e_HANDLER."userclass_class.php");
-	//return check_class($class);
-	return true;
+	require_once(e_HANDLER."userclass_class.php");
+	return check_class($class);
+	//return true;
 }
 
 # So we can detach from e107 in the future...
@@ -263,7 +268,7 @@ function AutoGal_NumUploads()
 function AutoGal_GetReviewLink()
 {
 	global $pref;
-	if (AutoGal_IsReviewAllowed())
+	if (check_class($pref['autogal_adminreviewuc']))
 	{
 		return "[<a href=\"".AUTOGAL_REVIEWUPLOADS."\">".AUTOGAL_LANG_L21.($pref['autogal_showreviewcount'] ? " (".AutoGal_NumUploads().")" : '')."</a>]";
 	}
@@ -375,14 +380,14 @@ function AutoGal_GetBotLinks($imageGallery='', $showReview=true, $showNewest=tru
 	return $botLinks;
 }
 
-function AutoGal_GetVersion()
+/*function AutoGal_GetVersion()
 {
 	$sqlVer = new db;
 	$sqlVer->db_Select("plugin", "plugin_version", "plugin_name='Auto Gallery'");
 	list($autoGalVer) = $sqlVer->db_Fetch();
 	
 	return $autoGalVer;
-}
+}*/
 
 function AutoGal_CheckResizeMethod(&$text)
 {

@@ -26,14 +26,15 @@ if (!$g_mediaObj->IsValid())
 {
 	define("e_PAGETITLE", $pref['autogal_title']);
 	
-	$g_agRenderTime += microtime(true) - $g_agStartRender;
+	//$g_agRenderTime += microtime(true) - $g_agStartRender;
 	require_once(HEADERF);
-	$g_agStartRender = microtime(true);
+	//$g_agStartRender = microtime(true);
 	
 	print "\n<!-- AUTOGALLERY START -->\n\n";
 	$text .= "<div style='text-align:center'><br />".AUTOGAL_LANG_L2."<br /><br /><b>".htmlspecialchars($g_element)."</b><br />".$g_mediaObj->LastError()."<br /><br /><a href=\"".AUTOGAL_AUTOGALLERY."\">".AUTOGAL_LANG_L3."</a><br /><br /></div>";
 	$ns -> tablerender($pref['autogal_title'], $text);
-	if ($pref['autogal_showfooter']){require_once(FOOTERF);}
+	//if ($pref['autogal_showfooter']){require_once(FOOTERF);}
+	require_once(FOOTERF);
 	exit;
 }
 
@@ -49,9 +50,9 @@ if (($pref['autogal_showinnewwindow'])&&($g_mediaObj->IsFile())&&($g_isNewWindow
 else
 {
 	// RENDER e107 HEADER
-	$g_agRenderTime += microtime(true) - $g_agStartRender;
+	//$g_agRenderTime += microtime(true) - $g_agStartRender;
 	require_once(HEADERF);
-	$g_agStartRender = microtime(true);
+	//$g_agStartRender = microtime(true);
 	
 	print "\n\n<!-- AUTOGALLERY START -->\n";
 
@@ -145,10 +146,10 @@ if ($g_showInNewWindow)
 {
 	print AutoGal_GetNewWindowFooter();
 }
-elseif ($pref['autogal_showfooter'])
-{
+//elseif ($pref['autogal_showfooter'])
+//{
 	require_once(FOOTERF);
-}
+//}
 
 
 // SHOWS A SINGLE IMAGE

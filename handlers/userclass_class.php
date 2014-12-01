@@ -19,7 +19,7 @@
 
 //if (!defined('e107_INIT')) { exit; }
 
-//include_lan(e_LANGUAGEDIR.e_LANGUAGE."/lan_userclass.php");
+include(e_BASE."languages/Bulgarian/lan_userclass.php");
 
 /*
 With $optlist you can now specify which classes are shown in the dropdown.
@@ -81,11 +81,11 @@ function r_userclass($fieldname, $curval = 0, $mode = "off", $optlist = "") {
 		foreach($classList as $row)
 		{
 			extract($row);
-			if (strpos($optlist, "matchclass") === FALSE || getperms("0") || check_class($userclass_id))
-			{
+//			if (strpos($optlist, "matchclass") === FALSE || getperms("0") || check_class($userclass_id))
+//			{
 				$s = ($userclass_id == $curval) ? "selected='selected'" : "";
 				$text .= "<option value='$userclass_id' ".$s.">".$userclass_name ."</option>\n";
-			}
+//			}
 		}
 	}
 	if (($mode != "off" && $mode != "admin") || strpos($optlist, "readonly") !== FALSE)
@@ -222,7 +222,7 @@ function get_userclass_list()
 }
 
 function r_userclass_name($id) {
-	$class_names = getcachedvars('userclass_names');
+	//$class_names = getcachedvars('userclass_names');
 	if(!is_array($class_names))
 	{
 		$sql = new db;
@@ -243,7 +243,7 @@ function r_userclass_name($id) {
 				$class_names[$row['userclass_id']] = $row['userclass_name'];
 			}
 		}
-		cachevars('userclass_names', $class_names);
+		//cachevars('userclass_names', $class_names);
 	}
 	return $class_names[$id];
 }
@@ -264,7 +264,7 @@ class e_userclass {
 			{
 				$new_userclass = $cid;
 			}
-			$sql2->db_Update('user', "user_class='".$tp -> toDB($new_userclass, true)."' WHERE user_id=".intval($uid));
+			$sql2->db_Update('users', "user_class='".$tp -> toDB($new_userclass, true)."' WHERE userid=".intval($uid));
 		}
 	}
 
@@ -276,7 +276,7 @@ class e_userclass {
 		{
 			$newarray = array_diff(explode(',', $curclass), array('', $cid));
 			$new_userclass = implode(',', $newarray);
-			$sql2->db_Update('user', "user_class='".$tp -> toDB($new_userclass, true)."' WHERE user_id=".intval($uid));
+			$sql2->db_Update('users', "user_class='".$tp -> toDB($new_userclass, true)."' WHERE userid=".intval($uid));
 		}
 	}
 
@@ -291,13 +291,13 @@ class e_userclass {
 		$ul = explode(",", $ulist);
 		array_walk($ul, array($this, 'munge'));
 		$qry = "
-		SELECT user_id, user_class from #user AS u
-		WHERE user_name = ".implode(" OR user_name = ", $ul);
+		SELECT userid, user_class from #users AS u
+		WHERE username = ".implode(" OR username = ", $ul);
 		if($sql->db_Select_gen($qry))
 		{
 			while($row = $sql->db_Fetch())
 			{
-				$idList[$row['user_id']] = $row['user_class'];
+				$idList[$row['userid']] = $row['user_class'];
 
 			}
 			while($sql->db_Count("userclass_classes","(*)","WHERE userclass_name = '".strtoupper($class_prefix.$num)."'"))

@@ -13,6 +13,7 @@
 
 require_once(dirname(__FILE__)."/def.php");
 require_once(dirname(__FILE__)."/language.php");
+require_once(dirname(__FILE__)."/admin_functions.php");
 
 /*require_once(e_ADMIN."auth.php");
 if(!getperms("P")){ header("location:".e_BASE."index.php"); }
@@ -168,7 +169,7 @@ function checkRecs(obj)
 }
 </script>
 <div style='text-align:center'>
-<form method='post'>
+<form method='post' action='".e_SELF."?".e_QUERY."'>
 <table style='width:97%' class='fborder'>
 <tr style='vertical-align:top'>
     <td colspan='2' style='text-align:center' class='forumheader'>
@@ -227,7 +228,7 @@ function checkRecs(obj)
 
 $ns -> tablerender(AUTOGAL_LANG_ADMIN_CACHE_5, $text);
 
-require_once(e_ADMIN."footer.php");
+require_once(FOOTERF);
 exit;
 
 function AutoGal_GetSpeedRecs()

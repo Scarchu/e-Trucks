@@ -160,12 +160,13 @@ $usingHttps = (isset($_POST['autogal_usinghttps']) ? $_POST['autogal_usinghttps'
 ########################
 # CHECK GALLERY FOLDER #
 ########################
-$galDir = $pref['autogal_gallerydir'];
+/*$galDir = $pref['autogal_gallerydir'];
+
 if (($galDir)&&(!is_dir(realpath($galDir))))
 {
 	$ns -> tablerender("", "<div style='text-align:center'><font color='red'><b>".AUTOGAL_LANG_ADMIN_MAIN_L1."</b></font> ".str_replace('[GALLERYDIR]', $galDir, AUTOGAL_LANG_ADMIN_MAIN_L2)."<br />".AUTOGAL_LANG_ADMIN_MAIN_L3."\"".realpath($galDir)."\"</div>");
 }
-
+*/
 ####################################
 # CHECK DATABASE TABLE DEFINITIONS #
 ####################################
@@ -187,7 +188,7 @@ if ($uploadPerms = IsBadLogDirPerms()) $ns -> tablerender(AUTOGAL_LANG_ADMIN_MAI
 # INPUT FIELDS #
 ################
 $text = "<div style='text-align:center'>
-<form method='post' action='".e_SELF."'>
+<form method='post' action='".e_SELF."?".e_QUERY."'>
 <br />
 <table style='width:97%' class='fborder'>
 <tr style='vertical-align:top'>

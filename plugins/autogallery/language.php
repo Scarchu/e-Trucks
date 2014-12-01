@@ -13,7 +13,8 @@
 
 require_once(dirname(__FILE__)."/../../class.php");
 
-$langFile = dirname(__FILE__)."/Languages/".e_LANGUAGE.".php";
+//$langFile = dirname(__FILE__)."/Languages/".e_LANGUAGE.".php";
+$langFile = dirname(__FILE__)."/Languages/Bulgarian.php";
 $engLangFile = dirname(__FILE__)."/Languages/English.php";
 
 if (file_exists($langFile)) 
@@ -24,7 +25,7 @@ else
 {
 	require_once($engLangFile);
 }
-require_once 'Languages/English_Admin.php';
+require_once 'Languages/Bulgarian_Admin.php';
 
 @$siteLang = $pref['sitelanguage'] ? $pref['sitelanguage'] : "English";
 @include_once(e_LANGUAGEDIR.$siteLang."/$siteLang.php");

@@ -193,7 +193,7 @@ function AutoGal_RatingHTML(&$mediaObj, $skipNew=0)
 	global $ns;
 	
 	# GET RATING INFO
-	$userCanRate = AutoGal_IsRatingAllowed();
+	$userCanRate = check_class($pref['autogal_rateclass']);
 	
 	if (USER)
 	{

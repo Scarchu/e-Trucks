@@ -15,8 +15,8 @@ require_once(dirname(__FILE__)."/def.php");
 require_once(dirname(__FILE__)."/admin_functions.php");
 require_once(dirname(__FILE__)."/language.php");
 require_once(AUTOGAL_MEDIAOBJCLASS);
-/*require_once(e_HANDLER."userclass_class.php");
-
+require_once(e_HANDLER."userclass_class.php");
+/*
 if (AutoGal_IsMainAdmin())
 {
 	require_once(e_ADMIN."auth.php");
@@ -29,10 +29,10 @@ else*/
 //}
 
 
-if (!AutoGal_IsReviewAllowed())
+if (!check_class($pref['autogal_adminreviewuc']))
 {
 	$ns -> tablerender(AUTOGAL_LANG_ADMIN_REVIEW_L2, "<div style='text-align:center'><b>".AUTOGAL_LANG_ADMIN_REVIEW_L3."</b></div>");
-	if ($pref['autogal_showfooter']){require_once(FOOTERF);}
+	require_once(FOOTERF);
 	exit;
 }
 
@@ -148,7 +148,7 @@ if ($files)
 {
     $text = "
     <div style='text-align:center'>
-    <form method='post' action='".e_SELF."'>
+    <form method='post' action='".e_SELF."?".e_QUERY."'>
     <br />
     <table style='width:85%' class='fborder' colspan='3'>
     <tr>
@@ -180,6 +180,7 @@ if (AutoGal_IsMainAdmin())
 {
 	//require_once(e_ADMIN."footer.php");
 	require_once(FOOTERF);
+	exit;
 }
 else
 {

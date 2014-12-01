@@ -278,7 +278,7 @@ function AutoGal_RenderFileObj_rm($mediaObj)
 
 function AutoGal_RenderFileObj_image($mediaObj, $showFullImage, $showLimitMsg, $fullImgNewWin)
 {
-	global $pref;
+	global $pref, $ns;
 	$imgUrl = $mediaObj->Url();
 	$pvWidth = 0;
 	$pvHeight = 0;
@@ -333,13 +333,12 @@ function AutoGal_RenderFileObj_image($mediaObj, $showFullImage, $showLimitMsg, $
 					# PREVIEW IMAGE DOESN'T EXIT? MAKE ONE.
 					$makePvImg = 1;
 				}
-				
 				if ($makePvImg)
 				{
 					# RESIZE IMAGE TO THE PREVIEW IMAGE
 					require_once(AUTOGAL_IMGMANIPHANDLER);
+					$mode = 'im';								//prinuditelno puskame ImageMagick. Poradi nqkakwa prichina GD ne raboti//
 					$gdim = new GDIM($mode, $imPath, $imQuality);
-
 					$opts['keepaspect'] = 1;
 					$opts['1stframe'] = 1;
 					$opts['iflarger'] = 0;
@@ -349,7 +348,6 @@ function AutoGal_RenderFileObj_image($mediaObj, $showFullImage, $showLimitMsg, $
 					if (!$gdim->resize($mediaObj->AbsPath(), $mediaObj->PreviewImagePath(), $pref['autogal_maximagewidth'], $pref['autogal_maximageheight'], $opts))
 					{
 						# SOMETHING FUCKED UP...
-						global $ns;
 						$ns->tablerender('', $gdim->lastError());
 					}
 					else
