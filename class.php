@@ -262,11 +262,7 @@ define ("GUEST_LEVEL", 0);
 define("HEADERF", e_THEME."header.php");
 define("FOOTERF", e_THEME."footer.php");
 
-//require_once(e_HANDLER.'functions.php');
 require_once(e_HANDLER.'java_includes.php');
-//require_once(e_HANDLER.'pagination_class.php');
-//require_once(e_HANDLER.'truck_class.php');
-//require_once(e_HANDLER.'userprofile_class.php');
 require_once(e_HANDLER.'emote_filter.php');
 
 echo'
@@ -857,7 +853,7 @@ function sreden_razhod($truck_numb, $id)
 	if ($full !== "checked")
 	return "Разхода не може да се изчисли. Резервоара не е бил напълнен!";
 	
-	$sreden_razhod = "Среден разход: ".round(($last_litters / ($last_trip - $prev_trip)) * 100, 2)."лт./100км.";
+	@$sreden_razhod = "Среден разход: ".round(($last_litters / ($last_trip - $prev_trip)) * 100, 2)."лт./100км.";
 	return $sreden_razhod;
 }
 

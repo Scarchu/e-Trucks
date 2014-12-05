@@ -442,8 +442,8 @@ function AutoGal_ShowAdmin(&$mediaObj, $ns)
 	usort($actions, "AutoGal_CmpAdminActions");
 			
 	$text = "
-	<div style='text-align:center'>
-	<table class='border'>
+	<div style='text-align:center;'>
+	<table class='border2' style='margin: 0 auto;'>
 	<tr>
         <td class='forumheader3'><b>".AUTOGAL_LANG_ADMIN_FUNCTIONS_L3."</b></td>
         <td class='forumheader3' colspan='2'>$filePermsStr</td>         

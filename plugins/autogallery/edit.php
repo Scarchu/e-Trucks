@@ -40,7 +40,7 @@ else
 
 $ns -> tablerender(AUTOGAL_LANG_ADMIN_EDIT_0, $text);
 print "\n<!-- AUTOGALLERY END -->\n\n";
-if ($pref['autogal_showfooter']){require_once(FOOTERF);}
+require_once(FOOTERF);
 
 function AutoGal_DoAdminAction($mediaObj)
 {

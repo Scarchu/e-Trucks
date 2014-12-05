@@ -115,10 +115,10 @@ if(isset($_POST['trucks'])) // za nastroikata na kamionite
 <br />
 <table align="center" width="90%" border="0" cellpadding="3">
 	<tr class="center">
-		<td><a href="<?php echo e_SELF; ?>?mode=pref"><img src="../theme/Images/prefs_32.png"><br />Настройки</a></td>
-		<td><a href="<?php echo e_SELF; ?>?mode=truck"><img src="../theme/Images/truck.png"><br />Настройка камиони</a></td>
-		<td><a href="<?php echo e_SELF; ?>?mode=users"><img src="../theme/Images/users_32.png"><br />Потребители</a></td>
-		<td><a href="<?php echo e_SELF; ?>?mode=dbase"><img src="../theme/Images/database_32.png"><br />База Данни</a></td>
+		<td width=25%"><a href="<?php echo e_SELF; ?>?mode=pref"><img src="../theme/Images/prefs_32.png"><br />Настройки</a></td>
+		<td width=25%"><a href="<?php echo e_SELF; ?>?mode=truck"><img src="../theme/Images/truck.png"><br />Настройка камиони</a></td>
+		<td width=25%"><a href="<?php echo e_SELF; ?>?mode=users"><img src="../theme/Images/users_32.png"><br />Потребители</a></td>
+		<td width=25%"><a href="<?php echo e_SELF; ?>?mode=dbase"><img src="../theme/Images/database_32.png"><br />База Данни</a></td>
 	</tr>
 	<tr class="center">
 		<td><a href="<?php echo e_SELF; ?>?mode=maint"><img src="../theme/Images/maintain_32.png"><br />Затваряне</a></td>
@@ -126,12 +126,23 @@ if(isset($_POST['trucks'])) // za nastroikata na kamionite
 		<td><a href="<?php echo e_SELF; ?>?mode=companies"><img src="../theme/Images/modules_32.png"><br />Фирми</a></td>
 		<td><a href="<?php echo e_SELF; ?>?mode=gallery"><img src="../theme/Images/.png"><br />Галерия</a></td>
 	</tr>
+	<tr class="center">
+		<td><a href="<?php echo e_SELF; ?>?mode=users_classes"><img src="../theme/Images/users_32.png"><br />Потребителски класове</a></td>
+	</tr>
 </table>
 <br />
 <hr color="green" width="70%">
 
 <?php
 $pageTitle = 'e-КАМИОНИ::Админ';
+
+//==============================================User classes===============================================================//
+
+if($mode == "users_classes")
+{
+	header("Location: userclass2.php");
+	exit;
+}
 
 //=================================================Gallery=================================================================//
 
@@ -166,57 +177,23 @@ if($mode == "gallery")
 		";
 	switch($action)
 	{
-		case 1:
-			require e_PLUGINS.'autogallery/admin_appearance.php';
-			break;
-		case 2:
-			require e_PLUGINS.'autogallery/admin_dbupdate.php';
-			break;
-		case 3:
-			require e_PLUGINS.'autogallery/admin_dochmod.php';
-			break;
-		case 4:
-			require e_PLUGINS.'autogallery/admin_fileupdate.php';
-			break;
-		case 5:
-			require e_PLUGINS.'autogallery/admin_languages.php';
-			break;
-		case 6:
-			require e_PLUGINS.'autogallery/admin_main.php';
-			break;
-		case 7:
-			require e_PLUGINS.'autogallery/admin_metadata.php';
-			break;
-		case 8:
-			require e_PLUGINS.'autogallery/admin_reviewuploads.php';
-			break;
-		case 9:
-			require e_PLUGINS.'autogallery/admin_security.php';
-			break;
-		case 10:
-			require e_PLUGINS.'autogallery/admin_slideshow.php';
-			break;
-		case 11:
-			require e_PLUGINS.'autogallery/admin_speed.php';
-			break;
-		case 12:
-			require e_PLUGINS.'autogallery/admin_thumbnails.php';
-			break;
-		case 13:
-			require e_PLUGINS.'autogallery/admin_useraccess.php';
-			break;
-		case 14:
-			require e_PLUGINS.'autogallery/admin_usergalleries.php';
-			break;
-		case 15:
-			require e_PLUGINS.'autogallery/admin_viewadminlog.php';
-			break;
-		case 16:
-			require e_PLUGINS.'autogallery/admin_viewdebuglog.php';
-			break;
-		case 17:
-			require e_PLUGINS.'autogallery/admin_watermark.php';
-			break;
+		case 1:	require e_PLUGINS.'autogallery/admin_appearance.php';	break;
+		case 2:	require e_PLUGINS.'autogallery/admin_dbupdate.php';		break;
+		case 3:	require e_PLUGINS.'autogallery/admin_dochmod.php';		break;
+		case 4:	require e_PLUGINS.'autogallery/admin_fileupdate.php';	break;
+		case 5:	require e_PLUGINS.'autogallery/admin_languages.php';	break;
+		case 6:	require e_PLUGINS.'autogallery/admin_main.php';			break;
+		case 7:	require e_PLUGINS.'autogallery/admin_metadata.php';		break;
+		case 8:	require e_PLUGINS.'autogallery/admin_reviewuploads.php';break;
+		case 9:	require e_PLUGINS.'autogallery/admin_security.php';		break;
+		case 10:require e_PLUGINS.'autogallery/admin_slideshow.php';	break;
+		case 11:require e_PLUGINS.'autogallery/admin_speed.php';		break;
+		case 12:require e_PLUGINS.'autogallery/admin_thumbnails.php';	break;
+		case 13:require e_PLUGINS.'autogallery/admin_useraccess.php';	break;
+		case 14:require e_PLUGINS.'autogallery/admin_usergalleries.php';break;
+		case 15:require e_PLUGINS.'autogallery/admin_viewadminlog.php';	break;
+		case 16:require e_PLUGINS.'autogallery/admin_viewdebuglog.php';	break;
+		case 17:require e_PLUGINS.'autogallery/admin_watermark.php';	break;
 	}
 }
 

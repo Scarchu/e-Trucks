@@ -2,7 +2,7 @@
 
 define("ERR_PAGE_ACTIVE",'error');
 unset($_POST);
-require_once("class.php");
+require_once "class.php";
 include "languages/Bulgarian/lan_error.php";
 
 //if (!defined('PAGE_NAME')) define('PAGE_NAME','Unknown page');
@@ -14,7 +14,6 @@ $errTo = $_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
 $errorQuery = htmlentities($_SERVER['QUERY_STRING']);
 $base_path = e_HTTP;
 if (is_numeric(e_QUERY)) $errorNumber = e_QUERY;
-//echo $errorQuery;
 
 switch($errorNumber) 
 {
@@ -75,7 +74,7 @@ if ($errorHeader) header($errorHeader);
 
 require_once(HEADERF);
 
-//$ns->tablerender(PAGE_NAME, $errorText);
-echo $errorText;
+$ns->tablerender(PAGE_NAME, $errorText);
+//echo $errorText;
 require_once(FOOTERF);
 ?>

@@ -14,6 +14,11 @@ class sc_trucks{
 		$this->set_paths();
 		$this->file_path = $this->fix_windows_paths($e107_root_path)."/";
 	}
+	function set_base_path()
+	{
+		global $pref;
+		$this->base_path = $this->http_path;
+	}
 	
 	function set_paths(){
 		global $UPLOADS_DIRECTORY, $ADMIN_DIRECTORY, $THEMES_DIRECTORY, $HANDLERS_DIRECTORY, $LANGUAGES_DIRECTORY, $PLUGINS_DIRECTORY;

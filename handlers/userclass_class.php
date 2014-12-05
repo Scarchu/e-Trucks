@@ -223,8 +223,8 @@ function get_userclass_list()
 
 function r_userclass_name($id) {
 	//$class_names = getcachedvars('userclass_names');
-	if(!is_array($class_names))
-	{
+//	if(!is_array($class_names))
+//	{
 		$sql = new db;
 		$class_names[e_UC_PUBLIC] = UC_LAN_0;
 		$class_names[e_UC_NEWUSER] = UC_LAN_9;
@@ -244,7 +244,7 @@ function r_userclass_name($id) {
 			}
 		}
 		//cachevars('userclass_names', $class_names);
-	}
+//	}
 	return $class_names[$id];
 }
 
