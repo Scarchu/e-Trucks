@@ -17,7 +17,7 @@
 +----------------------------------------------------------------------------+
 */
 
-//if (!defined('e107_INIT')) { exit; }
+if (!defined('eTR_INIT')) { exit; }
 
 include(e_BASE."languages/Bulgarian/lan_userclass.php");
 

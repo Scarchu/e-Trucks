@@ -16,7 +16,7 @@
 |     $Author: e107steved $
 +----------------------------------------------------------------------------+
 */
-//if (!defined('e107_INIT')) { exit; }
+if (!defined('eTR_INIT')) { exit; }
 
 define ("E_NL", chr(2));
 class e_parse
