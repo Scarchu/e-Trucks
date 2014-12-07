@@ -25,7 +25,7 @@ if(isset($_SESSION['user_id']))		//podsigurqwane za wqrnata smqna na header-a (d
 	<table class="header" border="0" cellspacing="0" cellpadding="3">
 	<tr>
 		<td rowspan="2"><p class="logo_hr">e - К А М И О Н И</p></td>
-		<td  width="16%"><p class="red"><a href="'.e_BASE.'profile.php?uid='.USERID.'">Здравей  '.USERFN.'</a></p></td>
+		<td  width="16%"><p class="red"><a href="'.e_BASE.'user.php?id.'.USERID.'">Здравей  '.USERFN.'</a></p></td>
 		<td class="center" width="16%"><p>Имате <a href="'.e_PLUGINS.'pm/list_pm.php">
 			'.$nb_new_pm.' '.$new_message_new.'</a> '.$new_message_messages.'.
 		</td>

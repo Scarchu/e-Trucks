@@ -48,16 +48,9 @@ if(isset($_GET['id']))
 					echo'
 					<tr>
 						<td class="author center" rowspan="2">
-						<a href="'.e_BASE.'profile.php?uid='.$dnn2["authorid"].'">'.$dnn2["author"].'</a><br />
+						<a href="'.e_BASE.'user.php?id.'.$dnn2["authorid"].'">'.$dnn2["author"].'</a><br />
 						';
-						if($dnn2['avatar']!='')
-						{
-							echo '<img src="'.e_BASE.''.htmlentities($dnn2['avatar']).'" alt="аватар" style="max-width:120px;max-height:120px;" />';
-						}
-						else
-						{
-							echo  '<img src="'.e_THEME.'Images/default_avatar.png" alt="няма аватар" style="max-width:120px;max-height:120px;" />';
-						}
+						echo avatar($dnn2["authorid"]);
 						echo'<br />'.$dnn2["info"].'</td>';
 						echo'<td class="left topic_head">';
 						if(USERNM == $dnn2['author'] or USERLV == ADMIN_LEVEL)

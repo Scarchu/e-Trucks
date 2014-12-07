@@ -55,63 +55,50 @@ include_once (HEADERF);
 				}
 				else
 				{
+					$qry = 'select pm.timestamp, pm.message, users.userid
+						as userid, users.username, users.avatar
+						from #pm as pm, #users as users
+						where pm.id="'.$id.'"
+						and users.userid=pm.user1
+						order by pm.id2';
+					$sql2 -> db_Select_gen($qry);
 					//We display the messages
-					?>
+					$head = '<h1 class="center">'.$dn1["title"].'</h1>';
+					$text ='
 					<link href="theme/pmstyle.css" rel="stylesheet" type="text/css">
 					<div class="content_pm">
-						<h1 class="center"><?php echo $dn1['title']; ?></h1>
 						<table class="messages_table">
 							<tr>
 								<th class="rounding_left_top">Потребител</th>
 								<th class="rounding_right_top">Съобщение</th>
-							</tr>
-							<?php
-							$qry = 'select pm.timestamp, pm.message, users.userid
-									as userid, users.username, users.avatar
-									from #pm as pm, #users as users
-									where pm.id="'.$id.'"
-									and users.userid=pm.user1
-									order by pm.id2';
-							$sql2 -> db_Select_gen($qry);
+							</tr>';
+
 							while($dn2 = $sql2 -> db_Fetch())
 							{
-								echo '
+								$text .= '
 								<tr>
 									<td class="author center">
-									<a href="'.e_BASE.'profile.php?uid='.$dn2["userid"].'">'.$dn2["username"].'</a><br />';
-									if($dn2['avatar']!='')
-									{
-										echo '<img src="'.e_BASE.''.htmlentities($dn2['avatar']).'" alt="аватар" style="max-width:120px;max-height:120px;" />';
-									}
-									else
-									{
-										echo  '<img src="'.e_THEME.'Images/default_avatar.png" alt="няма аватар" style="max-width:120px;max-height:120px;" />';
-									}
-									?><br /><br />
+									<a href="'.e_BASE.'user.php?id.'.$dn2["userid"].'">'.$dn2["username"].'</a><br />
+									'.avatar($dn2["userid"]).'
+									<br /><br />
 									</td>
-									<td class="left"><div class="date">Изпратено: <?php echo bg_date('d/M/y H:i' ,$dn2['timestamp']); ?></div>
-									<?php
-									
-										echo $tp -> toHTML(html_entity_decode(($dn2['message'])));
-										//echo $text;
-									
-									?></td>
-								</tr>
-								<?php
+									<td class="left"><div class="date">Изпратено: '.bg_date('d/M/y H:i' ,$dn2['timestamp']).'</div>
+									'.$tp -> toHTML(html_entity_decode(($dn2['message']))).'									
+									</td>
+								</tr>';
 							}
-							//We display the reply form
-							?>
+							//reply form
+							$text .='
 					</table><br />
-					<h2>Отговори</h2>
+					<h2 class="center">Отговори</h2>
 					<div class="center">
-						<form action="read_pm.php?id=<?php echo $id; ?>" method="post">
+						<form action="read_pm.php?id='.$id.'" method="post">
 							<label for="message" class="center">Съобщение</label><br />
 							<textarea cols="40" rows="5" name="message" id="message"></textarea><br />
 							<input type="submit" value="Изпрати" />
 						</form>
 					</div>
-				</div>
-					<?php
+				</div>';
 				}
 			}
 			else
@@ -129,5 +116,6 @@ include_once (HEADERF);
 		echo '<div class="message">The discussion ID is not defined.</div>';
 	}
 
-include(FOOTERF);
+$ns -> tablerender($head, $text);	
+require_once(FOOTERF);
 ?>

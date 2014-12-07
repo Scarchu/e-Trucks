@@ -15,7 +15,7 @@ if(isset($_FILES['fileup']) && strlen($_FILES['fileup']['name']) > 1)
 		exit();
 	}
 	$pr = $_POST['pr'];
-	$upload_path = ta_PATH . basename( $_FILES['fileup']['name']);       // gets the file name
+	$upload_path = e_UPLOADS."tacho_files/".basename($_FILES['fileup']['name']);       // gets the file name
 	$sepext = explode('.', strtolower($_FILES['fileup']['name']));
 	$type = end($sepext);       // gets extension
 	//list($width, $height) = getimagesize($_FILES['fileup']['tmp_name']);     // gets image width and height

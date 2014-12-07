@@ -333,10 +333,8 @@ if(isset($_SESSION['user_id']))
 	define("USERNAME", $result['username']);
 	define("USERLV", $result['user_level']);
 	define("USERFN", ($result['first_name']." ".$result['last_name']));
-	define("USERAV", $result['avatar']);
 	define("USERCO", $result['company']);
-	//define("av_PATH", e_BASE."uploads/avatars/");
-	//define("ta_PATH", e_BASE."uploads/tacho_files/");
+
 	$sql->db_Select("companies", "*", "id=".$result['company']."");
 	$result2 = $sql->db_Fetch();
 	define("USERCO_name", $result2['name']);
@@ -1003,6 +1001,26 @@ function r_emote()
 	}
 
 	return "<div class='spacer'>".$str."</div>";
+}
+
+function avatar($userid, $width=120, $height=120)
+{
+	global $sql;
+	$sql -> db_Select("users", "avatar", "userid=".$userid."");
+	$result = $sql -> db_Fetch();
+	if(!file_exists(e_UPLOADS.'avatars/'.$result["avatar"]))
+	{
+		$sql -> db_Update("users", "avatar='' WHERE userid=".$userid."");
+		$result["avatar"] = false;
+	}
+	if($result["avatar"])
+	{
+		return '<img src="'.e_UPLOADS.'avatars/'.htmlentities($result["avatar"]).'" alt="аватар" style="max-width:'.$width.'px;max-height:'.$height.'px;" />';
+	}
+	else
+	{
+		return '<img src="'.e_THEME.'Images/default_avatar.png" alt="няма аватар" style="max-width:120px;max-height:120px;" />';
+	}
 }
 
 ?>

@@ -12,7 +12,7 @@ echo'
 		<div class="clean"></div>
 	</div>
 ';
-//$admin = "admin";
+
 if(USERLV == ADMIN_LEVEL)
 {
 	echo'<a href="action.php?mode=new_cat" class="button">Нова Категория</a>';

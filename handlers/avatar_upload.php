@@ -1,5 +1,4 @@
 <?php
-header('Content-Type: text/html; charset=utf-8');
 require_once "../class.php";
 
 $uid = $_GET['uid'];
@@ -27,16 +26,14 @@ if($mode == "select")
 				{
 					$actual_image_name =  str_replace(" ", "_", $txt)."_".time().".".$ext; //actual image name going to store in your folder
 					$tmp = $_FILES['photoimg']['tmp_name'];
-					if(move_uploaded_file($tmp, av_PATH.$actual_image_name)) //check the path if it is fine
+					if(move_uploaded_file($tmp, e_UPLOADS."avatars/".$actual_image_name)) //check the path if it is fine
 					{
-						move_uploaded_file($tmp, av_PATH.$actual_image_name); //move the file to the folder
-						$resizeObj = new resize(av_PATH.$actual_image_name); //start resizing
+						move_uploaded_file($tmp, e_UPLOADS."avatars/".$actual_image_name); //move the file to the folder
+						$resizeObj = new resize(e_UPLOADS."avatars/".$actual_image_name); //start resizing
 						$resizeObj -> resizeImage(240, 240, "auto");
-						$resizeObj -> saveImage(av_PATH.$user['username'].'_avatar.'.$ext, 100);
-						//echo "<img src='".e_BASE."uploads/avatars/".$user['username']."_avatar.".$ext."'/>";
-						unlink(av_PATH.$actual_image_name);
-						//$avvie = "".e_BASE."uploads/avatars/".$user['username']."_avatar.".$ext."";
-						$avvie = "uploads/avatars/".$user['username']."_avatar.".$ext."";
+						$resizeObj -> saveImage(e_UPLOADS."avatars/".$user['username'].'_avatar.'.$ext, 100);
+						unlink(e_UPLOADS."avatars/".$actual_image_name);
+						$avvie = $user['username']."_avatar.".$ext."";
 						$sql2 -> db_Update("users", "avatar='".$avvie."' WHERE userid='".$uid."'");
 						echo "<script>window.close();</script>";
 						echo "<script>window.opener.location.reload(false);</script>";
